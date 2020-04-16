@@ -10,9 +10,7 @@ userRouter.route('/')
       res.setHeader('Content-Type', 'text/plain');
       next();
     })
-    .get((req, res, next) => {
-      res.send('respond with a resource');
-    })
+    .get(usersController)
     .post((req, res, next) => {
       res.statusCode = 403;
       res.send('POST method unsupported');
