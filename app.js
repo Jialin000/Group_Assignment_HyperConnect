@@ -3,9 +3,11 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const bodyParser = require('body-parser');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const indexRouter = require('./routes/indexRounter');
+const usersRouter = require('./routes/usersRouter');
+// const parkingBaysRouter = require('./routes/parkingBaysRouter')
 
 const app = express();
 
@@ -20,10 +22,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
 
 // Use routers to direct requests
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+// app.use('/parking-bays', parkingBaysRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
