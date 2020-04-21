@@ -9,11 +9,13 @@ const receiveRequest = (req, res, next) => {
 
 const findBays = (req, res, next) => {
     const location = {
-        bay_id: req.body.bay_id
+        lat: req.body.lat,
+        lon: req.body.lon
+        // bay_id: req.body.bay_id
     }
-    
-    const bay = bays.find(bay => bay.bay_id === location.bay_id);
-
+    //const bay = bays[0]
+    const bay = findNearest(location, bays)
+    //const bay = bays.find(bay => bay.bay_id === location.bay_id);
     if (bay) {
         res.send(bay);
     } else {
@@ -21,6 +23,20 @@ const findBays = (req, res, next) => {
         res.send([]);
     }
 };
+
+
+function findNearest(location, bays){
+    let distance = 100000000;
+    let target_bay = 0;
+    for(let i_bay = 0; i_bay < bays.length; i_bay++){
+        new_distance = Math.pow((parseFloat(location.lat)-parseFloat(bays[i_bay].lat)),2) + Math.pow((parseFloat(location.lon)-parseFloat(bays[i_bay].lon)),2);
+        if(new_distance < distance && bays[i_bay].status=='Unoccupied'){
+            distance = new_distance;
+            target_bay = i_bay;
+        }
+    }
+    return bays[target_bay];
+}
 
 module.exports = {
     receiveRequest,
