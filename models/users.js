@@ -5,6 +5,13 @@ var users = [
         lastName: 'Chen',
         userName: 'xingyuc5',
         email: 'xingyuc5@student.unimelb.edu.au'
+    },
+    {
+        id: '2',
+        firstName: 'Jialin',
+        lastName: 'Li',
+        userName: 'ljl',
+        email: '962853@student.unimelb.edu.au' 
     }
 ]
 
