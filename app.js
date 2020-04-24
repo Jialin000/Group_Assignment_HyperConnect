@@ -27,7 +27,8 @@ app.use(bodyParser.json());
 // Use routers to direct requests
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/findBays', parkingBaysRouter);
+app.use('/ParkingBays', parkingBaysRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
