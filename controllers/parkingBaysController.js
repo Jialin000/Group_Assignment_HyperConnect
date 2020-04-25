@@ -1,6 +1,4 @@
-// js file to represents database
-// var bays = require('../models/parkingBays.js');
-
+//require to the mongoose and load the pre-defined model
 const mongoose = require("mongoose");
 const Bays = mongoose.model("parkingBays");
 
@@ -11,6 +9,7 @@ const receiveRequest = (req, res, next) => {
     next();
 };
 
+//return all the parking bays
 const getBays = async(req, res, next) => {
     try {
         const all_bays = await Bays.find();
@@ -19,9 +18,9 @@ const getBays = async(req, res, next) => {
         res.status(400);
         return res.send("Database query failed");
       }
-    //res.send(all_bays);
     }
 
+//find the next n parking spaces
 const findBays = async(req, res, next) => {
     try {
         const all_bays = await Bays.find();
@@ -40,10 +39,9 @@ const findBays = async(req, res, next) => {
         res.status(400);
         return res.send("input not valid");
       }
-    //const bay = bays[0]
 };
 
-
+// function calculate the distance and return the n nearest parking bays
 function findNearest(location, bays){
 
     var list = [];
