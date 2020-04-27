@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-
+const mongoose = require('mongoose');
 const User = require('../models/users.js');
 
 
@@ -25,6 +25,7 @@ const userSignUp = (req, res, next) => {
             // Create user object using model
             const user = new User({
                 _id: new mongoose.Types.ObjectId(),
+                userName: req.body.userName,
                 email: req.body.email,
                 password: hash
             });

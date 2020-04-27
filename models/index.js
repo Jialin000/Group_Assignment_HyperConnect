@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 // Connect to MongoDB --- Replace this with your Connection String
 CONNECTION_STRING =
-    "mongodb+srv://xingyuc5:<password>@info30005-3xaoq.mongodb.net/test?retryWrites=true&w=majority";
+    "mongodb+srv://hyperconnect:<password>@info30005-3xaoq.mongodb.net/test?retryWrites=true&w=majority";
 MONGO_URL = CONNECTION_STRING.replace("<password>", process.env.MONGO_PASSWORD);
 
 mongoose.connect(MONGO_URL || "mongodb://localhost/info30005", {
@@ -11,7 +11,7 @@ mongoose.connect(MONGO_URL || "mongodb://localhost/info30005", {
     useCreateIndex: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
-    dbName: "mylibraryapp",
+    dbName: "rest-api-db",
 });
 
 const db = mongoose.connection;
@@ -23,4 +23,4 @@ db.once("open", async () => {
     console.log("Mongo connection started on " + db.host + ":" + db.port);
 });
 
-require("./author");
+require("./users");
