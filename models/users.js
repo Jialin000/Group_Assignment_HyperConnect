@@ -1,18 +1,12 @@
-var users = [
-    {
-        id: '1',
-        firstName: 'Xingyu',
-        lastName: 'Chen',
-        userName: 'xingyuc5',
-        email: 'xingyuc5@student.unimelb.edu.au'
-    },
-    {
-        id: '2',
-        firstName: 'Jialin',
-        lastName: 'Li',
-        userName: 'ljl',
-        email: '962853@student.unimelb.edu.au' 
-    }
-]
+const mongoose = require('mongoose');
 
-module.exports = users;
+const userSchema = mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
+    userName: {type: String, required: true},
+    password: {type: String, required: true}
+});
+
+
+
+
+module.exports = userSchema;
