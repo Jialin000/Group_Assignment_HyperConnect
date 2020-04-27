@@ -1,5 +1,8 @@
-// js file to represents database
-var users = require('../models/users.js');
+const bcrypt = require('bcrypt');
+
+const User = require('../models/users.js');
+
+
 
 // functions to handle different requests for users related resources
 const receiveRequest = (req, res, next) => {
@@ -8,6 +11,39 @@ const receiveRequest = (req, res, next) => {
 };
 
 const userSignUp = (req, res, next) => {
+
+    // Hash password for security concern
+    bcrypt.hash(req.body.password, 10, (err, hash) => {
+
+        // Return error if fails to hash password
+        if (err) {
+            return res.status(500).json({
+                error: err
+            });
+        } else {
+
+            // Create user object using model
+            const user = new User({
+                _id: new mongoose.Types.ObjectId(),
+                email: req.body.email,
+                password: hash
+            });
+            user
+                .save()
+                .then(result => {
+                    res.status(201).json({
+                        message: 'User created'
+                    })
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(500).json({
+                        error: err
+                    });
+                });
+        }
+    });
+
 
 }
 
