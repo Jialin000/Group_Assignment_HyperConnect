@@ -1,5 +1,7 @@
-// js file to represents database
-var bays = require('../models/parkingBays.js');
+//require to the mongoose and load the pre-defined model
+const mongoose = require("mongoose");
+const Bays = mongoose.model("parkingBays");
+
 
 // functions to handle different requests for bays related resources
 const receiveRequest = (req, res, next) => {
@@ -7,40 +9,63 @@ const receiveRequest = (req, res, next) => {
     next();
 };
 
-const findBays = (req, res, next) => {
-    const location = {
-        lat: req.body.lat,
-        lon: req.body.lon
-        // bay_id: req.body.bay_id
+//return all the parking bays
+const getBays = async(req, res, next) => {
+    try {
+        const all_bays = await Bays.find();
+        return res.send(all_bays);
+      } catch (err) {
+        res.status(400);
+        return res.send("Database query failed");
+      }
     }
-    //const bay = bays[0]
-    const bay = findNearest(location, bays)
-    //const bay = bays.find(bay => bay.bay_id === location.bay_id);
-    if (bay) {
-        res.send(bay);
-    } else {
-        res.statusCode = 500;
-        res.send([]);
-    }
+
+//find the next n parking spaces
+const findBays = async(req, res, next) => {
+    try {
+        const all_bays = await Bays.find();
+        const location = {
+            lat: req.body.lat,
+            lon: req.body.lon
+        }
+        const bay = findNearest(location, all_bays)
+        if (bay) {
+            res.send(bay);
+        } else {
+            res.statusCode = 500;
+            res.send([]);
+        }
+      } catch (err) {
+        res.status(400);
+        return res.send("input not valid");
+      }
 };
 
-
+// function calculate the distance and return the n nearest parking bays
 function findNearest(location, bays){
-    let distance = 100000000;
-    let target_bay = 0;
+
+    var list = [];
+
     for(let i_bay = 0; i_bay < bays.length; i_bay++){
-        new_distance = Math.pow((parseFloat(location.lat)-parseFloat(bays[i_bay].lat)),2) + Math.pow((parseFloat(location.lon)-parseFloat(bays[i_bay].lon)),2);
-        if(new_distance < distance && bays[i_bay].status=='Unoccupied'){
-            distance = new_distance;
-            target_bay = i_bay;
+        new_distance = 111*1000*Math.sqrt(Math.pow((parseFloat(location.lat)-parseFloat(bays[i_bay].lat)),2) + Math.pow((parseFloat(location.lon)-parseFloat(bays[i_bay].lon)),2));
+        if(bays[i_bay].status=='Unoccupied'){
+            let x = new Object;
+            x[new_distance] = bays[i_bay];
+            list.push(x)
         }
     }
-    return bays[target_bay];
+    list.sort(function(a,b) { return Object.keys(a) - Object.keys(b); } );
+    Top3 = []
+    for(var i=0; i<3 && i<list.length; i++) {
+        Top3.push(list[i])
+    }
+    return Top3;
 }
 
 module.exports = {
     receiveRequest,
     findBays,
+    getBays
 }
 
 
