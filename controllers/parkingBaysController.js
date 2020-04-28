@@ -1,5 +1,7 @@
-// js file to represents database
-var bays = require('../models/parkingBays.js');
+//require to the mongoose and load the pre-defined model
+const mongoose = require("mongoose");
+const Bays = mongoose.model("parkingBays");
+
 
 // functions to handle different requests for bays related resources
 const receiveRequest = (req, res, next) => {
@@ -7,27 +9,39 @@ const receiveRequest = (req, res, next) => {
     next();
 };
 
-const getBays = (req, res, next) => {
-    res.send(bays);
+//return all the parking bays
+const getBays = async(req, res, next) => {
+    try {
+        const all_bays = await Bays.find();
+        return res.send(all_bays);
+      } catch (err) {
+        res.status(400);
+        return res.send("Database query failed");
+      }
     }
 
-const findBays = (req, res, next) => {
-    const location = {
-        lat: req.body.lat,
-        lon: req.body.lon
-    }
-    //const bay = bays[0]
-    const bay = findNearest(location, bays)
-    //const bay = bays.find(bay => bay.bay_id === location.bay_id);
-    if (bay) {
-        res.send(bay);
-    } else {
-        res.statusCode = 500;
-        res.send([]);
-    }
+//find the next n parking spaces
+const findBays = async(req, res, next) => {
+    try {
+        const all_bays = await Bays.find();
+        const location = {
+            lat: req.body.lat,
+            lon: req.body.lon
+        }
+        const bay = findNearest(location, all_bays)
+        if (bay) {
+            res.send(bay);
+        } else {
+            res.statusCode = 500;
+            res.send([]);
+        }
+      } catch (err) {
+        res.status(400);
+        return res.send("input not valid");
+      }
 };
 
-
+// function calculate the distance and return the n nearest parking bays
 function findNearest(location, bays){
 
     var list = [];

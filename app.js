@@ -4,10 +4,14 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
-
+//!!!
+require("./models");
+//!!!
 const indexRouter = require('./routes/indexRounter');
 const usersRouter = require('./routes/usersRouter');
 const parkingBaysRouter = require('./routes/parkingBaysRouter')
+
+
 
 const app = express();
 
