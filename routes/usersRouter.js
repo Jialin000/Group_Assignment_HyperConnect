@@ -3,13 +3,6 @@ const usersRouter = express.Router();
 const usersController = require('../controllers/usersController.js');
 
 
-// entry point for /users
-// usersRouter.route('/')
-//     .all(usersController.receiveRequest)
-//     .get(usersController.getAllUsers)
-//     .post(usersController.createAllUsers)
-//     .put(usersController.updateAllUsers)
-//     .delete(usersController.deleteAllUsers);
 
 
 // Route for sign up
@@ -26,7 +19,7 @@ usersRouter.route('/login')
 
 
 
-// Route to delete user
+// Route for deleting user
 usersRouter.route('/:userId')
     .all(usersController.receiveRequest)
     .delete(usersController.deleteUserById)
