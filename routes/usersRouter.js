@@ -15,6 +15,9 @@ usersRouter.route('/signup')
     .all(usersController.receiveRequest)
     .post(usersController.userSignUp)
 
+usersRouter.route('/:userId')
+    .all(usersController.receiveRequest)
+    .delete(usersController.deleteUserById)
 
 
 // usersRouter.route('/:id')

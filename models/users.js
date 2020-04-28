@@ -4,7 +4,12 @@ const userSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     userName: {type: String, required: true},
     password: {type: String, required: true},
-    email: {type: String, required: true, unique: true}
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+        match: /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/
+    }
 });
 
 
