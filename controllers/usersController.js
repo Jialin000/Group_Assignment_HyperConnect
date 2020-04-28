@@ -12,38 +12,55 @@ const receiveRequest = (req, res, next) => {
 
 const userSignUp = (req, res, next) => {
 
-    // Hash password for security concern
-    bcrypt.hash(req.body.password, 10, (err, hash) => {
-
-        // Return error if fails to hash password
-        if (err) {
-            return res.status(500).json({
-                error: err
-            });
-        } else {
-
-            // Create user object using model
-            const user = new User({
-                _id: new mongoose.Types.ObjectId(),
-                userName: req.body.userName,
-                email: req.body.email,
-                password: hash
-            });
-            user
-                .save()
-                .then(result => {
-                    res.status(201).json({
-                        message: 'User created'
-                    })
-                })
-                .catch(err => {
-                    console.log(err);
-                    res.status(500).json({
-                        error: err
-                    });
+    // Check for existence of email in database
+    User.find({email: req.body.email})
+        .exec()
+        .then(user => {
+            // user is an array
+            if (user.length >= 1) {
+                // 409 resource conflict
+                return res.status(409).json({
+                    message: 'This email has been registered.'
                 });
-        }
-    });
+            } else {
+                // Hash password for security concern
+                bcrypt.hash(req.body.password, 10, (err, hash) => {
+
+                    // Return error if fails to hash password
+                    if (err) {
+                        return res.status(500).json({
+                            error: err
+                        });
+                    } else {
+
+                        // Create user object using model
+                        const user = new User({
+                            _id: new mongoose.Types.ObjectId(),
+                            userName: req.body.userName,
+                            email: req.body.email,
+                            password: hash
+                        });
+                        user
+                            .save()
+                            .then(result => {
+                                res.status(201).json({
+                                    message: `User: <${user.userName}> created.`
+                                })
+                            })
+                            .catch(err => {
+                                console.log(err);
+                                res.status(500).json({
+                                    error: err
+                                });
+                            });
+                    }
+                });
+            }
+        })
+
+
+
+
 
 
 }
@@ -51,7 +68,7 @@ const userSignUp = (req, res, next) => {
 
 
 
-
+// Commented block for admin usage in further application
 //
 // const getAllUsers = (req, res, next) => {
 //     res.send(users);
