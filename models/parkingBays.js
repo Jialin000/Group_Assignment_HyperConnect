@@ -10,5 +10,5 @@ const baysSchema = new mongoose.Schema({
 });
 
 
-const Bays = mongoose.model("parkingBays", baysSchema);
+const Bays = mongoose.model("parkingBays", baysSchema,"parkingBays");
 module.exports = Bays;
