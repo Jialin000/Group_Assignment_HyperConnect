@@ -1,7 +1,6 @@
 //require to the mongoose and load the pre-defined model
 const mongoose = require("mongoose");
-const Bays = mongoose.model("parkingBays");
-
+const Bays = require('../models/parkingBays.js');
 
 // functions to handle different requests for bays related resources
 const receiveRequest = (req, res, next) => {
