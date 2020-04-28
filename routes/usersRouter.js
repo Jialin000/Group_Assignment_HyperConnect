@@ -11,20 +11,26 @@ const usersController = require('../controllers/usersController.js');
 //     .put(usersController.updateAllUsers)
 //     .delete(usersController.deleteAllUsers);
 
+
+// Route for sign up
 usersRouter.route('/signup')
     .all(usersController.receiveRequest)
     .post(usersController.userSignUp)
 
+
+// Route for log in
+usersRouter.route('/login')
+    .all(usersController.receiveRequest)
+    .post(usersController.userLogIn)
+
+
+
+
+// Route to delete user
 usersRouter.route('/:userId')
     .all(usersController.receiveRequest)
     .delete(usersController.deleteUserById)
 
 
-// usersRouter.route('/:id')
-//     .all(usersController.receiveRequest)
-//     .get(usersController.getUserByID)
-//     .post(usersController.createUserByID)
-//     .put(usersController.updateAllUsers)
-//     .delete(usersController.deleteAllUsers);
 
 module.exports = usersRouter;
