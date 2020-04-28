@@ -18,7 +18,8 @@ const app = express();
 // view engine setup
 // Do not need to handle view in D2
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+app.set('view engine', 'html');
+app.engine('html', require('hbs').__express);
 
 // log informations about requests
 app.use(logger('dev'));

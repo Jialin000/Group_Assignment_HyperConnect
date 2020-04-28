@@ -1,0 +1,49 @@
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+
+
+<h3>Creat a new account</h3>
+<form action="/users" method="POST">
+
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="firstName"><br>
+
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lastName"><br>
+
+    <label for="uname">User name:</label><br>
+    <input type="text" id="uname" name="userName"><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email"><br><br>
+    <input type="submit" value="Submit">
+</form>
+<br>
+
+<h3>Search for parking bays</h3>
+<form action="/ParkingBays/find" method="POST">
+    <label for="lat">Latitude:</label><br>
+    <input type="text" id="lat" name="lat"><br>
+
+    <label for="lon">Longitude:</label><br>
+    <input type="text" id="lon" name="lon"><br><br>
+
+    <input type="submit" value="Find the parking bays">
+</form>
+<br>
+<form action="/ParkingBays" method="GET">
+    <input type="submit" value="Show all parking bays">
+</form>
+
+
+<br>
+<h3>Log in</h3>
+<form action="/users" method="POST">
+    <label for="id">User id:</label><br>
+    <input type="text" id="id" name="id"><br>
+
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br><br>
+
+    <input type="submit" value="log in">
+</form>
