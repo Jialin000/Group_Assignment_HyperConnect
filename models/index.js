@@ -24,3 +24,5 @@ db.once("open", async () => {
 });
 
 require("./users");
+require("./parkingBays");
+

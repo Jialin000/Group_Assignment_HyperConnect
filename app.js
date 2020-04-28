@@ -5,10 +5,11 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 
-
 const indexRouter = require('./routes/indexRounter');
 const usersRouter = require('./routes/usersRouter');
 const parkingBaysRouter = require('./routes/parkingBaysRouter')
+
+
 
 const app = express();
 
@@ -17,7 +18,8 @@ require("./models");
 // view engine setup
 // Do not need to handle view in D2
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+app.set('view engine', 'html');
+app.engine('html', require('hbs').__express);
 
 // log informations about requests
 app.use(logger('dev'));
@@ -31,7 +33,8 @@ app.use(bodyParser.json());
 // Use routers to direct requests
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/findBays', parkingBaysRouter);
+app.use('/ParkingBays', parkingBaysRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
