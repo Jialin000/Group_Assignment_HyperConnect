@@ -3,22 +3,27 @@ const usersRouter = express.Router();
 const usersController = require('../controllers/usersController.js');
 
 
-// entry point for /users
-usersRouter.route('/')
+
+
+// Route for sign up
+usersRouter.route('/signup')
     .all(usersController.receiveRequest)
-    .get(usersController.getAllUsers)
-    .post(usersController.createAllUsers)
-    .put(usersController.updateAllUsers)
-    .delete(usersController.deleteAllUsers);
+    .post(usersController.userSignUp)
 
 
-
-// entry point for /users/:id
-usersRouter.route('/:id')
+// Route for log in
+usersRouter.route('/login')
     .all(usersController.receiveRequest)
-    .get(usersController.getUserByID)
-    .post(usersController.createUserByID)
-    .put(usersController.updateAllUsers)
-    .delete(usersController.deleteAllUsers);
+    .post(usersController.userLogIn)
+
+
+
+
+// Route for deleting user
+usersRouter.route('/:userId')
+    .all(usersController.receiveRequest)
+    .delete(usersController.deleteUserById)
+
+
 
 module.exports = usersRouter;

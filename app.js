@@ -4,9 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
-//!!!
-require("./models");
-//!!!
+
 const indexRouter = require('./routes/indexRounter');
 const usersRouter = require('./routes/usersRouter');
 const parkingBaysRouter = require('./routes/parkingBaysRouter')
@@ -14,6 +12,8 @@ const parkingBaysRouter = require('./routes/parkingBaysRouter')
 
 
 const app = express();
+
+require("./models");
 
 // view engine setup
 // Do not need to handle view in D2
@@ -28,6 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
+
 
 // Use routers to direct requests
 app.use('/', indexRouter);
