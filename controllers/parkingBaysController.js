@@ -54,11 +54,11 @@ function findNearest(location, bays){
         }
     }
     list.sort(function(a,b) { return Object.keys(a) - Object.keys(b); } );
-    Top3 = []
-    for(var i=0; i<3 && i<list.length; i++) {
-        Top3.push(list[i])
+    Top10 = []
+    for(var i=0; i<10 && i<list.length; i++) {
+        Top10.push(list[i])
     }
-    return Top3;
+    return Top10;
 }
 
 module.exports = {
