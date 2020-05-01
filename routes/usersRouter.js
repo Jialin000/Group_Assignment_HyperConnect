@@ -1,7 +1,7 @@
 const express = require('express');
 const usersRouter = express.Router();
 const usersController = require('../controllers/usersController.js');
-
+const checkAuth = require('../middleware/checkAuth');
 
 
 
@@ -14,7 +14,12 @@ usersRouter.route('/signup')
 // Route for log in
 usersRouter.route('/login')
     .all(usersController.receiveRequest)
-    .post(usersController.userLogIn)
+    .post(usersController.userLogIn);
+
+// Route to get favorite parkingBays
+usersRouter.route('/favorites')
+    .all(checkAuth)
+    .post(usersController.addFavorite);
 
 
 
@@ -22,7 +27,7 @@ usersRouter.route('/login')
 // Route for deleting user
 usersRouter.route('/:userId')
     .all(usersController.receiveRequest)
-    .delete(usersController.deleteUserById)
+    .delete(usersController.deleteUserById);
 
 
 

@@ -43,7 +43,8 @@ const userSignUp = (req, res, next) => {
                             _id: new mongoose.Types.ObjectId(),
                             userName: req.body.userName,
                             email: req.body.email,
-                            password: hash
+                            password: hash,
+                            favorites: []
                         });
 
                         // Save created user object into mongodb
@@ -128,6 +129,47 @@ const userLogIn = (req, res, next) => {
         });
 }
 
+
+// Function to handle addition of new favorite parking bays
+const addFavorite = (req, res, next) => {
+
+    // Use user information extracted from jwt to update favorites
+    User.findOneAndUpdate(
+        {_id: req.userData.userId},
+        {$push: {favorites: {tag: req.body.tag, parkingBayId: req.body.parkingBay}}},
+        {returnOriginal: false}
+        )
+        .exec()
+        .then(user => {
+
+            //
+            if (!user) {
+                return res.status(500).json({
+                    message: 'User Not Found'
+                });
+            } else {
+
+                // user exists
+
+                console.log(user);
+
+                res.status(200).json({
+                    "message": 'Added to favorites',
+                    "favorites": user.favorites
+                })
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
+        });
+}
+
+
+
+
 // Function to allow deletion of user, for DEVELOPMENT purpose
 const deleteUserById = (req, res, next) => {
     User.remove({_id: req.params.userId})
@@ -150,7 +192,8 @@ module.exports = {
     receiveRequest,
     userSignUp,
     userLogIn,
-    deleteUserById
+    deleteUserById,
+    addFavorite
 }
 
 
