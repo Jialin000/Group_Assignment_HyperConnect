@@ -19,7 +19,8 @@ usersRouter.route('/login')
 // Route to get favorite parkingBays
 usersRouter.route('/favorites')
     .all(checkAuth)
-    .post(usersController.addFavorite);
+    .get(usersController.getFavorites)
+    .post(usersController.addFavorites);
 
 
 

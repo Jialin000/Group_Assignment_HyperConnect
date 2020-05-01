@@ -131,7 +131,7 @@ const userLogIn = (req, res, next) => {
 
 
 // Function to handle addition of new favorite parking bays
-const addFavorite = (req, res, next) => {
+const addFavorites = (req, res, next) => {
 
     // Use user information extracted from jwt to update favorites
     User.findOneAndUpdate(
@@ -155,6 +155,34 @@ const addFavorite = (req, res, next) => {
 
                 res.status(200).json({
                     "message": 'Added to favorites',
+                    "favorites": user.favorites
+                })
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
+        });
+}
+
+const getFavorites = (req, res, next) => {
+
+    // Use user information extracted from jwt to update favorites
+    User.findOne({_id: req.userData.userId})
+        .exec()
+        .then(user => {
+
+            if (!user) {
+                return res.status(500).json({
+                    message: 'User Not Found'
+                });
+            } else {
+
+                // user exists
+
+                res.status(200).json({
                     "favorites": user.favorites
                 })
             }
@@ -193,7 +221,8 @@ module.exports = {
     userSignUp,
     userLogIn,
     deleteUserById,
-    addFavorite
+    addFavorites,
+    getFavorites
 }
 
 
