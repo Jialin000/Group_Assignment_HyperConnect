@@ -4,7 +4,7 @@ const baysSchema = new mongoose.Schema({
     bay_id: String,
     st_marker_id: String,
     status: String,
-    location: String,
+    location: Object,
     lat: String,
     lon: String
 });
