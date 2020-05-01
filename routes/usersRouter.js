@@ -7,17 +7,17 @@ const checkAuth = require('../middleware/checkAuth');
 
 // Route for sign up
 usersRouter.route('/signup')
-    .all(usersController.receiveRequest)
     .post(usersController.userSignUp)
 
 
 // Route for log in
 usersRouter.route('/login')
-    .all(usersController.receiveRequest)
     .post(usersController.userLogIn);
 
-// Route to get favorite parkingBays
+// Protected route to get favorite parkingBays,
 usersRouter.route('/favorites')
+
+    // Use middleware to verify token before proceeding the request
     .all(checkAuth)
     .get(usersController.getFavorites)
     .post(usersController.addFavorites);
@@ -25,9 +25,8 @@ usersRouter.route('/favorites')
 
 
 
-// Route for deleting user
+// Route for deleting user, for development use only
 usersRouter.route('/:userId')
-    .all(usersController.receiveRequest)
     .delete(usersController.deleteUserById);
 
 

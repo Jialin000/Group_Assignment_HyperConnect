@@ -4,13 +4,6 @@ const User = require('../models/users.js');
 const jwt = require('jsonwebtoken')
 
 
-// functions to handle different requests for users related resources
-const receiveRequest = (req, res, next) => {
-    res.statusCode = 200;
-    next();
-};
-
-
 // Function to handle userSignUp request
 const userSignUp = (req, res, next) => {
 
@@ -133,7 +126,7 @@ const userLogIn = (req, res, next) => {
 // Function to handle addition of new favorite parking bays
 const addFavorites = (req, res, next) => {
 
-    // Use user information extracted from jwt to update favorites
+    // Use user information extracted from jwt by middleware to update favorites
     User.findOneAndUpdate(
         {_id: req.userData.userId},
         {$push: {favorites: {tag: req.body.tag, parkingBayId: req.body.parkingBay}}},
@@ -142,19 +135,16 @@ const addFavorites = (req, res, next) => {
         .exec()
         .then(user => {
 
-            //
+            // If could not find user in database
             if (!user) {
                 return res.status(500).json({
                     message: 'User Not Found'
                 });
             } else {
 
-                // user exists
-
-                console.log(user);
-
+                // If successfully find user and updated it, return the updated list of favorites
                 res.status(200).json({
-                    "message": 'Added to favorites',
+                    "message": 'Parking bay added to favorites',
                     "favorites": user.favorites
                 })
             }
@@ -167,9 +157,10 @@ const addFavorites = (req, res, next) => {
         });
 }
 
+// Function to get the list of favorite parking bays of a user
 const getFavorites = (req, res, next) => {
 
-    // Use user information extracted from jwt to update favorites
+    // Use user information extracted from jwt by middleware to update favorites
     User.findOne({_id: req.userData.userId})
         .exec()
         .then(user => {
@@ -180,8 +171,7 @@ const getFavorites = (req, res, next) => {
                 });
             } else {
 
-                // user exists
-
+                // user exists, returns the list of favorite parking bays
                 res.status(200).json({
                     "favorites": user.favorites
                 })
@@ -194,7 +184,6 @@ const getFavorites = (req, res, next) => {
             });
         });
 }
-
 
 
 
@@ -217,7 +206,6 @@ const deleteUserById = (req, res, next) => {
 
 
 module.exports = {
-    receiveRequest,
     userSignUp,
     userLogIn,
     deleteUserById,
