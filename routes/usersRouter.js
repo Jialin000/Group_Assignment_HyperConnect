@@ -1,28 +1,33 @@
 const express = require('express');
 const usersRouter = express.Router();
 const usersController = require('../controllers/usersController.js');
-
+const checkAuth = require('../middleware/checkAuth');
 
 
 
 // Route for sign up
 usersRouter.route('/signup')
-    .all(usersController.receiveRequest)
     .post(usersController.userSignUp)
 
 
 // Route for log in
 usersRouter.route('/login')
-    .all(usersController.receiveRequest)
-    .post(usersController.userLogIn)
+    .post(usersController.userLogIn);
+
+// Protected route to get favorite parkingBays,
+usersRouter.route('/favorites')
+
+    // Use middleware to verify token before proceeding the request
+    .all(checkAuth)
+    .get(usersController.getFavorites)
+    .post(usersController.addFavorites);
 
 
 
 
-// Route for deleting user
+// Route for deleting user, for development use only
 usersRouter.route('/:userId')
-    .all(usersController.receiveRequest)
-    .delete(usersController.deleteUserById)
+    .delete(usersController.deleteUserById);
 
 
 

@@ -4,13 +4,6 @@ const User = require('../models/users.js');
 const jwt = require('jsonwebtoken')
 
 
-// functions to handle different requests for users related resources
-const receiveRequest = (req, res, next) => {
-    res.statusCode = 200;
-    next();
-};
-
-
 // Function to handle userSignUp request
 const userSignUp = (req, res, next) => {
 
@@ -43,7 +36,8 @@ const userSignUp = (req, res, next) => {
                             _id: new mongoose.Types.ObjectId(),
                             userName: req.body.userName,
                             email: req.body.email,
-                            password: hash
+                            password: hash,
+                            favorites: []
                         });
 
                         // Save created user object into mongodb
@@ -128,6 +122,71 @@ const userLogIn = (req, res, next) => {
         });
 }
 
+
+// Function to handle addition of new favorite parking bays
+const addFavorites = (req, res, next) => {
+
+    // Use user information extracted from jwt by middleware to update favorites
+    User.findOneAndUpdate(
+        {_id: req.userData.userId},
+        {$push: {favorites: {tag: req.body.tag, parkingBayId: req.body.parkingBay}}},
+        {returnOriginal: false}
+        )
+        .exec()
+        .then(user => {
+
+            // If could not find user in database
+            if (!user) {
+                return res.status(500).json({
+                    message: 'User Not Found'
+                });
+            } else {
+
+                // If successfully find user and updated it, return the updated list of favorites
+                res.status(200).json({
+                    "message": 'Parking bay added to favorites',
+                    "favorites": user.favorites
+                })
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
+        });
+}
+
+// Function to get the list of favorite parking bays of a user
+const getFavorites = (req, res, next) => {
+
+    // Use user information extracted from jwt by middleware to update favorites
+    User.findOne({_id: req.userData.userId})
+        .exec()
+        .then(user => {
+
+            if (!user) {
+                return res.status(500).json({
+                    message: 'User Not Found'
+                });
+            } else {
+
+                // user exists, returns the list of favorite parking bays
+                res.status(200).json({
+                    "favorites": user.favorites
+                })
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
+        });
+}
+
+
+
 // Function to allow deletion of user, for DEVELOPMENT purpose
 const deleteUserById = (req, res, next) => {
     User.remove({_id: req.params.userId})
@@ -147,10 +206,11 @@ const deleteUserById = (req, res, next) => {
 
 
 module.exports = {
-    receiveRequest,
     userSignUp,
     userLogIn,
-    deleteUserById
+    deleteUserById,
+    addFavorites,
+    getFavorites
 }
 
 

@@ -9,6 +9,13 @@ const userSchema = mongoose.Schema({
         required: true,
         unique: true,
         match: /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/
+    },
+    favorites: {
+        type: [{
+            tag: String,
+            parkingBayId: mongoose.Schema.Types.ObjectId
+        }],
+        default: []
     }
 });
 
