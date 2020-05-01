@@ -1,8 +1,6 @@
 //require to the mongoose and load the pre-defined model
 const mongoose = require("mongoose");
-const Bays = require('../models/parkingBays.js');
 const fetch = require('node-fetch');
-const request = require('request');
 
 // functions to handle different requests for bays related resources
 const receiveRequest = (req, res, next) => {
@@ -14,8 +12,6 @@ const receiveRequest = (req, res, next) => {
 const updateDatabase = (req, res, next) => {
 
 
-
-    
     const db = mongoose.connection;
     let url = "https://data.melbourne.vic.gov.au/resource/vh2v-4nfs.json";
     let settings = { method: "Get" };
