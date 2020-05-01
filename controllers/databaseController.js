@@ -2,16 +2,9 @@
 const mongoose = require("mongoose");
 const fetch = require('node-fetch');
 
-// functions to handle different requests for bays related resources
-const receiveRequest = (req, res, next) => {
-    res.statusCode = 200;
-    next();
-};
-
-
 const updateDatabase = (req, res, next) => {
 
-
+    // Fetch real time data from open data platform
     const db = mongoose.connection;
     let url = "https://data.melbourne.vic.gov.au/resource/vh2v-4nfs.json";
     let settings = { method: "Get" };
@@ -19,6 +12,8 @@ const updateDatabase = (req, res, next) => {
     fetch(url, settings)
         .then(res => res.json())
         .then((json) => {
+
+            // Update data
             for(let i_data = 0; i_data < json.length; i_data++){
                 const bay = {
                   bay_id: json[i_data]["bay_id"],
@@ -37,6 +32,5 @@ const updateDatabase = (req, res, next) => {
 
 
 module.exports = {
-    receiveRequest,
     updateDatabase
 }
