@@ -129,7 +129,7 @@ const addFavorites = (req, res, next) => {
     // Use user information extracted from jwt by middleware to update favorites
     User.findOneAndUpdate(
         {_id: req.userData.userId},
-        {$push: {favorites: {tag: req.body.tag, parkingBayId: req.body.parkingBay}}},
+        {$push: {favorites: {tag: req.body.tag, parkingBayId: req.params.id}}},
         {returnOriginal: false}
         )
         .exec()
