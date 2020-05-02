@@ -58,12 +58,12 @@
 
 <br>
 <h3>Add to favorite</h3>
-<form onsubmit="this.action='/users/favorites/:'+ this.bayID.value;" method="POST">
+<form onsubmit="this.action='/users/favorites/'+ document.getElementById('bayId').value;" method="POST">
     <label for="tag">Create a tag for this bay:</label><br>
     <input type="text" id="tag" name="tag"><br>
 
-    <label for="bayID">Enter the bay_id:</label><br>
-    <input type="text" id="bayID" name="id"><br><br>
+    <label for="bayId">Enter the bay_id:</label><br>
+    <input type="text" id="bayId" name="id"><br><br>
 
     <input type="submit" value="Add to favorite">
 </form>
