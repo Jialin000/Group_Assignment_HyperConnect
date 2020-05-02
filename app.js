@@ -33,7 +33,7 @@ app.use(bodyParser.json());
 // Use routers to direct requests
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/ParkingBays', parkingBaysRouter);
+app.use('/parkingBays', parkingBaysRouter);
 app.use('/update', databaseRouter);
 
 

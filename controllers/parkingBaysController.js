@@ -2,16 +2,14 @@
 const mongoose = require("mongoose");
 const Bays = require('../models/parkingBays.js');
 
-// functions to handle different requests for bays related resources
-const receiveRequest = (req, res, next) => {
-    res.statusCode = 200;
-    next();
-};
 
 //return all the parking bays
 const getBays = async(req, res, next) => {
     try {
+
+        // get information about parking bay from database
         const all_bays = await Bays.find();
+        res.statusCode = 200;
         return res.send(all_bays);
       } catch (err) {
         res.status(400);
@@ -27,8 +25,11 @@ const findBays = async(req, res, next) => {
             lat: req.body.lat,
             lon: req.body.lon
         }
+
+        // find the list of nearest parking bays
         const bay = findNearest(location, all_bays)
         if (bay) {
+            res.statusCode = 200;
             res.send(bay);
         } else {
             res.statusCode = 500;
@@ -43,26 +44,31 @@ const findBays = async(req, res, next) => {
 // function calculate the distance and return the n nearest parking bays
 function findNearest(location, bays){
 
-    var list = [];
+    let list = [];
 
-    for(let i_bay = 0; i_bay < bays.length; i_bay++){
-        new_distance = 111*1000*Math.sqrt(Math.pow((parseFloat(location.lat)-parseFloat(bays[i_bay].lat)),2) + Math.pow((parseFloat(location.lon)-parseFloat(bays[i_bay].lon)),2));
-        if(bays[i_bay].status=='Unoccupied'){
+    for(let i = 0; i < bays.length; i++){
+
+        if(bays[i].status=='Unoccupied'){
+            let new_distance = 111 * 1000 * Math.sqrt(
+                Math.pow((parseFloat(location.lat)-parseFloat(bays[i].lat)),2)
+                + Math.pow((parseFloat(location.lon)-parseFloat(bays[i].lon)),2)
+            );
             let x = new Object;
-            x[new_distance] = bays[i_bay];
+            x[new_distance] = bays[i];
             list.push(x)
         }
     }
+
+    // sort the parking bays in ascending distance and return the 10 nearest ones
     list.sort(function(a,b) { return Object.keys(a) - Object.keys(b); } );
-    Top10 = []
-    for(var i=0; i<10 && i<list.length; i++) {
-        Top10.push(list[i])
+    let topTen = []
+    for(let i=0; i<10 && i<list.length; i++) {
+        topTen.push(list[i])
     }
-    return Top10;
+    return topTen;
 }
 
 module.exports = {
-    receiveRequest,
     findBays,
     getBays
 }

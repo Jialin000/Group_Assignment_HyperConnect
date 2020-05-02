@@ -4,12 +4,10 @@ const baysController = require('../controllers/parkingBaysController.js');
 
 // display all the parkingBays
 baysRouter.route('/')
-    .all(baysController.receiveRequest)
     .get(baysController.getBays)
 
 // Try to find a parkingbay
 baysRouter.route('/find')
-    .all(baysController.receiveRequest)
-    .post(baysController.findBays)
+    .get(baysController.findBays)
 
 module.exports = baysRouter;
