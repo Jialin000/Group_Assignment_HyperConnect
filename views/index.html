@@ -30,7 +30,13 @@
     <input type="submit" value="log in">
 </form>
 
+<br>
+<h3>Log out</h3>
+<form action="/users/logout" method="POST">
+    <input type="submit" value="log out">
+</form>
 
+<br>
 <h3>Search for parking bays</h3>
 <form action="/parkingBays/find" method="GET">
     <label for="lat">Latitude:</label><br>
@@ -62,7 +68,7 @@
     <label for="tag">Create a tag for this bay:</label><br>
     <input type="text" id="tag" name="tag"><br>
 
-    <label for="bayId">Enter the bay_id:</label><br>
+    <label for="bayId">Enter the object id of the parking bay:</label><br>
     <input type="text" id="bayId" name="id"><br><br>
 
     <input type="submit" value="Add to favorite">
