@@ -14,6 +14,12 @@ usersRouter.route('/signup')
 usersRouter.route('/login')
     .post(usersController.userLogIn);
 
+// Route for log out
+usersRouter.route('/logout')
+    .all(checkAuth)
+    .post(usersController.userLogOut);
+
+
 // Protected route to get favorite parkingBays,
 usersRouter.route('/favorites')
 

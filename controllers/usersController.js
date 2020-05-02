@@ -116,11 +116,20 @@ const userLogIn = (req, res, next) => {
         })
         .catch(err => {
             console.log(err);
-            res.status(500).json({
+            res.status(400).json({
                 error: err
             });
         });
 }
+
+// Function to log user out by removing the jwt stored in cookie
+const userLogOut = (req, res, next) => {
+    res.clearCookie("Authorization");
+    return res.status(200).json({
+        message : "Log out successfully"
+    })
+}
+
 
 
 // Function to handle addition of new favorite parking bays
@@ -151,8 +160,8 @@ const addFavorites = (req, res, next) => {
         })
         .catch(err => {
             console.log(err);
-            res.status(500).json({
-                error: err
+            res.status(400).json({
+                error: "Invalid Request"
             });
         });
 }
@@ -208,6 +217,7 @@ const deleteUserById = (req, res, next) => {
 module.exports = {
     userSignUp,
     userLogIn,
+    userLogOut,
     deleteUserById,
     addFavorites,
     getFavorites
