@@ -100,9 +100,9 @@ const userLogIn = (req, res, next) => {
                         );
 
                         // Return token with message
+                        res.cookie("Authorization", token);
                         return res.status(200).json({
-                            message: 'Authentication succeeded.',
-                            token: token
+                            message: 'Authentication succeeded.'
                         });
 
                     } else {
