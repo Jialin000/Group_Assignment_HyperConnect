@@ -22,10 +22,9 @@ const findBays = async(req, res, next) => {
     try {
         const all_bays = await Bays.find();
         const location = {
-            lat: req.body.lat,
-            lon: req.body.lon
+            lat: req.query.lat,
+            lon: req.query.lon
         }
-
         // find the list of nearest parking bays
         const bay = findNearest(location, all_bays)
         if (bay) {
@@ -57,6 +56,7 @@ function findNearest(location, bays){
             x[new_distance] = bays[i];
             list.push(x)
         }
+
     }
 
     // sort the parking bays in ascending distance and return the 10 nearest ones
