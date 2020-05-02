@@ -10,10 +10,9 @@ const receiveRequest = (req, res, next) => {
 
 
 const updateDatabase = (req, res, next) => {
-
-
+    
     const db = mongoose.connection;
-    let url = "https://data.melbourne.vic.gov.au/resource/vh2v-4nfs.json";
+    let url = "https://data.melbourne.vic.gov.au/resource/vh2v-4nfs.json?%24limit=5000&%24%24app_token=AdyvI0gKUddcE1r6gTOaarTiX";
     let settings = { method: "Get" };
     let bays = [];
     fetch(url, settings)
@@ -31,9 +30,10 @@ const updateDatabase = (req, res, next) => {
                 bays.push(bay)
                 db.collection('parkingBays').updateOne({bay_id:bay["bay_id"]},{$set:bay},{upsert: true});
               };
-        return res.send("database have been updated");
+        return res.send(bays.length+" records from database have been updated");
     })
 };
+
 
 
 module.exports = {
