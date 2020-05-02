@@ -58,12 +58,12 @@
 
 <br>
 <h3>Add to favorite</h3>
-<form onsubmit="this.action='/user/favorites/:'+document.getElementById('id').value;" method="POST">
+<form onsubmit="this.action='/users/favorites/:'+ this.bayID.value;" method="POST">
     <label for="tag">Create a tag for this bay:</label><br>
     <input type="text" id="tag" name="tag"><br>
 
-    <label for="id">Enter the bay_id:</label><br>
-    <input type="text" id="id" name="id"><br><br>
+    <label for="bayID">Enter the bay_id:</label><br>
+    <input type="text" id="bayID" name="bayID"><br><br>
 
     <input type="submit" value="Add to favorite">
 </form>
@@ -71,6 +71,6 @@
 
 <br>
 <h3>View favorite parking bays</h3>
-<form action="/user/favorites" method="GET">
-    <input type="button" value="View favorite parking bays">
+<form action="/users/favorites" method="GET">
+    <input type="submit" value="View favorite parking bays">
 </form>
