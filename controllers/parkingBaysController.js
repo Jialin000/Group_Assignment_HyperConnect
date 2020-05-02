@@ -26,13 +26,22 @@ const findBays = async(req, res, next) => {
             lon: req.query.lon
         }
         // find the list of nearest parking bays
+        if(isNaN(location.lat)||isNaN(location.lon)){
+            res.send("Input should be numeric value");
+        }
         const bay = findNearest(location, all_bays)
         if (bay) {
-            res.statusCode = 200;
-            res.send(bay);
+            if(parseFloat(Object.keys(bay[0]))>3000){
+                res.statusCode = 500;
+                res.send("Your search regin is currently not available");
+            }
+            else{
+                res.statusCode = 200;
+                res.send(bay);
+            }
         } else {
             res.statusCode = 500;
-            res.send([]);
+            res.send("bays not found");
         }
       } catch (err) {
         res.status(400);
