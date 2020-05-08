@@ -3,10 +3,7 @@ import {findBays, getBays} from "../parkingBaysAPI"
 import Button from "../components/Button";
 
 export default function SearchBar() {
-  
-  function getCurrentLocation() {
-  
-  }
+
 
   function findNearestBays(){
 
@@ -15,10 +12,8 @@ export default function SearchBar() {
   return (
     <div className="SearchBar">
       <form>
-        
-        
         <Button className={"btn-success"} onClick={findNearestBays}>
-          Use Current Location
+          Search Around
         </Button>
       </form>
     </div>
