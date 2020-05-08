@@ -14,6 +14,7 @@ export default function HyperMap(props) {
 
     // Get user's current location
     const watch = true;
+
     const {
         latitude,
         longitude,
