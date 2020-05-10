@@ -1,54 +1,63 @@
 import React, { useState } from "react";
 
 import Button from "../components/Button";
+import SignInForm from "./SignInForm";
 
 export default class SignUpForm extends React.Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
-      userName: '',
       email: '',
-      password: null,
-      errormessage: ''
-    }
-  }
-  Validation = (event) => {
-    let nam = event.target.name;
-    let val = event.target.value;
-    let err = '';
-    /* 
-    if (nam === "email") {
-      if (val) {
-        err = <strong>Enter a valid email address</strong>;
-      }
-    }
-    this.setState({errormessage: err});
-    this.setState({[nam]: val});*/
+      password: '',
+      username: '',
+      errormessage:'',
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  onSubmit() {
-   // userSignUp
+  handleChange(e) {
+    let target = e.target;
+    let value = target.value;
+    let name = target.name;
+
+    this.setState({
+      [name]: value
+    });
   }
 
-  render(){
+  handleSubmit(e) {
+    e.preventDefault();
+
+    console.log(this.state);
+  }
+
+    // static defaultProps = {
+    //     action: '/users/login',
+    //     method: 'POST'
+    // };
+
+  render() {
     return (
-      <div className="SignUpForm">   
-        <form>
-          <label for="uname">User name:</label>
-          <input type="text" id="uname" name="userName" onChange={this.Validation}/>
+        <div className={"SignUpForm"}>
+          <form onSubmit={this.handleSubmit}>
 
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" onChange={this.Validation}/>
+              <label htmlFor="username">Username</label>
+              <input type="username" id="username" name="username" value={this.state.username} onChange={this.handleChange} />
+                <br/><br/>
+              <label htmlFor="email">E-Mail Address</label>
+              <input type="email" id="email" name="email" value={this.state.email} onChange={this.handleChange} />
+                <br/><br/>
+              <label htmlFor="password">Password</label>
+              <input type="password" id="password"  name="password" value={this.state.password} onChange={this.handleChange} />
+              <br/><br/>
+            <button className={"btn-success"}>Submit</button>
 
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password"/>
-          
-          <Button className={"btn-success"} onClick={this.onSubmit}>
-          Sign up
-          </Button>
-        </form>
-      </div>
+          </form>
+        </div>
     );
   }
 }
