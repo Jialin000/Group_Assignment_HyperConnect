@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component,useState, useEffect } from 'react';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
-import {Marker} from '@react-google-maps/api';
+import {Marker,InfoWindow} from '@react-google-maps/api';
 import {usePosition} from 'use-position';
 
 // Display parking bays on map
@@ -29,6 +29,8 @@ export default function HyperMap(props) {
         lng: longitude
     }
 
+    const [selectedPark, setSelectedPark] = useState(null);
+
     // render
     return (
         <LoadScript
@@ -48,6 +50,7 @@ export default function HyperMap(props) {
                 (bay.status === "Unoccupied" &&
                     <Marker
                         position={{lat: parseFloat(bay.lat), lng: parseFloat(bay.lon)}}
+                        onClick={() => {setSelectedPark(bay);}}
                         icon={{url:'/availableIcon.png'}}
                     />)
                 )}
@@ -58,6 +61,20 @@ export default function HyperMap(props) {
                         position={{lat: parseFloat(bay.lat), lng: parseFloat(bay.lon)}}
                         icon={{url:'/nonAvailableIcon.png'}}
                     />)
+                )}
+
+                {selectedPark &&(
+                    <InfoWindow position={{lat: parseFloat(selectedPark.lat), lng: parseFloat(selectedPark.lon)}}
+                    onCloseClick={() => {
+                        setSelectedPark(null);
+                    }}>
+                        <div>
+                            <h2>Bay #{selectedPark.bay_id}</h2>
+                            <p>st_marker_id: {selectedPark.st_marker_id}</p>
+                            <p>latitude: {selectedPark.lat}</p>
+                            <p>latitude: {selectedPark.lon}</p>
+                        </div>
+                    </InfoWindow>
                 )}
 
             </GoogleMap>
