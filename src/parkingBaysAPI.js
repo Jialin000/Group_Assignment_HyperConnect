@@ -9,6 +9,7 @@ const BASE_URL = "http://localhost:3000";
 export function getBays() {
   const endpoint = BASE_URL + `/parkingBays`;
   return fetch(endpoint).then(res => {
+    console.log(res)
     return res.json();
   })
 }

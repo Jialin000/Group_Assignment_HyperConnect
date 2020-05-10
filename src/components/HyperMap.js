@@ -29,7 +29,6 @@ export default function HyperMap(props) {
         lng: longitude
     }
 
-
     // render
     return (
         <LoadScript
@@ -41,14 +40,24 @@ export default function HyperMap(props) {
                 zoom={16}
             >
                 {/* User's current location */}
-                <Marker position={center} label={"Your current location"}/>
+                <Marker position={center} label={"Your current location"} 
+                icon={{url:'/userLocationIcon.png'}}/>
 
                 {/* Parkingbays' locations */}
                 {props.bays.map(bay =>
-
+                (bay.status === "Unoccupied" &&
                     <Marker
                         position={{lat: parseFloat(bay.lat), lng: parseFloat(bay.lon)}}
-                    />
+                        icon={{url:'/availableIcon.png'}}
+                    />)
+                )}
+
+                {props.bays.map(bay =>
+                (bay.status === "Present" &&
+                    <Marker
+                        position={{lat: parseFloat(bay.lat), lng: parseFloat(bay.lon)}}
+                        icon={{url:'/nonAvailableIcon.png'}}
+                    />)
                 )}
 
             </GoogleMap>
