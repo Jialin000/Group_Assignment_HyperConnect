@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 
 import Button from "../components/Button";
-import SignInForm from "./SignInForm";
+
+
+import userSignUp from "../userAPI";
+
 
 export default class SignUpForm extends React.Component {
 
@@ -31,14 +34,19 @@ export default class SignUpForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
-    console.log(this.state);
+     userSignUp ({
+      userName: this.state.userName,
+      email: this.state.email,
+      password: this.state.password
+    });
+    
   }
 
-    // static defaultProps = {
-    //     action: '/users/login',
-    //     method: 'POST'
-    // };
+  
+
+  
+
+   
 
   render() {
     return (
@@ -58,6 +66,7 @@ export default class SignUpForm extends React.Component {
 
           </form>
         </div>
+
     );
   }
 }
