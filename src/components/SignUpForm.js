@@ -1,64 +1,72 @@
 import React, { useState } from "react";
 
 import Button from "../components/Button";
+
+
 import userSignUp from "../userAPI";
+
 
 export default class SignUpForm extends React.Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
-      userName: '',
       email: '',
       password: '',
-      errormessage: ''
-    }
-    this.validate = this.validate.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+      username: '',
+      errormessage:'',
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  validate = (event) => {
-    var re = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
-    let nam = event.target.name;
-    let val = event.target.value;
-    let err = '';
-    
-    if (!re.test(String(val))) {
-      if (val) {
-        err = <strong>The email address is not valid</strong>;
-      }
-    }
-    this.setState({errormessage: err});
-    this.setState({[nam]: val});
+  handleChange(e) {
+    let target = e.target;
+    let value = target.value;
+    let name = target.name;
+
+    this.setState({
+      [name]: value
+    });
   }
 
-  onSubmit() {
-    userSignUp ({
+  handleSubmit(e) {
+    e.preventDefault();
+     userSignUp ({
       userName: this.state.userName,
       email: this.state.email,
       password: this.state.password
     });
+    
   }
 
-  render(){
+  
+
+  
+
+   
+
+  render() {
     return (
-      <div className="SignUpForm">   
-        <form>
-          <label for="uname">User name:</label>
-          <input type="text" id="uname" name="userName" onChange={this.validate}/>
-         
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" onChange={this.validate}/>
-          {this.state.errormessage}
-          
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password"/>
-          
-          <Button className={"btn-success"} onClick={this.onSubmit}>
-          Sign up
-          </Button>
-        </form>
-      </div>
+        <div className={"SignUpForm"}>
+          <form onSubmit={this.handleSubmit}>
+
+              <label htmlFor="username">Username</label>
+              <input type="username" id="username" name="username" value={this.state.username} onChange={this.handleChange} />
+                <br/><br/>
+              <label htmlFor="email">E-Mail Address</label>
+              <input type="email" id="email" name="email" value={this.state.email} onChange={this.handleChange} />
+                <br/><br/>
+              <label htmlFor="password">Password</label>
+              <input type="password" id="password"  name="password" value={this.state.password} onChange={this.handleChange} />
+              <br/><br/>
+            <button className={"btn-success"}>Submit</button>
+
+          </form>
+        </div>
+
     );
   }
 }

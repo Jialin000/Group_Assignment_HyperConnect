@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import Button from "../components/Button";
 import useUserLogIn from "../userAPI";
 
@@ -10,42 +9,42 @@ export default class SignInForm extends React.Component {
     this.state = {
       email: '',
       password: '',
-      errormessage: '',
-      authentication_err: ''
-    }
-    this.validate = this.validate.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
+      errormessage: ''
+    };
 
-  validateEmail = (email_address) => {
+  this.handleChange = this.handleChange.bind(this);
+  this.handleSubmit = this.handleSubmit.bind(this);
+}
+  
+validateEmail = (email_address) => {
     var re = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
     return re.test(String(email_address));
-  }
- 
+ }
 
-  validate = (event) => { 
-    
-    let nam = event.target.name;
-    let val = event.target.value;
-    let err = '';
-    
-    if (nam === "email") {
-      if (!this.validateEmail(val)) {
+handleChange(e) {
+  let target = e.target;
+  let value = target.value;
+  let name = target.name;
+  
+  if (name === "email") {
+      if (!this.validateEmail(vale)) {
         err = <strong>The email address is not valid</strong>;
       }
     }
     this.setState({errormessage: err});
     this.setState({[nam]: val});
-  }
 
-  onSubmit = () => {
-    const { loading, res_code, error } = useUserLogIn({
-      email: this.state.email,
-      password: this.state.password
+}
+
+handleSubmit(e) {
+  e.preventDefault();
+  const { loading, res_code, error } = useUserLogIn({
+     email: this.state.email,
+     password: this.state.password
     });
 
     if (res_code == 200){
-      
+      alert ("Logged in");
     }
     else if (res_code == 401){
       let au_err = <strong>Authentication failed</strong>
@@ -53,26 +52,29 @@ export default class SignInForm extends React.Component {
     }else {
       alert ("Error");
     }
+  };
 
-  }
 
   render(){
     return (
       <div className="SignInForm">   
-        <form>
-          <label for="email">Enter your email:</label>
-          <input type="email" id="email" name="email" onChange={this.validate}/>
-          <p>{this.state.errormessage}</p>
+        <form onSubmit={this.handleSubmit} action={this.props.action} method={this.props.method}>
 
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password" onChange={this.validate}/> 
-        
-          <Button className={"btn-success"} onClick={this.onSubmit}>
-          Log In
-          </Button>
+          <label htmlFor="email">Enter your email:</label>
+          <input type="email" id="email" name="email" value={this.state.email} onChange={this.handleChange}/>
+          <p>{this.state.errormessage}</p>
+            <br/><br/>
+          <label htmlFor="password">Password:</label>
+          <input type="password" id="password" name="password" value={this.state.password} onChange={this.handleChange}/>
+           <br/><br/>
+          <button className={"btn-success"}>Log In</button>
+
         </form>
-        <p>{this.state.authentication_err}</p>
-      </div>      
-    );
+       <p>{this.state.authentication_err}</p>
+          
+      </div>
+      );
   }
-}
+     }
+
+  
