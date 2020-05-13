@@ -1,10 +1,6 @@
-import React, { useState } from "react";
-
+import React from "react";
 import Button from "../components/Button";
-
-
-import userSignUp from "../userAPI";
-
+import {userSignUp} from "../userAPI";
 
 export default class SignUpForm extends React.Component {
 
@@ -12,68 +8,133 @@ export default class SignUpForm extends React.Component {
     super(props);
 
     this.state = {
-      email: '',
-      password: '',
       username: '',
-      errormessage:'',
+      email: '',
+      signupmessage:'',
+      password: '',
+      errormessage:{},
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   validateEmail = (email_address) => {
-    var re = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/; 
-    return re.test(String(email_address));
-  }
+    let err = this.state.errormessage;
+    var re = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
+    err["email"] = '';
 
-  handleChange(event) {
-    let name = event.target.name;
-    let value = event.target.value;
-    let err = '';
-
-    if (name === "email") {
-      if (!this.validateEmail(value)) {
-        err = <strong>The email address is not valid</strong>;
-      }
+    if (!email_address){
+      err["email"] = "*Please enter your email";
+      this.setState({err});
+      return false;
+     
+    }else if (!re.test(String(email_address))) {
+      err["email"] = "*Please enter a valid email";
+      this.setState({err}); 
+      return false;      
     }
-    this.setState({errormessage: err});
-    this.setState({[name]: value});
+    return true;
+  }
+  
+  validateUserName = (username) => {
+    let err = this.state.errormessage;
+    err["username"] = '';
     
+    if (!username) {
+      err["username"] = "*Please enter your username";
+      this.setState({err});  
+      return false;   
+    }
+    return true;
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
+  validatePassword = (password) => {
+    let err = this.state.errormessage;
+    err["password"] = '';
+    
+    if (!password) {
+      err["password"] = "*Please enter your password";
+      this.setState({err});  
+      return false;   
+    }
+    return true;
+  }
+
+  validateForm = () => {
+    const isValidEmail = this.validateEmail(this.state.email) 
+    const isValidPassword = this.validatePassword(this.state.password);
+    const isValidUserName = this.validateUserName(this.state.username);
+    return isValidEmail&&isValidPassword&&isValidUserName;
+  }
+
+  handleChange = (event) => {
+    event.preventDefault(); 
+    let nam = event.target.name;
+    let val = event.target.value;
+
+    if (nam === "username") {
+      this.validateUserName(val);
+    }
+    else if (nam === "email") {
+      this.validateEmail(val);
+    }    
+    else if (nam === "password") {
+      this.validatePassword(val);
+    }
+
+    this.setState({[nam]: val});
+  }
+
+  onSubmit = (event) => {
+    event.preventDefault();
+
+    if (!this.validateForm()){
+      return;
+    }
+
     userSignUp ({
-      userName: this.state.userName,
+      userName: this.state.username,
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password   
+    }).then(res => {
+      if (res.status === 201) {
+        this.setState({signupmessage: "Account created!"});
+      }else if(res.status === 409) {
+        this.setState({signupmessage: "This email has been registered."});
+      }
+      else {
+        const error = new Error(res.error);
+        throw error;
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert('Error logging in please try again');
     });
     
+   
   }
 
-  
-
-  
-
-   
 
   render() {
     return (
         <div className={"SignUpForm"}>
-          <form onSubmit={this.handleSubmit}>
-
+          <p>{this.state.signupmessage}</p>
+          <form>
               <label htmlFor="username">Username</label>
-              <input type="username" id="username" name="username" value={this.state.username} onChange={this.handleChange} />
-                <br/><br/>
-              <label htmlFor="email">E-Mail Address</label>
-              <input type="email" id="email" name="email" value={this.state.email} onChange={this.handleChange} />
-              {this.state.errormessage}
-                <br/><br/>
+              <input type="username" id="username" name="username" onChange={this.handleChange}/>
+              <p>{this.state.errormessage.username}</p>
+
+              <label htmlFor="email">Email</label>
+              <input type="email" id="email" name="email" onChange={this.handleChange}/>
+              <p>{this.state.errormessage.email}</p>
+               
               <label htmlFor="password">Password</label>
-              <input type="password" id="password"  name="password" value={this.state.password} onChange={this.handleChange} />
-              <br/><br/>
-            <Button className={"btn-success"}>Submit</Button>
+              <input type="password" id="password"  name="password" onChange={this.handleChange}/>
+              <p>{this.state.errormessage.password}</p>
+              
+            <Button SubclassName={"btn-success"} onClick={this.onSubmit}>Submit</Button>
 
           </form>
         </div>
