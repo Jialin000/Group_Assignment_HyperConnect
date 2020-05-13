@@ -9,6 +9,7 @@ const indexRouter = require('./routes/indexRounter');
 const usersRouter = require('./routes/usersRouter');
 const parkingBaysRouter = require('./routes/parkingBaysRouter')
 const databaseRouter = require('./routes/databaseRouter')
+const cors = require('cors');
 
 
 const app = express();
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
+app.use(cors());
 
 
 // Use routers to direct requests
