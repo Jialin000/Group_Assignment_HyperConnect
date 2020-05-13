@@ -22,19 +22,29 @@ export default class SignUpForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(e) {
-    let target = e.target;
-    let value = target.value;
-    let name = target.name;
+  validateEmail = (email_address) => {
+    var re = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/; 
+    return re.test(String(email_address));
+  }
 
-    this.setState({
-      [name]: value
-    });
+  handleChange(event) {
+    let name = event.target.name;
+    let value = event.target.value;
+    let err = '';
+
+    if (name === "email") {
+      if (!this.validateEmail(value)) {
+        err = <strong>The email address is not valid</strong>;
+      }
+    }
+    this.setState({errormessage: err});
+    this.setState({[name]: value});
+    
   }
 
   handleSubmit(e) {
     e.preventDefault();
-     userSignUp ({
+    userSignUp ({
       userName: this.state.userName,
       email: this.state.email,
       password: this.state.password
@@ -58,11 +68,12 @@ export default class SignUpForm extends React.Component {
                 <br/><br/>
               <label htmlFor="email">E-Mail Address</label>
               <input type="email" id="email" name="email" value={this.state.email} onChange={this.handleChange} />
+              {this.state.errormessage}
                 <br/><br/>
               <label htmlFor="password">Password</label>
               <input type="password" id="password"  name="password" value={this.state.password} onChange={this.handleChange} />
               <br/><br/>
-            <button className={"btn-success"}>Submit</button>
+            <Button className={"btn-success"}>Submit</Button>
 
           </form>
         </div>

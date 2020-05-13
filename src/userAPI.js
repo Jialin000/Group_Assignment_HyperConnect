@@ -18,11 +18,12 @@ export default function userLogIn(user) {
     })
   });
 
-  /*if (res.status == 200){
+  if (res.status == 200){
    alert("Authentication succeeded.");
-  }else if (res.status == 400)
-    alert();
-  }*/
+  }else if (res.status == 401){
+   alert("Authentication failed.");
+  }
+
   return res.status;
 }
 
@@ -41,7 +42,8 @@ export function userSignUp(user) {
       password
     })
   });
-    if (res.status == 200){
+
+  if (res.status == 200){
    alert("user succeeded.");
   }else{
     alert("error");
