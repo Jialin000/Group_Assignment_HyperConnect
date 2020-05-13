@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Button from "../components/Button";
+import userSignUp from "../userAPI";
 
 export default class SignUpForm extends React.Component {
 
@@ -9,26 +10,34 @@ export default class SignUpForm extends React.Component {
     this.state = {
       userName: '',
       email: '',
-      password: null,
+      password: '',
       errormessage: ''
     }
+    this.validate = this.validate.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
-  Validation = (event) => {
+
+  validate = (event) => {
+    var re = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
     let nam = event.target.name;
     let val = event.target.value;
     let err = '';
-    /* 
-    if (nam === "email") {
+    
+    if (!re.test(String(val))) {
       if (val) {
-        err = <strong>Enter a valid email address</strong>;
+        err = <strong>The email address is not valid</strong>;
       }
     }
     this.setState({errormessage: err});
-    this.setState({[nam]: val});*/
+    this.setState({[nam]: val});
   }
 
   onSubmit() {
-   // userSignUp
+    userSignUp ({
+      userName: this.state.userName,
+      email: this.state.email,
+      password: this.state.password
+    });
   }
 
   render(){
@@ -36,11 +45,12 @@ export default class SignUpForm extends React.Component {
       <div className="SignUpForm">   
         <form>
           <label for="uname">User name:</label>
-          <input type="text" id="uname" name="userName" onChange={this.Validation}/>
-
+          <input type="text" id="uname" name="userName" onChange={this.validate}/>
+         
           <label for="email">Email:</label>
-          <input type="email" id="email" name="email" onChange={this.Validation}/>
-
+          <input type="email" id="email" name="email" onChange={this.validate}/>
+          {this.state.errormessage}
+          
           <label for="password">Password:</label>
           <input type="password" id="password" name="password"/>
           

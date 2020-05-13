@@ -8,7 +8,6 @@ export default function SignUpPage() {
   return (
     <div className="SignUpPage">
       <SignUpForm />
-    </div>
-    
+    </div>    
   );
 }
