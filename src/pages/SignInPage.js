@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import SignInForm from "../components/SignInForm"
 import Button from "../components/Button";
 
-export default function SignUpPage() {
+export default function SignInPage() {
+    return (
+      <div className="SignInPage">
+       <SignInForm />
+      </div>
+    );
   
-  return (
-    <div className="SignUpPage">
-      <SignInForm />
-    </div>
-  );
 }
+
