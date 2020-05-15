@@ -17,6 +17,7 @@ export default function ParkingBays() {
   console.log(bays);
   */
  
+<<<<<<< Updated upstream
   // Display a list of the bays 
   return (
     <div className="ParkingBays">
@@ -24,5 +25,16 @@ export default function ParkingBays() {
                        
     </div>
   );
+=======
+  // Display a list of the bays
+    return (
+        <div className="ParkingBays">
+          {/*<h3>Parking bays nearby</h3>*/}
+
+
+
+        </div>
+    );
+>>>>>>> Stashed changes
   
 }

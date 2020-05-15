@@ -57,6 +57,7 @@ handleSubmit(e) {
 
   render(){
     return (
+<<<<<<< Updated upstream
       <div className="SignInForm">   
         <form onSubmit={this.handleSubmit} action={this.props.action} method={this.props.method}>
 
@@ -74,6 +75,31 @@ handleSubmit(e) {
           
       </div>
       );
+=======
+        <div className={"SignInForm"}>
+          <h3>Log in</h3><br/>
+          <p>{this.state.loginmessage}</p>
+          <form>
+            <label htmlFor="email">Email:</label> <br/><br/>
+            <input type="email" id="email" name="email" onChange={this.handleChange} placeholder={"Enter email here"}/>
+            <p>{this.state.errormessage.email}</p>
+             
+            <label htmlFor="password">Password: </label><br/><br/>
+            <input type="password" id="password"  name="password" onChange={this.handleChange} placeholder={"Enter password here"}/>
+            <p>{this.state.errormessage.password}</p>
+              
+            <Button SubclassName={"btn-success"} onClick={this.onSubmit}>Submit</Button>
+
+          </form>
+
+          <div>
+            <p>Don't have an account?</p>
+            <a href={'/users/signup'}> Sign Up Here</a>
+          </div>
+        </div>
+
+    );
+>>>>>>> Stashed changes
   }
      }
 
