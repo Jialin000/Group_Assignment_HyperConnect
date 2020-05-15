@@ -1,7 +1,7 @@
 import React from "react";
 
 import Button from "../components/Button";
-import userLogIn from "../userAPI";
+import userLogIn, {userLogOut} from "../userAPI";
 
 
 export default class SignInForm extends React.Component{
@@ -81,6 +81,8 @@ export default class SignInForm extends React.Component{
       return;
     }
 
+    this.setState({loginmessage: "Loading..."});
+
     userLogIn ({
       email: this.state.email,
       password: this.state.password
@@ -105,6 +107,7 @@ export default class SignInForm extends React.Component{
   render() {
     return (
         <div className={"SignInForm"}>
+          <h2>Log in to your account</h2>
           <p>{this.state.loginmessage}</p>
           <form>
             <label htmlFor="email">Email:</label>
@@ -116,8 +119,15 @@ export default class SignInForm extends React.Component{
             <p>{this.state.errormessage.password}</p>
               
             <Button SubclassName={"btn-success"} onClick={this.onSubmit}>Submit</Button>
-
+            <Button SubclassName={"btn-success"} onClick={userLogOut}>logout</Button>           
           </form>
+          
+          <div>
+            <h3>New to HyperParking?</h3>
+            <Button className={"btn-success"} onClick={event =>  window.location.href='users/signup'}>
+            Creat an accout
+            </Button>
+          </div>
         </div>
 
     );

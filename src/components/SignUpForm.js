@@ -93,6 +93,7 @@ export default class SignUpForm extends React.Component {
       return;
     }
 
+    this.setState({loginmessage: "Loading..."});
     userSignUp ({
       userName: this.state.username,
       email: this.state.email,
@@ -120,6 +121,7 @@ export default class SignUpForm extends React.Component {
   render() {
     return (
         <div className={"SignUpForm"}>
+          <h2>Sign Up</h2>
           <p>{this.state.signupmessage}</p>
           <form>
               <label htmlFor="username">Username</label>
