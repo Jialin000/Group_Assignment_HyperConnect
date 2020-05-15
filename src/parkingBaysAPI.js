@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 
-// TODO - update this to be your url
-
-// SET THIS TO CORRECT URL WHEN DEVELOPING
-const BASE_URL = "http://localhost:3000";
+// Base URL
+const BASE_URL = "https://hyper-connect.herokuapp.com";
 
 // end point to get all parking bays
 export function getBays() {

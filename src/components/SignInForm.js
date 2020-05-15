@@ -118,8 +118,7 @@ export default class SignInForm extends React.Component{
             <input type="password" id="password"  name="password" onChange={this.handleChange}/>
             <p>{this.state.errormessage.password}</p>
               
-            <Button SubclassName={"btn-success"} onClick={this.onSubmit}>Submit</Button>
-                   
+            <Button SubclassName={"btn-success"} onClick={this.onSubmit}>Submit</Button>                   
           </form>
 
           <div>
