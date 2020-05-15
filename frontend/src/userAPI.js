@@ -1,11 +1,12 @@
 //import Cookies from 'universal-cookie';
 
 
-const BASE_URL = "https://hyper-connect.herokuapp.com";
+// const BASE_URL = "https://hyper-connect.herokuapp.com";
 //const BASE_URL = "https://parking-bay.herokuapp.com";
+// const BASE_URL = "http://localhost:8080";
 
 export default function userLogIn(user) {
-  const endpoint = BASE_URL + `/users/login`;
+  const endpoint = `/users/login`;
   const {email, password} = user; 
 
   const res = fetch(endpoint, {
@@ -24,7 +25,7 @@ export default function userLogIn(user) {
 
 
 export function userSignUp(user) {
-  const endpoint = BASE_URL + `/users/signup`;
+  const endpoint = `/users/signup`;
   const { userName, email, password} = user;
   
   const res = fetch(endpoint, {
@@ -45,7 +46,7 @@ export function userSignUp(user) {
 
 
 export function userLogOut() {
-  const endpoint = BASE_URL + `/users/logout`;
+  const endpoint = `/users/logout`;
 
   fetch(endpoint,{
     credentials: 'include',

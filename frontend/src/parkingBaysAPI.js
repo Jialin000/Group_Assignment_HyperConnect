@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 
 // Base URL
-const BASE_URL = "https://hyper-connect.herokuapp.com";
+// const BASE_URL = "https://hyper-connect.herokuapp.com";
+// const BASE_URL = "http://localhost:8080";
+
 
 // end point to get all parking bays
 export function getBays() {
-  const endpoint = BASE_URL + `/parkingBays`;
+  const endpoint = `/parkingBays`;
   return fetch(endpoint).then(res => {
     console.log(res)
     return res.json();
