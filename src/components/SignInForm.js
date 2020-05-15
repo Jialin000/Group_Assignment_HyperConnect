@@ -119,9 +119,9 @@ export default class SignInForm extends React.Component{
             <p>{this.state.errormessage.password}</p>
               
             <Button SubclassName={"btn-success"} onClick={this.onSubmit}>Submit</Button>
-            <Button SubclassName={"btn-success"} onClick={userLogOut}>logout</Button>           
+                   
           </form>
-          
+
           <div>
             <h3>New to HyperParking?</h3>
             <Button className={"btn-success"} onClick={event =>  window.location.href='users/signup'}>
