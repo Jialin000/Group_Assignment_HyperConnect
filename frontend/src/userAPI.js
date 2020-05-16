@@ -62,5 +62,5 @@ export function userLogOut() {
 // get the cookie from the browser
 export function isAuthenticated(name) {
   const cookie = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-  return true ? cookie[2] : false;
+  return true ? cookie&&cookie[2] : false;
 }
