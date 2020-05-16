@@ -6,8 +6,4 @@ router.get('/', function(req, res, next) {
   res.render('../frontend/public/index');
 });
 
-router.get('/parkingBays', function(req, res, next) {
-  res.render('../frontend/public/index');
-});
-
 module.exports = router;
