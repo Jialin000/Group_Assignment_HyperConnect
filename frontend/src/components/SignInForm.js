@@ -1,7 +1,6 @@
 import React from "react";
-
 import Button from "../components/Button";
-import userLogIn, {userLogOut} from "../userAPI";
+import userLogIn from "../userAPI";
 
 
 export default class SignInForm extends React.Component{
@@ -21,6 +20,7 @@ export default class SignInForm extends React.Component{
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+
   validateEmail = (email_address) => {
     let err = this.state.errormessage;
     var re = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
@@ -39,7 +39,6 @@ export default class SignInForm extends React.Component{
     return true;
   }
   
- 
 
   validatePassword = (password) => {
     let err = this.state.errormessage;
@@ -53,12 +52,14 @@ export default class SignInForm extends React.Component{
     return true;
   }
 
+
   validateForm = () => {
     const isValidEmail = this.validateEmail(this.state.email) 
     const isValidPassword = this.validatePassword(this.state.password);
     
     return isValidEmail&&isValidPassword;
   }
+
 
   handleChange = (event) => {
     event.preventDefault(); 
@@ -73,6 +74,7 @@ export default class SignInForm extends React.Component{
     }
     this.setState({[nam]: val});
   }
+
 
   onSubmit = (event) => {
     event.preventDefault();
@@ -89,6 +91,8 @@ export default class SignInForm extends React.Component{
     }).then(res => {
       if (res.status === 200) {
         this.setState({loginmessage: "Login successful!"});
+        window.location.replace("/parkingBays");
+
       }else if(res.status === 401) {
         this.setState({loginmessage: "Wrong password or email"});
       }
@@ -103,7 +107,7 @@ export default class SignInForm extends React.Component{
     });
   }
 
-
+  
   render() {
     return (
         <div className={"SignInForm"}>
@@ -128,7 +132,6 @@ export default class SignInForm extends React.Component{
             </Button>
           </div>
         </div>
-
     );
   }
 }
