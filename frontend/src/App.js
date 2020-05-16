@@ -13,11 +13,26 @@ import "./styles.css";
 export default function App() {
   return (
     <BrowserRouter>
+      <div>
+        <ul>
+          <li><Link to="/public">Public Page</Link></li>
+          <li><Link to="/protected">Protected Page</Link></li>
+        </ul>
+        {/* A <Switch> looks through its children <Route>s and
+          renders the first one that matches the current URL. */}
+        <Route path="/public" component={Public}/>
+        <Route path="/login" component={Login}/>
+      </div>
+    </BrowserRouter>
+  );
+}
+
+/*
+<BrowserRouter>
       <div className="App">
         <Nav />
     
-        {/* A <Switch> looks through its children <Route>s and
-          renders the first one that matches the current URL. */}
+        
         <Switch>
           <Route exact path="/">
             <HomePage />
@@ -33,6 +48,4 @@ export default function App() {
           </Route>
         </Switch>
       </div>
-    </BrowserRouter>
-  );
-}
+    </BrowserRouter>*/

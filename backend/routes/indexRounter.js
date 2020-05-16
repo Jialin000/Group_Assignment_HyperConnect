@@ -7,5 +7,9 @@ router.get('/', function(req, res, next) {
   res.render('../frontend/public/index');
 });
 
+router.get('/users/login', function(req, res, next) {
+  res.render('../frontend/public/index');
+});
+
 
 module.exports = router;

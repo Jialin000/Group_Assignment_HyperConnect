@@ -3,11 +3,6 @@ const usersRouter = express.Router();
 const usersController = require('../controllers/usersController.js');
 const checkAuth = require('../middleware/checkAuth');
 
-usersRouter.route('/login')
-    .get(
-        function(req, res, next) {
-        res.render('../frontend/public/index');
-    });
 
 // Route for sign up
 usersRouter.route('/signup')
