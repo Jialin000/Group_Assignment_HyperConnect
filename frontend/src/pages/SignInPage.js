@@ -1,13 +1,20 @@
 import React from "react";
 import SignInForm from "../components/SignInForm"
-import Button from "../components/Button";
+import { isAuthenticated } from "../userAPI";
 
 export default function SignInPage() {
+  if (isAuthenticated('Authorization')){
     return (
-      <div className="SignInPage">
-       <SignInForm />
+      <div>
+        you have already logged in!
       </div>
     );
-  
+  } else{ 
+    return (
+      <div className="SignInPage">
+        <SignInForm />
+      </div>
+    );
+  }
 }
 
