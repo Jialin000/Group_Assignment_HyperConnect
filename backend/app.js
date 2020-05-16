@@ -27,11 +27,13 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../frontend/public')));
 app.use(bodyParser.json());
 app.use(cors());
 
-
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'../frontend/build/index.html'));
+});
 // Use routers to direct requests
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
