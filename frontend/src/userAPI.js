@@ -2,7 +2,7 @@
 
 
 // const BASE_URL = "https://hyper-connect.herokuapp.com";
-//const BASE_URL = "https://parking-bay.herokuapp.com";
+// const BASE_URL = "https://parking-bay.herokuapp.com";
 // const BASE_URL = "http://localhost:8080";
 
 export default function userLogIn(user) {
@@ -59,7 +59,8 @@ export function userLogOut() {
   })
 }
 
-/*export function getToken() {
-  const res = Cookies.get("Authorization");
-  alert(res);
-}*/
+// get the cookie from the browser
+export function isAuthenticated(name) {
+  const cookie = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+  return true ? cookie[2] : false;
+}
