@@ -5,8 +5,8 @@ import { isAuthenticated, userLogInPage} from "../userAPI";
 export default function SignInPage() {
 
   // get the login page
+
   // check if the user is logged in already or not
-   
   if (isAuthenticated('Authorization')){
     return (
       <div>
