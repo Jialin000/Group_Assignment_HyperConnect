@@ -30,7 +30,14 @@ export default function HomePage() {
               <br />
               We are here to help! <br />
               <br />
-              Click the button to start! <br />
+              Click the{" "}
+              <Button
+                className={"btn-success"}
+                onClick={(event) => (window.location.href = "/parkingBays")}
+              >
+                Button
+              </Button>{" "}
+              to start! <br />
             </h3>
           </div>
         </div>
@@ -39,14 +46,6 @@ export default function HomePage() {
             <SignInForm />
           </div>
         </div>
-      </div>
-      <div className="homepage_bottom">
-        <Button
-          className={"btn-success"}
-          onClick={(event) => (window.location.href = "/parkingBays")}
-        >
-          Find parking bays
-        </Button>
       </div>
     </body>
   );
