@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 // Base URL
+<<<<<<< HEAD:frontend/src/parkingBaysAPI.js
 // const BASE_URL = "https://hyper-connect.herokuapp.com";
 // const BASE_URL = "http://localhost:8080";
 
@@ -8,6 +9,13 @@ import { useState, useEffect } from "react";
 // end point to get all parking bays
 export function getBays() {
   const endpoint = `/parkingBays`;
+=======
+const BASE_URL = "https://hyper-connect.herokuapp.com";
+
+// end point to get all parking bays
+export function getBays() {
+  const endpoint = BASE_URL + `/parkingBays`;
+>>>>>>> react/xingyu-responsive:src/parkingBaysAPI.js
   return fetch(endpoint).then(res => {
     console.log(res)
     return res.json();
