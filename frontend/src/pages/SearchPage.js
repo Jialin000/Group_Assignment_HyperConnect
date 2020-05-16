@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import SearchBar from "../components/SearchBar";
 import ParkingBays from "../components/ParkingBays";
 import HyperMap from "../components/HyperMap";
 import { useParkingBays } from "../parkingBaysAPI";
@@ -46,7 +45,6 @@ export default function SearchPage() {
   return (
     <div>
       <div style={leftDivStyle}>
-        <SearchBar />
         <ParkingBays bays={bays} />
       </div>
       <div style={rightDivStyle}>
