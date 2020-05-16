@@ -12,8 +12,8 @@ export default function HyperMap(props) {
 
     // style of map
     const containerStyle = {
-        width: '1000px',
-        height: '800px'
+        width: '100%',
+        height: '100%'
     };
 
     // Get user's current location
