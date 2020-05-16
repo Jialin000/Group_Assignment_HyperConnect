@@ -18,7 +18,7 @@ export default function App() {
     
         {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
-        
+        <Switch>
           <Route exact path="/">
             <HomePage />
           </Route>
@@ -31,6 +31,7 @@ export default function App() {
           <Route path="/parkingBays">
             <SearchPage />
           </Route>
+        </Switch>
         
       </div>
     </BrowserRouter>
