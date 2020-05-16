@@ -16,12 +16,11 @@ const app = express();
 
 require("./models");
 
-// view engine setup
-// Do not need to handle view in D2
-app.set('views', path.join(__dirname, 'views'));
+// connect to the front end
+/*app.set('views', path.join(__dirname, 'frontend'));
 app.set('view engine', 'html');
-app.engine('html', require('hbs').__express);
-
+app.engine('html', require('hbs').__express);*/
+app.use(express.static(path.join(__dirname, '../frontend')));
 // log informations about requests
 app.use(logger('dev'));
 app.use(express.json());
