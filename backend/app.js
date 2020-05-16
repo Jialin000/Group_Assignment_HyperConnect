@@ -23,8 +23,9 @@ app.set('view engine', 'html');
 app.engine('html', require('hbs').__express);*/
 //app.use(express.static(path.join(__dirname, '../frontend/public/index.html')));
 
-app.set('views', path.join(__dirname, '../public'));
+app.set('views', path.join(__dirname, '../frontend/public'));
 app.set('view engine', 'html');
+app.engine('html', require('hbs').__express);
 
 //app.use('/public', express.static(__dirname + '../public'));
 
