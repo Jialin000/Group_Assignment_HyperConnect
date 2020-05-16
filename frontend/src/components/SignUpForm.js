@@ -19,6 +19,7 @@ export default class SignUpForm extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  // check if the email entered by the user is valid
   validateEmail = (email_address) => {
     let err = this.state.errormessage;
     var re = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
@@ -37,6 +38,7 @@ export default class SignUpForm extends React.Component {
     return true;
   }
   
+  // check if the username entered by the user is valid
   validateUserName = (username) => {
     let err = this.state.errormessage;
     err["username"] = '';
@@ -49,6 +51,7 @@ export default class SignUpForm extends React.Component {
     return true;
   }
 
+  // check if the password entered by the user is valid
   validatePassword = (password) => {
     let err = this.state.errormessage;
     err["password"] = '';
@@ -61,12 +64,14 @@ export default class SignUpForm extends React.Component {
     return true;
   }
 
+  // validate each field of the form
   validateForm = () => {
     const isValidEmail = this.validateEmail(this.state.email) 
     const isValidPassword = this.validatePassword(this.state.password);
     const isValidUserName = this.validateUserName(this.state.username);
     return isValidEmail&&isValidPassword&&isValidUserName;
   }
+
 
   handleChange = (event) => {
     event.preventDefault(); 
@@ -86,6 +91,7 @@ export default class SignUpForm extends React.Component {
     this.setState({[nam]: val});
   }
 
+  // validate the form before submitting
   onSubmit = (event) => {
     event.preventDefault();
 
@@ -94,6 +100,7 @@ export default class SignUpForm extends React.Component {
     }
 
     this.setState({loginmessage: "Loading..."});
+
     userSignUp ({
       userName: this.state.username,
       email: this.state.email,
@@ -101,8 +108,10 @@ export default class SignUpForm extends React.Component {
     }).then(res => {
       if (res.status === 201) {
         this.setState({signupmessage: "Account created!"});
+
       }else if(res.status === 409) {
         this.setState({signupmessage: "This email has been registered."});
+
       }
       else {
         const error = new Error(res.error);
@@ -111,10 +120,8 @@ export default class SignUpForm extends React.Component {
     })
     .catch(err => {
       console.error(err);
-      alert('Error logging in please try again');
+      alert('Error registering please try again');
     });
-    
-   
   }
 
 

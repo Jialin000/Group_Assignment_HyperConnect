@@ -1,7 +1,6 @@
 import React from "react";
-
 import Button from "../components/Button";
-import userLogIn, {userLogOut} from "../userAPI";
+import userLogIn from "../userAPI";
 
 
 export default class SignInForm extends React.Component{
@@ -21,6 +20,7 @@ export default class SignInForm extends React.Component{
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  // check if the email entered by the user is valid
   validateEmail = (email_address) => {
     let err = this.state.errormessage;
     var re = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
@@ -39,8 +39,7 @@ export default class SignInForm extends React.Component{
     return true;
   }
   
- 
-
+  // check if the password entered by the user is valid
   validatePassword = (password) => {
     let err = this.state.errormessage;
     err["password"] = '';
@@ -53,6 +52,7 @@ export default class SignInForm extends React.Component{
     return true;
   }
 
+  // validate each field
   validateForm = () => {
     const isValidEmail = this.validateEmail(this.state.email) 
     const isValidPassword = this.validatePassword(this.state.password);
@@ -60,6 +60,7 @@ export default class SignInForm extends React.Component{
     return isValidEmail&&isValidPassword;
   }
 
+  
   handleChange = (event) => {
     event.preventDefault(); 
     let nam = event.target.name;
@@ -74,6 +75,7 @@ export default class SignInForm extends React.Component{
     this.setState({[nam]: val});
   }
 
+  // validate the form before submitting
   onSubmit = (event) => {
     event.preventDefault();
 
@@ -89,6 +91,7 @@ export default class SignInForm extends React.Component{
     }).then(res => {
       if (res.status === 200) {
         this.setState({loginmessage: "Login successful!"});
+
       }else if(res.status === 401) {
         this.setState({loginmessage: "Wrong password or email"});
       }
@@ -103,7 +106,7 @@ export default class SignInForm extends React.Component{
     });
   }
 
-
+  
   render() {
     return (
         <div className={"SignInForm"}>
@@ -128,7 +131,6 @@ export default class SignInForm extends React.Component{
             </Button>
           </div>
         </div>
-
     );
   }
 }
