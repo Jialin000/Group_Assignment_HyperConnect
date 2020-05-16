@@ -6,15 +6,6 @@ import "../styles.css";
 
 export default function HomePage() {
   return (
-<<<<<<< HEAD:frontend/src/pages/HomePage.js
-    <div>
-      <Button className={"btn-success"} onClick={event =>  window.location.href='/parkingBays'}>
-          Find parking bays
-      </Button>
-		
-		<SignInForm />
-    </div>
-=======
     <body className="homepage_container">
       <br /> <h1> Hyper Parking</h1>
       <br />
@@ -57,6 +48,5 @@ export default function HomePage() {
         </div>
       </div>
     </body>
->>>>>>> react/xingyu-responsive:src/pages/HomePage.js
   );
 }
