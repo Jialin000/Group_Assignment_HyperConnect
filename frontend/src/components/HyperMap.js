@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import { usePosition } from "use-position";
+import Button from "../components/Button";
 import {
   LoadScript,
   withGoogleMap,
@@ -21,6 +22,7 @@ class HyperMap extends Component {
       lng: 144.9631,
     },
     selectedPark: null,
+    CurrentLocation: null,
   };
 
   /**
@@ -145,10 +147,23 @@ class HyperMap extends Component {
         <GoogleMap
           defaultZoom={15}
           defaultCenter={{
-            lat: this.state.mapPosition.lat,
-            lng: this.state.mapPosition.lng,
+            lat: parseFloat(this.state.mapPosition.lat),
+            lng: parseFloat(this.state.mapPosition.lng),
           }}
         >
+          {/* <Button
+            className={"btn-success"}
+            onClick={this.searchCurrentLocation()}
+          >
+            Search Around
+          </Button>
+          {this.state.CurrentLocation && (
+            <Marker
+              position={this.state.CurrentLocation}
+              label={"Your current location"}
+              icon={{ url: "/userLocationIcon.png" }}
+            />
+          )} */}
           {/* select a parking bay the InfoWindow will pop up */}
           {this.state.selectedPark && (
             <InfoWindow
@@ -171,6 +186,8 @@ class HyperMap extends Component {
 
           {/* Parkingbays' locations */}
           {this.props.bays.map((bay) => this.handleRenderBays(bay))}
+
+          {/* search bar */}
           <Autocomplete
             style={{
               width: "100%",

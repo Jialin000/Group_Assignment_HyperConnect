@@ -2,46 +2,56 @@ import React, { useState } from "react";
 import SearchBar from "../components/SearchBar";
 import ParkingBays from "../components/ParkingBays";
 import HyperMap from "../components/HyperMap";
-import {useParkingBays} from "../parkingBaysAPI";
-
+import { useParkingBays } from "../parkingBaysAPI";
+import { usePosition } from "use-position";
 
 export default function SearchPage() {
+  // Fetch all the parking bays information upon loading
+  const { loading, bays, e } = useParkingBays();
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  if (e) {
+    return <p>Something went wrong: {e.message}</p>;
+  }
 
-    // Fetch all the parking bays information upon loading
-    const { loading, bays, error } = useParkingBays();
-    if (loading) {
-        return <p>Loading...</p>;
-    }
-    if (error) {
-        return <p>Something went wrong: {error.message}</p>;
-    }
+  // Simple style to separate left and right contents
+  const leftDivStyle = {
+    float: "left",
+    margin: "20px 10px 20px 10px",
+    width: "25%",
+    border: "solid 1px black",
+    height: "100%",
+  };
 
+  const rightDivStyle = {
+    float: "left",
+    margin: "20px 10px 20px 10px",
+    width: "70%",
+    border: "solid 1px black",
+  };
 
-    // Simple style to separate left and right contents
-    const leftDivStyle = {
-        float: "left",
-        margin: "20px 10px 20px 10px",
-        width: "25%",
-        border: "solid 1px black",
-        height: "100%"
-    }
+  //   const { latitude, longitude, timestamp, accuracy, error } = usePosition(
+  //     true,
+  //     { enableHighAccuracy: true }
+  //   );
 
-    const rightDivStyle = {
-        float: "left",
-        margin: "20px 10px 20px 10px",
-        width: "70%",
-        border: "solid 1px black"
-    }
+  //   // center of map
+  //   let center = {
+  //     lat: latitude,
+  //     lng: longitude,
+  //   };
 
-    // Render contents of page
+  // Render contents of page
   return (
     <div>
-        <div style={leftDivStyle}>
-            <SearchBar />
-            <ParkingBays bays={bays}/>
-        </div>
+      <div style={leftDivStyle}>
+        <SearchBar />
+        <ParkingBays bays={bays} />
+      </div>
       <div style={rightDivStyle}>
-          <HyperMap bays={bays}/>
+        <HyperMap bays={bays} />
+        {/* {console.log(center)} */}
       </div>
     </div>
   );
