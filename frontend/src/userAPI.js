@@ -1,6 +1,3 @@
-//import Cookies from 'universal-cookie';
-
-
 // const BASE_URL = "https://hyper-connect.herokuapp.com";
 // const BASE_URL = "https://parking-bay.herokuapp.com";
 // const BASE_URL = "http://localhost:8080";
