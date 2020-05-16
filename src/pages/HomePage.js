@@ -6,24 +6,8 @@ import "../styles.css"
 
 export default function HomePage() {
   return (
-<<<<<<< Updated upstream
-    <div>
-      <Button className={"btn-success"} onClick={event =>  window.location.href='/parkingBays'}>
-          Find parking bays
-      </Button>
-    
-		<h2>Log in to your account</h2>
-		<SignInForm />
-      <div>
-        <h3>New to HyperParking?</h3>
-        <Button className={"btn-success"} onClick={event =>  window.location.href='users/signup'}>
-          Creat an accout
-        </Button>
-      </div>
-    </div>
-=======
       <body className="homepage_container">
-      <br/> <h1> Hyper Parking</h1><br/><br/>
+      <br/> <h1> Hyper Parking</h1><br/>
       <div className = "homepage_upper">
           <div className = "homepage_left">
                 <div>
@@ -53,7 +37,6 @@ export default function HomePage() {
 
       </div>
       </body>
->>>>>>> Stashed changes
   );
 }
 

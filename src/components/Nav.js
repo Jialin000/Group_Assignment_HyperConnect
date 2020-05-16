@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { userLogOut } from "../userAPI";
 
 export default function Nav() {
   return (
@@ -8,6 +9,7 @@ export default function Nav() {
       <NavLink to="/parkingBays">Find Parking Bays</NavLink>
       <NavLink to="/users/login">LOGIN</NavLink>
       <NavLink to="/users/signup">SIGN UP</NavLink>
+      
     </nav>
   );
 }

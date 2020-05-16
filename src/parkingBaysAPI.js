@@ -1,29 +1,37 @@
 import { useState, useEffect } from "react";
 
-// TODO - update this to be your url
-const BASE_URL = "https://hyper-connect.herokuapp.com/parkingBays";
+// Base URL
+const BASE_URL = "https://hyper-connect.herokuapp.com";
 
+// end point to get all parking bays
 export function getBays() {
-  const endpoint = BASE_URL + `/`;
-  
+  const endpoint = BASE_URL + `/parkingBays`;
+  return fetch(endpoint).then(res => {
+    console.log(res)
+    return res.json();
+  })
 }
 
-export function findBays(location) {
-  /*
-  const {lat, lon} = location;
-  const endpoint = BASE_URL + `/find?lat=${lat}lon=${lon}`;
-  */
-  
-}
 
-/* 
+
+// export function findBays(location) {
+//   /*
+//   const {lat, lon} = location;
+//   const endpoint = BASE_URL + `/find?lat=${lat}lon=${lon}`;
+//   */
+//
+// }
+
+
+
+
 export function useParkingBays() {
   const [loading, setLoading] = useState(true);
   const [bays, setBays] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    findBays()
+    getBays()
       .then(bays => {
         setBays(bays);
         setLoading(false);
@@ -40,5 +48,4 @@ export function useParkingBays() {
     bays,
     error
   };
-
-}*/
+}

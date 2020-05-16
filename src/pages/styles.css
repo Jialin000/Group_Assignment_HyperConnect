@@ -1,5 +1,5 @@
 
-.App {
+   .App {
   font-family: sans-serif;
   text-align: center;
 }
@@ -27,30 +27,32 @@ input {
   top : 41px;
   width: 100%;
   position: absolute;
+  /*纯色*/
   background-color: #ffffff;
 
   /*background-image: url('/homepage.jpg');*/
   /*background-size: cover;*/
   /*background-repeat: no-repeat;*/
-}
 
+}
 .logo{
-  border-radius: 30%;
-  height: 200px;
-  width: 450px;
-  margin: 0 auto;
-  top: 10%;
-  background-image: url('/logo.png');
-  background-size: contain;
-  background-repeat: no-repeat;
+     border-radius: 30%;
+     height: 200px;
+     width: 450px;
+     margin: 0 auto;
+     top: 10%;
+     background-image: url('/logo.png');
+     background-size: contain;
+     background-repeat: no-repeat;
+
 }
 .homepage_container h1{
   color: #000000
 }
 .homepage_upper {
-  height: 65%;
-  width: 100%;
-}
+   height: 65%;
+   width: 100%;
+ }
 
 .homepage_left{
   float : left;
@@ -67,7 +69,7 @@ input {
   border: 2px solid rgba(238, 234, 234, 0.42);
   border-top: 0;
   padding: 50px 50px;
-  /*background: rgba(9, 6, 6, 0.5);*/
+  background: rgba(9, 6, 6, 0.5);
   /*top: 10%;*/
 }
 .homepage_left_description h2{
@@ -78,13 +80,13 @@ input {
 }
 
 .homepage_left h2{
-  color: #1f1f1f;
+     color: #1f1f1f;
 }
 .homepage_left h3{
-  color: #000000;
+     color: #000000;
 }
 .homepage_left h4{
-  color: #323232;
+   color: #323232;
 }
 
 .homepage_right{
@@ -93,16 +95,16 @@ input {
   height: 70%;
   right: 50%;
 }
-.homepage_right_login {
+.homepage_right_login{
   width: 300px;
   height: 400px;
   margin: 0 auto;
   text-align: center;
   border-radius: 20px;
-  border: 2px solid rgba(0, 0, 0, 0.42);
+  border: 2px solid rgba(238, 234, 234, 0.42);
   border-top: 0;
   padding: 50px 50px;
-  /*background: rgba(9, 6, 6, 0.5);*/
+  background: rgba(9, 6, 6, 0.5);
   top: 20%;
   left: 0;
   right: 0;
@@ -110,18 +112,18 @@ input {
 }
 
 .homepage_right_login input{
-  width: 70%;
-  padding: 12px 20px;
-  margin: 5px 0;
-  box-sizing: border-box;
-  border-radius: 4px;
-  background-color:transparent;
-  border: 2px solid rgba(255,255,255,0.3);
-  box-shadow: inset 0 0 4px rgba(255,255,255,0.2),0 0 4px rgba(255,255,255,0.2);
-}
-::placeholder {
-  color: #000000;
-}
+     width: 70%;
+     padding: 12px 20px;
+     margin: 5px 0;
+     box-sizing: border-box;
+     border-radius: 4px;
+     background-color:transparent;
+     border: 2px solid rgba(255,255,255,0.3);
+     box-shadow: inset 0 0 4px rgba(255,255,255,0.2),0 0 4px rgba(255,255,255,0.2);
+   }
+   ::placeholder {
+     color: #000000;
+   }
 
 .homepage_right_login h3{
   color: #000000;
@@ -138,8 +140,7 @@ input {
 .homepage_bottom{
   float : bottom;
   height: 40%;
-  position: relative;
-  bottom: 80px;
+
 }
 
 .login_bg {
@@ -163,14 +164,14 @@ input {
 
 .login_box {
   width: 300px;
-  height: 500px;
+  height: 400px;
   margin: 0 auto;
   text-align: center;
   border-radius: 20px;
-  border: 2px solid rgba(0, 0, 0, 0.42);
+  border: 2px solid rgba(238, 234, 234, 0.42);
   border-top: 0;
   padding: 50px 50px;
-  background: rgb(255, 255, 255);
+  background: rgb(120, 120, 120);
   position: absolute;
   top: 15%;
   left: 0;
@@ -185,11 +186,11 @@ input {
   box-sizing: border-box;
   border-radius: 4px;
   background-color:transparent;
-  border: 2px solid rgba(0, 0, 0, 0.3);
-  box-shadow: inset 0 0 4px rgba(7, 6, 6, 0.2),0 0 4px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255,255,255,0.3);
+  box-shadow: inset 0 0 4px rgba(255,255,255,0.2),0 0 4px rgba(255,255,255,0.2);
 }
 ::placeholder {
-  color: #000000;
+  color: #145295;
 }
 .login_box h3{
   color: #000000;
@@ -200,10 +201,7 @@ input {
   color: #000000;
 }
 .login_box p{
-  color: #ff0000;
-}
-.login_box Button{
-  background-color: #2da2db;
+  color: #000000;
 }
 /*.login_box a{*/
 /* color: deepskyblue;*/
@@ -211,25 +209,22 @@ input {
 
 
 .searchbar {
-  position: absolute;
+ position: absolute;
   z-index: 1;
   left: 1px;
   top: 100px;
 }
 .map {
-  height: 96%;
+  height: 94%;
   width: 100%;
   position: absolute;
   z-index: 0;
   overflow: hidden;
 }
-
-.map button{
-  font-size: 25px;
-  border-radius: 10%;
-  /*background-color: red;*/
-  box-shadow: #0c0707;
-}
+/*.map button{*/
+/*  font-size: 30px;*/
+/*  border-radius: 10%;*/
+/*}*/
 
 nav {
   background-color: #268bc6;
@@ -250,7 +245,9 @@ nav a.active {
   padding-bottom: 8px;
   border-bottom: 2px solid #fff;
 }
+.btn_search{
 
+}
 .addAuthor {
   background-color: #2da2db;
   padding: 40px;

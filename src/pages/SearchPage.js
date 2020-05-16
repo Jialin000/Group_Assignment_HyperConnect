@@ -1,14 +1,9 @@
 import React, { useState } from "react";
-import SearchBar from "../components/SearchBar"
-import ParkingBays from "../components/ParkingBays"
+import SearchBar from "../components/SearchBar";
+import ParkingBays from "../components/ParkingBays";
+import HyperMap from "../components/HyperMap";
+import {useParkingBays} from "../parkingBaysAPI";
 
-<<<<<<< Updated upstream
-export default function SearchPage() {  
-  return (
-    <div>
-      <SearchBar />
-      <ParkingBays />
-=======
 
 export default function SearchPage() {
 
@@ -39,14 +34,13 @@ export default function SearchPage() {
     // }
 
     // Render contents of page
-  return (
-    <div className="map">
-        <HyperMap bays={bays}/>
-        <div className="searchbar">
-            <SearchBar />
-            <ParkingBays bays={bays}/>
+    return (
+        <div className="map">
+            <HyperMap bays={bays}/>
+            <div className="searchbar">
+                <SearchBar />
+                <ParkingBays bays={bays}/>
+            </div>
         </div>
->>>>>>> Stashed changes
-    </div>
   );
 }
