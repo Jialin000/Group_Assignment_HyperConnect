@@ -14,7 +14,7 @@ export default function SignInPage() {
       </div>
     );
   } else{ 
-    return {
+    return (
       <div className="login_bg">
           <div className="login_box">
              <SignInForm />
