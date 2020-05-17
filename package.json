@@ -11,7 +11,7 @@
     "server": "cd frontend && node",
     "client": "cd frontend && npm start frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "npm install && npm install --prefix backend && cd frontend && npm install --only=dev && npm run build"
+    "heroku-postbuild": "npm install && npm install --prefix backend && cd frontend && npm install && npm run build"
   },
   "repository": {
     "type": "git",
