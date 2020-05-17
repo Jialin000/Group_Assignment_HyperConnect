@@ -17,23 +17,23 @@ const app = express();
 require("./models");
 
 // connect to the front end
-//app.set('views', path.join(__dirname, '../frontend/public'));
+//app.set('views', path.join(__dirname, '../frontend/build'));
 app.set('view engine', 'html');
 app.engine('html', require('hbs').__express);
 
 // log informations about requests
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 app.use(bodyParser.json());
-app.use(cors());
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'../frontend/build/index.html'));
+app.use('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
 });
+
 // Use routers to direct requests
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
