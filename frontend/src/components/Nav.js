@@ -6,9 +6,9 @@ export default function Nav() {
   return (
     <nav>
       <NavLink exact to="/">Home</NavLink>
-      <NavLink to="/parkingBays">Find Parking Bays</NavLink>
-      <NavLink to="/users/login">LOGIN</NavLink>
-      <NavLink to="/users/signup">SIGN UP</NavLink>
+      <NavLink to="/hyper-parking/parkingBays">Find Parking Bays</NavLink>
+      <NavLink to="/hyper-parking/users/login">LOGIN</NavLink>
+      <NavLink to="/hyper-parking/users/signup">SIGN UP</NavLink>
       
     </nav>
   );
