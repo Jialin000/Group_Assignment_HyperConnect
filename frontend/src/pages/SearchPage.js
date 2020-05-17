@@ -18,31 +18,29 @@ export default function SearchPage() {
 
 
     // Simple style to separate left and right contents
-    const leftDivStyle = {
-        float: "left",
-        margin: "20px 10px 20px 10px",
-        width: "25%",
-        border: "solid 1px black",
-        height: "100%"
-    }
-
-    const rightDivStyle = {
-        float: "left",
-        margin: "20px 10px 20px 10px",
-        width: "70%",
-        border: "solid 1px black"
-    }
+    // const leftDivStyle = {
+    //     float: "left",
+    //     margin: "20px 10px 20px 10px",
+    //     width: "25%",
+    //     border: "solid 1px black",
+    //     height: "100%"
+    // }
+    //
+    // const rightDivStyle = {
+    //     float: "left",
+    //     margin: "20px 10px 20px 10px",
+    //     width: "70%",
+    //     border: "solid 1px black"
+    // }
 
     // Render contents of page
-  return (
-    <div>
-        <div style={leftDivStyle}>
-            <SearchBar />
-            <ParkingBays bays={bays}/>
+    return (
+        <div className="map">
+            <HyperMap bays={bays}/>
+            <div className="searchbar">
+                <SearchBar />
+                <ParkingBays bays={bays}/>
+            </div>
         </div>
-      <div style={rightDivStyle}>
-          <HyperMap bays={bays}/>
-      </div>
-    </div>
-  );
+    );
 }

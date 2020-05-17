@@ -18,7 +18,7 @@ input {
   padding: 8px;
   margin: 2px;
   border-radius: 2px;
-  border: #f2f2f2 solid 1px;
+  border: #000000 solid 1px;
 }
 
 .homepage_container {
@@ -33,16 +33,17 @@ input {
   /*background-repeat: no-repeat;*/
 }
 
-.logo {
-  border-radius: 30%;
-  height: 200px;
-  width: 450px;
-  margin: 0 auto;
-  top: 10%;
-  background-image: url("/logo.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
+/*.logo {*/
+/*  border-radius: 30%;*/
+/*  height: 200px;*/
+/*  width: 450px;*/
+/*  margin: 0 auto;*/
+/*  top: 10%;*/
+/*  background-image: url("/logo.png");*/
+/*  background-size: contain;*/
+/*  background-repeat: no-repeat;*/
+/*}*/
+
 .homepage_container h1 {
   color: #000000;
 }
@@ -69,11 +70,11 @@ input {
 
 .homepage_left_description {
   width: 300px;
-  height: 140px;
+  height: 190px;
   /*150 140*/
   margin: 0 auto;
   border-radius: 20px;
-  border: 2px solid rgba(238, 234, 234, 0.42);
+  border: 2px solid rgba(3, 3, 3, 0.42);
   border-top: 0;
   padding: 50px 50px;
   /*background: rgba(9, 6, 6, 0.5);*/
@@ -111,7 +112,7 @@ input {
 
 .homepage_right_login {
   width: 300px;
-  height: 400px;
+  height: 450px;
   margin: 0 auto;
   text-align: center;
   border-radius: 20px;
@@ -132,7 +133,7 @@ input {
   box-sizing: border-box;
   border-radius: 4px;
   background-color: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(0, 0, 0, 0.3);
   box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.2),
     0 0 4px rgba(255, 255, 255, 0.2);
 }
@@ -149,7 +150,7 @@ input {
   color: #000000;
 }
 .homepage_right_login p {
-  color: #000000;
+  color: #ff0000;
 }
 
 .homepage_bottom {
@@ -231,12 +232,19 @@ input {
 /*.login_box a{*/
 /* color: deepskyblue;*/
 /*}*/
-
 .searchbar {
+  width : 30%;
+  height: 40px;
   position: absolute;
   z-index: 1;
-  left: 1px;
-  top: 100px;
+  left: 10px;
+  top: 30px;
+}
+.findme {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: 50px;
 }
 .map {
   height: 96%;
@@ -245,12 +253,18 @@ input {
   z-index: 0;
   overflow: hidden;
 }
-
-.map button {
-  font-size: 25px;
-  border-radius: 10%;
-  /*background-color: red;*/
+.btn-search {
+  font-size: 30px;
+  border-radius: 30%;
   box-shadow: #0c0707;
+  border: 3px solid #000000;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.btn-search:hover {
+  background-color: #050505;
+  color: #ffffff;
 }
 
 nav {
