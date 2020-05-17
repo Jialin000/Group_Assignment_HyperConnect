@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, '../frontend/build')));
 app.use(bodyParser.json());
 app.use(cors());
 
-
+app.options('/', cors());
 // Use routers to direct requests
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
