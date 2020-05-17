@@ -15,20 +15,20 @@ export default function SearchPage() {
   }
 
   // Simple style to separate left and right contents
-  const leftDivStyle = {
-    float: "left",
-    margin: "20px 10px 20px 10px",
-    width: "25%",
-    border: "solid 1px black",
-    height: "100%",
-  };
-
-  const rightDivStyle = {
-    float: "left",
-    margin: "20px 10px 20px 10px",
-    width: "70%",
-    border: "solid 1px black",
-  };
+  // const leftDivStyle = {
+  //   float: "left",
+  //   margin: "20px 10px 20px 10px",
+  //   width: "25%",
+  //   border: "solid 1px black",
+  //   height: "100%",
+  // };
+  //
+  // const rightDivStyle = {
+  //   float: "left",
+  //   margin: "20px 10px 20px 10px",
+  //   width: "70%",
+  //   border: "solid 1px black",
+  // };
 
   //   const { latitude, longitude, timestamp, accuracy, error } = usePosition(
   //     true,
@@ -43,14 +43,14 @@ export default function SearchPage() {
 
   // Render contents of page
   return (
-    <div>
-      <div style={leftDivStyle}>
-        <ParkingBays bays={bays} />
-      </div>
-      <div style={rightDivStyle}>
+    // <div>
+    //   <div style={leftDivStyle}>
+    //     <ParkingBays bays={bays} />
+    //   </div>
+      <div className="map">
         <HyperMap bays={bays} />
         {/* {console.log(center)} */}
       </div>
-    </div>
+    // </div>
   );
 }
