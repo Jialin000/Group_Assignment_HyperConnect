@@ -16,9 +16,8 @@ const app = express();
 
 require("./models");
 
-// view engine setup
-// Do not need to handle view in D2
-app.set('views', path.join(__dirname, 'views'));
+// connect to the front end
+//app.set('views', path.join(__dirname, '../frontend/public'));
 app.set('view engine', 'html');
 app.engine('html', require('hbs').__express);
 
@@ -27,22 +26,30 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.static(path.join(__dirname, '../frontend/build')));
 app.use(bodyParser.json());
 app.use(cors());
 
-
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'../frontend/build/index.html'));
+});
 // Use routers to direct requests
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/parkingBays', parkingBaysRouter);
 app.use('/update', databaseRouter);
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
 
 // error handler
 app.use(function(err, req, res, next) {

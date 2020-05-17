@@ -4,7 +4,6 @@ const usersController = require('../controllers/usersController.js');
 const checkAuth = require('../middleware/checkAuth');
 
 
-
 // Route for sign up
 usersRouter.route('/signup')
     .post(usersController.userSignUp)

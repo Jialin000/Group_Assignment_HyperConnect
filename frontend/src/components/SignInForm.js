@@ -1,7 +1,7 @@
 import React from "react";
 
 import Button from "../components/Button";
-import userLogIn, {userLogOut} from "../userAPI";
+import userLogIn from "../userAPI";
 
 
 export default class SignInForm extends React.Component{
@@ -20,7 +20,7 @@ export default class SignInForm extends React.Component{
     this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-
+  // check if the email entered by the user is valid
   validateEmail = (email_address) => {
     let err = this.state.errormessage;
     var re = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
@@ -38,9 +38,8 @@ export default class SignInForm extends React.Component{
     }
     return true;
   }
-  
- 
 
+  // check if the password entered by the user is valid
   validatePassword = (password) => {
     let err = this.state.errormessage;
     err["password"] = '';
@@ -52,7 +51,7 @@ export default class SignInForm extends React.Component{
     }
     return true;
   }
-
+  // validate each field
   validateForm = () => {
     const isValidEmail = this.validateEmail(this.state.email) 
     const isValidPassword = this.validatePassword(this.state.password);
@@ -73,7 +72,7 @@ export default class SignInForm extends React.Component{
     }
     this.setState({[nam]: val});
   }
-
+  // validate the form before submitting
   onSubmit = (event) => {
     event.preventDefault();
 
@@ -107,25 +106,25 @@ export default class SignInForm extends React.Component{
   render() {
     return (
         <div className={"SignInForm"}>
-          <h2>Log in to your account</h2>
+          <h2>Log in</h2><br/>
           <p>{this.state.loginmessage}</p>
           <form>
-            <label htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" onChange={this.handleChange}/>
+            <label htmlFor="email">Email:</label><br/><br/>
+            <input type="email" id="email" name="email" onChange={this.handleChange} placeholder={"Enter email here"}/>
             <p>{this.state.errormessage.email}</p>
-             
-            <label htmlFor="password">Password: </label>
-            <input type="password" id="password"  name="password" onChange={this.handleChange}/>
+
+            <label htmlFor="password">Password: </label><br/><br/>
+            <input type="password" id="password"  name="password" onChange={this.handleChange} placeholder={"Enter password here"}/>
             <p>{this.state.errormessage.password}</p>
-              
-            <Button SubclassName={"btn-success"} onClick={this.onSubmit}>Submit</Button>                   
+
+            <Button SubclassName={"btn-success"} onClick={this.onSubmit}>Submit</Button>
+
           </form>
 
+
           <div>
-            <h3>New to HyperParking?</h3>
-            <Button className={"btn-success"} onClick={event =>  window.location.href='users/signup'}>
-            Creat an accout
-            </Button>
+            <h5>Don't have an account?</h5>
+            <a href={'/users/signup'}> Sign Up Here</a>
           </div>
         </div>
 

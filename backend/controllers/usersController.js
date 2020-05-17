@@ -100,7 +100,7 @@ const userLogIn = (req, res, next) => {
                         );
 
                         // Return token with message
-                        res.cookie("Authorization", token);
+                        res.cookie("Authorization", token, {maxAge: 3600000});
                         return res.status(200).json({
                             message: 'Authentication succeeded.'
                         });
