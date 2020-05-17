@@ -17,7 +17,7 @@ const app = express();
 require("./models");
 
 // connect to the front end
-app.set('views', path.join(__dirname, '../frontend/public'));
+//app.set('views', path.join(__dirname, '../frontend/public'));
 app.set('view engine', 'html');
 app.engine('html', require('hbs').__express);
 
