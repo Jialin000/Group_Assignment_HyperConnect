@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, HashRouter} from "react-router-dom";
 
 import Nav from "./components/Nav";
 
@@ -12,7 +12,7 @@ import "./styles.css";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="App">
         <Nav />
     
@@ -34,7 +34,7 @@ export default function App() {
         </Switch>
         
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
