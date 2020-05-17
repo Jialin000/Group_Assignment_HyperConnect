@@ -37,7 +37,7 @@ app.use('/users', usersRouter);
 app.use('/parkingBays', parkingBaysRouter);
 app.use('/update', databaseRouter);
 
-expressApp.get('/*', (request, response) => {
+app.get('/*', (request, response) => {
   response.sendFile(path.join(__dirname, '..frontend/public/index.html'));
 });
 
