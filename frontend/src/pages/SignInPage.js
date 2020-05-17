@@ -6,7 +6,7 @@ export default function SignInPage() {
 
   // get the login page
 
-  // check if the user is logged in already or not
+  // check if the user has logged in already or not
   if (isAuthenticated('Authorization')){
     return (
       <div>
