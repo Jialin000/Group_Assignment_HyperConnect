@@ -32,7 +32,9 @@ export default function App() {
             <SearchPage />
           </Route>
         </Switch>
+        
       </div>
     </BrowserRouter>
   );
 }
+

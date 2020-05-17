@@ -17,7 +17,7 @@ const app = express();
 require("./models");
 
 // connect to the front end
-app.set('views', path.join(__dirname, '../frontend/public'));
+//app.set('views', path.join(__dirname, '../frontend/public'));
 app.set('view engine', 'html');
 app.engine('html', require('hbs').__express);
 
@@ -40,6 +40,10 @@ app.use('/users', usersRouter);
 app.use('/parkingBays', parkingBaysRouter);
 app.use('/update', databaseRouter);
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -55,7 +59,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('../frontend/public/error');
+  res.render('error');
 });
 
 module.exports = app;
