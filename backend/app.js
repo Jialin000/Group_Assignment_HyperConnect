@@ -38,7 +38,7 @@ app.use('/parkingBays', parkingBaysRouter);
 app.use('/update', databaseRouter);
 
 app.get('/*', (request, response) => {
-  response.sendFile(path.join(__dirname, '..frontend/public/index.html'));
+  response.sendFile(path.join(__dirname, '../frontend/public/index.html'));
 });
 
 // catch 404 and forward to error handler
