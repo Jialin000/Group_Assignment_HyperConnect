@@ -4,17 +4,14 @@ import { useState, useEffect } from "react";
 // const BASE_URL = "https://hyper-connect.herokuapp.com";
 // const BASE_URL = "http://localhost:8080";
 
-
 // end point to get all parking bays
 export function getBays() {
   const endpoint = `/parkingBays`;
-  return fetch(endpoint).then(res => {
-    console.log(res)
+  return fetch(endpoint).then((res) => {
+    console.log(res);
     return res.json();
-  })
+  });
 }
-
-
 
 // export function findBays(location) {
 //   /*
@@ -24,9 +21,6 @@ export function getBays() {
 //
 // }
 
-
-
-
 export function useParkingBays() {
   const [loading, setLoading] = useState(true);
   const [bays, setBays] = useState([]);
@@ -34,11 +28,11 @@ export function useParkingBays() {
 
   useEffect(() => {
     getBays()
-      .then(bays => {
+      .then((bays) => {
         setBays(bays);
         setLoading(false);
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
         setError(e);
         setLoading(false);
@@ -48,6 +42,6 @@ export function useParkingBays() {
   return {
     loading,
     bays,
-    error
+    error,
   };
 }
