@@ -22,13 +22,13 @@ export default function App() {
           <Route exact path="/">
             <HomePage />
           </Route>
-          <Route path="/hyper-parking/users/login">
+          <Route path="/users/login">
             <SignInPage />
           </Route>
-          <Route path="/hyper-parking/users/signup">
+          <Route path="/users/signup">
             <SignUpPage />
           </Route>
-          <Route path="/hyper-parking/parkingBays">
+          <Route path="/parkingBays">
             <SearchPage />
           </Route>
         </Switch>
