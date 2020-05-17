@@ -20,19 +20,6 @@ export default function userLogIn(user) {
   return res;
 }
 
-export function userLogInPage() {
-  const endpoint = `/users/login`;
-
-  const res = fetch(endpoint, {
-    method: "GET",
-    headers: {
-      "credentials": 'include',
-      "Content-Type": "application/json"
-    }
-  });
-
-  return res;
-}
 
 export function userSignUp(user) {
   const endpoint = `/users/signup`;

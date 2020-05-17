@@ -1,6 +1,6 @@
 import React from "react";
 import SignInForm from "../components/SignInForm"
-import { isAuthenticated, userLogInPage} from "../userAPI";
+import { isAuthenticated} from "../userAPI";
 
 export default function SignInPage() {
 
