@@ -4,6 +4,10 @@ const usersController = require('../controllers/usersController.js');
 const checkAuth = require('../middleware/checkAuth');
 
 
+usersRouter.get('/', function(req, res, next) {
+    res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+});
+
 // Route for sign up
 usersRouter.route('/signup')
     .post(usersController.userSignUp)
