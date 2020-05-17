@@ -12,7 +12,7 @@ import "./styles.css";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="App">
         <Nav />
     
@@ -34,7 +34,7 @@ export default function App() {
         </Switch>
         
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
