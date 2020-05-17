@@ -18,7 +18,6 @@ export default class SignUpForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-
   // check if the email entered by the user is valid
   validateEmail = (email_address) => {
     let err = this.state.errormessage;
@@ -37,7 +36,6 @@ export default class SignUpForm extends React.Component {
     }
     return true;
   }
-  
   // check if the username entered by the user is valid
   validateUserName = (username) => {
     let err = this.state.errormessage;
@@ -50,7 +48,6 @@ export default class SignUpForm extends React.Component {
     }
     return true;
   }
-
   // check if the password entered by the user is valid
   validatePassword = (password) => {
     let err = this.state.errormessage;
@@ -63,7 +60,6 @@ export default class SignUpForm extends React.Component {
     }
     return true;
   }
-
   // validate each field of the form
   validateForm = () => {
     const isValidEmail = this.validateEmail(this.state.email) 
@@ -71,7 +67,6 @@ export default class SignUpForm extends React.Component {
     const isValidUserName = this.validateUserName(this.state.username);
     return isValidEmail&&isValidPassword&&isValidUserName;
   }
-
 
   handleChange = (event) => {
     event.preventDefault(); 
@@ -90,7 +85,6 @@ export default class SignUpForm extends React.Component {
 
     this.setState({[nam]: val});
   }
-
   // validate the form before submitting
   onSubmit = (event) => {
     event.preventDefault();
@@ -100,7 +94,6 @@ export default class SignUpForm extends React.Component {
     }
 
     this.setState({loginmessage: "Loading..."});
-
     userSignUp ({
       userName: this.state.username,
       email: this.state.email,
@@ -108,10 +101,8 @@ export default class SignUpForm extends React.Component {
     }).then(res => {
       if (res.status === 201) {
         this.setState({signupmessage: "Account created!"});
-
       }else if(res.status === 409) {
         this.setState({signupmessage: "This email has been registered."});
-
       }
       else {
         const error = new Error(res.error);
@@ -122,6 +113,8 @@ export default class SignUpForm extends React.Component {
       console.error(err);
       alert('Error registering please try again');
     });
+    
+   
   }
 
 
@@ -131,20 +124,21 @@ export default class SignUpForm extends React.Component {
           <h2>Sign Up</h2>
           <p>{this.state.signupmessage}</p>
           <form>
-              <label htmlFor="username">Username</label>
-              <input type="username" id="username" name="username" onChange={this.handleChange}/>
-              <p>{this.state.errormessage.username}</p>
+            <label htmlFor="username">Username:</label><br/>
+            <input type="username" id="username" name="username" onChange={this.handleChange} placeholder={"Enter username here"} />
+            <p>{this.state.errormessage.username}</p>
 
-              <label htmlFor="email">Email</label>
-              <input type="email" id="email" name="email" onChange={this.handleChange}/>
-              <p>{this.state.errormessage.email}</p>
-               
-              <label htmlFor="password">Password</label>
-              <input type="password" id="password"  name="password" onChange={this.handleChange}/>
-              <p>{this.state.errormessage.password}</p>
-              
+            <label htmlFor="email">Email:</label><br/>
+            <input type="email" id="email" name="email" onChange={this.handleChange} placeholder={"Enter username here"} />
+            <p>{this.state.errormessage.email}</p>
+
+            <label htmlFor="password">Password:</label><br/>
+            <input type="password" id="password"  name="password" onChange={this.handleChange} placeholder={"Enter password here"}/>
+            <p>{this.state.errormessage.password}</p>
+
             <Button SubclassName={"btn-success"} onClick={this.onSubmit}>Submit</Button>
-
+            <h5>Already have an account?</h5>
+            <a href={'login'}> Sign In Here</a>
           </form>
         </div>
 
