@@ -10,9 +10,8 @@
     "start": "cd backend && node ./bin/www",
     "server": "cd frontend && node",
     "client": "cd frontend && npm start frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"npm start\" \"npm run client\"",
     "heroku-postbuild": "npm install && npm install --prefix backend && cd frontend && npm install && npm run build"
-
   },
   "repository": {
     "type": "git",
