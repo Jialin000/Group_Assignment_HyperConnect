@@ -182,9 +182,9 @@ class HyperMap extends Component {
           }}
         >
           {console.log(this.props)}
-          <Button className={"btn-success"} onClick={() => this.getLocation()}>
+          <button className={"btn-search"} onClick={() => this.getLocation()}>
             Search Around
-          </Button>
+          </button>
           {this.state.CurrentLocation && (
             <Marker
               position={this.state.CurrentLocation}
@@ -218,11 +218,15 @@ class HyperMap extends Component {
           {/* search bar */}
           <Autocomplete
             style={{
-              width: "100%",
+              width: "330px",
               height: "40px",
               paddingLeft: "16px",
               marginTop: "2px",
               marginBottom: "500px",
+              position:"absolute",
+              left: "1%",
+              top: "7%",
+              border: "2px solid #000000",
             }}
             onPlaceSelected={this.onPlaceSelected}
             types={["address"]}
@@ -233,11 +237,11 @@ class HyperMap extends Component {
     );
     let map;
     map = (
-      <div>
+      <div className="map">
         <AsyncMap
           googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyCE_by6BiXR1XCws5YiduStyJfvzPrXfuc&libraries=places`}
           loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: "300px" }} />}
+          containerElement={<div style={{ height: "100%" }} />}
           mapElement={<div style={{ height: `100%` }} />}
         />
       </div>
