@@ -1,8 +1,5 @@
-//import Cookies from 'universal-cookie';
-
-
 // const BASE_URL = "https://hyper-connect.herokuapp.com";
-//const BASE_URL = "https://parking-bay.herokuapp.com";
+// const BASE_URL = "https://parking-bay.herokuapp.com";
 // const BASE_URL = "http://localhost:8080";
 
 export default function userLogIn(user) {
@@ -53,13 +50,17 @@ export function userLogOut() {
   }).then(res => {
     if (res.status === 200) {
       alert("logout!");
+      window.location.replace("/users/login");
+
     }else {
       alert("Error");
     }
   })
 }
 
-/*export function getToken() {
-  const res = Cookies.get("Authorization");
-  alert(res);
-}*/
+
+// get the cookie from the browser
+export function isAuthenticated(name) {
+  const cookie = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+  return true ? cookie&&cookie[2] : false;
+}
