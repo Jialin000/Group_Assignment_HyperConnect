@@ -208,6 +208,10 @@ class HyperMap extends Component {
                 <p>st_marker_id: {this.state.selectedPark.st_marker_id}</p>
                 <p>latitude: {this.state.selectedPark.lat}</p>
                 <p>latitude: {this.state.selectedPark.lon}</p>
+                <p>
+                  Restriction Information: {this.state.selectedPark.Description}
+                </p>
+                )
               </div>
             </InfoWindow>
           )}
@@ -223,7 +227,7 @@ class HyperMap extends Component {
               paddingLeft: "16px",
               marginTop: "2px",
               marginBottom: "500px",
-              position:"absolute",
+              position: "absolute",
               left: "1%",
               top: "7%",
               border: "2px solid #000000",
