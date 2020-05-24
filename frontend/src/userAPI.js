@@ -71,6 +71,7 @@ export function getUserProfile() {
     }
   });
 
+  console.log(res.status);
   return res;
 }
 
@@ -91,7 +92,7 @@ export function updateUserProfile(user) {
       email,
     })
   });
-  return res;
+  return res.json();
 }
 
 export function useUserProfile() {

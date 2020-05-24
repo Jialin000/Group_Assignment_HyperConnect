@@ -200,6 +200,7 @@ const getUserById = (req, res, next) => {
     User.findOne({_id: req.userData.userId})
         .exec()
         .then(user => {
+
             if (!user) {
                 return res.status(500).json({
                     message: 'User Not Found'
@@ -208,11 +209,11 @@ const getUserById = (req, res, next) => {
 
                 // user exists, returns the list of favorite parking bays
                 res.status(200);
-                res.send(json({
+                return res.send(JSON.stringify({
                     "userName": user.userName,
                     "email": user.email,
                     "favorites": user.favorites
-                }))
+                }));
             }
         })
         .catch(err => {

@@ -12,14 +12,10 @@ export default function UserPage() {
     return <p>Something went wrong: {error.message}</p>;
   }
 
-  // use this to make sure you are getting the right data
-  console.log(user);
-
   // Display a list of the authors
     return (
         <div>      
             <h1>User Profile</h1>
-            
             <UserProfile {...user}/>      
         </div>
     );
