@@ -207,11 +207,12 @@ const getUserById = (req, res, next) => {
             } else {
 
                 // user exists, returns the list of favorite parking bays
-                res.status(200).json({
+                res.status(200);
+                res.send(json({
                     userName: user.userName,
                     email: user.email,
                     favorites: user.favorites
-                })
+                }))
             }
         })
         .catch(err => {
