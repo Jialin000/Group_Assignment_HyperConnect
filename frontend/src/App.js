@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import SearchPage from "./pages/SearchPage";
+import UserPage from "./pages/UserPage";
 
 import "./styles.css";
 
@@ -30,6 +31,9 @@ export default function App() {
           </Route>
           <Route path="/parkingBays">
             <SearchPage />
+          </Route>
+          <Route path="/users/profile">
+            <UserPage />
           </Route>
         </Switch>
         

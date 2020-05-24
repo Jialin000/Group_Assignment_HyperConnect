@@ -9,6 +9,7 @@ export default function Nav() {
       <NavLink to="/parkingBays">Find Parking Bays</NavLink>
       <NavLink to="/users/login">LOGIN</NavLink>
       <NavLink to="/users/signup">SIGN UP</NavLink>
+      <NavLink to="/users/profile">PROFILE</NavLink>
       
     </nav>
   );

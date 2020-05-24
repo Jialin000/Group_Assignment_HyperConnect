@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 // const BASE_URL = "https://hyper-connect.herokuapp.com";
 // const BASE_URL = "https://parking-bay.herokuapp.com";
 // const BASE_URL = "http://localhost:8080";
@@ -57,6 +59,67 @@ export function userLogOut() {
     }
   })
 }
+
+
+export function getUserProfile() {
+  const endpoint = `/users/profile`;
+
+  const res = fetch(endpoint, {
+    method: "GET",
+    headers: {
+      "credentials": 'include',
+      "Content-Type": "application/json"
+    }
+  });
+
+  return res;
+}
+
+
+
+export function updateUserProfile(user) {
+  const endpoint = `/users/profile`;
+  const { userName, email} = user;
+
+  const res = fetch(endpoint, {
+    method: "POST",
+    headers: {
+      "credentials": 'include',
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      userName,
+      email,
+    })
+  });
+  return res;
+}
+
+export function useUserProfile() {
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    getUserProfile()
+      .then(user => {
+        setUser(user);
+        setLoading(false);
+      })
+      .catch(e => {
+        console.log(e);
+        setError(e);
+        setLoading(false);
+      });
+  }, []);
+
+  return {
+    loading,
+    user,
+    error
+  };
+}
+
 
 // get the cookie from the browser
 export function isAuthenticated(name) {
