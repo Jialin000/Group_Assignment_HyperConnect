@@ -33,16 +33,15 @@ input {
   /*background-repeat: no-repeat;*/
 }
 
-/*.logo {*/
-/*  border-radius: 30%;*/
-/*  height: 200px;*/
-/*  width: 450px;*/
-/*  margin: 0 auto;*/
-/*  top: 10%;*/
-/*  background-image: url("/logo.png");*/
-/*  background-size: contain;*/
-/*  background-repeat: no-repeat;*/
-/*}*/
+.logo {
+  border-radius: 50%;
+  height: 90px;
+  width: 150px;
+  margin: 0 auto;
+  background-image: url("/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 
 .homepage_container h1 {
   color: #000000;
@@ -124,6 +123,7 @@ input {
   left: 0;
   right: 0;
   bottom: 0;
+  /*background-color: black;*/
 }
 
 .homepage_right_login input {
@@ -229,9 +229,40 @@ input {
 .login_box Button {
   background-color: #2da2db;
 }
-/*.login_box a{*/
-/* color: deepskyblue;*/
-/*}*/
+.userprofile_box {
+  width: 350px;
+  height: 550px;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.42);
+  border-top: 0;
+  background: rgb(186, 186, 186);
+  position: absolute;
+  padding: 10px 10px;
+  top: 15%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.userprofile {
+  width: 350px;
+  height: 150px;
+  border-radius: 20px;
+  background-color: white;
+  margin: 2px 1px;
+}
+.userprofile_favourite {
+  width: 350px;
+  height: 380px;
+  border-radius: 20px;
+  background-color: white;
+  margin: 3px 1px;
+}
+.Fav {
+  text-align: left;
+  padding: 1px 15px;
+}
 .searchbar {
   width : 30%;
   height: 40px;
