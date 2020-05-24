@@ -67,8 +67,7 @@ export function getUserProfile() {
   const res = fetch(endpoint, {
     method: "GET",
     headers: {
-      "credentials": 'include',
-      "Content-Type": "application/json"
+      "credentials": 'include'
     }
   });
 

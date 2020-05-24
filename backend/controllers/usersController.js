@@ -209,9 +209,9 @@ const getUserById = (req, res, next) => {
                 // user exists, returns the list of favorite parking bays
                 res.status(200);
                 res.send(json({
-                    userName: user.userName,
-                    email: user.email,
-                    favorites: user.favorites
+                    "userName": user.userName,
+                    "email": user.email,
+                    "favorites": user.favorites
                 }))
             }
         })
