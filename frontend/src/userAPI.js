@@ -19,6 +19,7 @@ export default function userLogIn(user) {
       password
     })
   });
+  console.log(res);
   return res;
 }
 
@@ -71,7 +72,7 @@ export function getUserProfile() {
     }
   });
 
-  console.log(res.status);
+  console.log(res);
   return res;
 }
 
