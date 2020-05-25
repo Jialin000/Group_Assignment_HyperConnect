@@ -25,14 +25,13 @@ usersRouter.route('/favorites')
 
     // Use middleware to verify token before proceeding the request
     .all(checkAuth)
+    .post(usersController.addFavorites)
     .get(usersController.getFavorites);
 
 usersRouter.route('/favorites/:id')
 
     // Use middleware to verify token before proceeding the request
     .all(checkAuth)
-    .post(usersController.addFavorites)
-    .put(usersController.updateFavoriteById)
     .delete(usersController.deleteFavoriteById);
 
 

@@ -152,7 +152,7 @@ const addFavorites = (req, res, next) => {
             } else {
 
                 // If successfully find user and updated it, return the updated list of favorites
-                res.status(200).json({
+                res.status(201).json({
                     "message": 'Parking bay added to favorites',
                     "favorites": user.favorites
                 })
@@ -174,7 +174,7 @@ const deleteFavoriteById = (req, res, next) => {
     // Use user information extracted from jwt by middleware to update favorites
     User.findOneAndUpdate(
         {_id: req.userData.userId},
-        {$pull: {favorites: {tag: req.body.tag, lat: req.body.lat, lng: req.body.lng}}},
+        {$pull: {favorites: {_id: req.params.id}}},
         {returnOriginal: false}
     )
         .exec()
@@ -264,7 +264,6 @@ module.exports = {
     userLogOut,
     deleteUserById,
     addFavorites,
-    updateFavoriteById,
     deleteFavoriteById,
     getFavorites
 }
