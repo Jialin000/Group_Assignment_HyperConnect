@@ -119,6 +119,8 @@ class HyperMap extends Component {
    * change the selectedbay to the one that have been chosen
    */
   setSelectedPark = (bay) => {
+    // this.state.selectedPark = bay;
+    // console.log(this.state.selectedPark)
     this.setState({ selectedPark: bay });
   };
 

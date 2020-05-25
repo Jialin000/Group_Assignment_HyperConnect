@@ -14,6 +14,7 @@ const updateDatabase = (req, res, next) => {
     "https://data.melbourne.vic.gov.au/resource/vh2v-4nfs.json?%24limit=5000&%24%24app_token=AdyvI0gKUddcE1r6gTOaarTiX";
   let settings = { method: "Get" };
   let bays = [];
+
   fetch(url, settings)
     .then((res) => res.json())
     .then((json) => {
