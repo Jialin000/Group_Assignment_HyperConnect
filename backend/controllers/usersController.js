@@ -138,7 +138,7 @@ const addFavorites = (req, res, next) => {
     // Use user information extracted from jwt by middleware to update favorites
     User.findOneAndUpdate(
         {_id: req.userData.userId},
-        {$push: {favorites: {tag: req.body.tag, parkingBayId: req.params.id}}},
+        {$push: {favorites: {tag: req.body.tag, lat: req.body.lat, lng: req.body.lng}}},
         {returnOriginal: false}
         )
         .exec()
@@ -167,18 +167,39 @@ const addFavorites = (req, res, next) => {
 }
 
 
-// Update favorite parking bay by id
-const updateFavoriteById = (req, res, next) => {
-
-
-}
-
-
 
 
 // delete favorites
 const deleteFavoriteById = (req, res, next) => {
+    // Use user information extracted from jwt by middleware to update favorites
+    User.findOneAndUpdate(
+        {_id: req.userData.userId},
+        {$pull: {favorites: {tag: req.body.tag, lat: req.body.lat, lng: req.body.lng}}},
+        {returnOriginal: false}
+    )
+        .exec()
+        .then(user => {
 
+            // If could not find user in database
+            if (!user) {
+                return res.status(500).json({
+                    message: 'User Not Found'
+                });
+            } else {
+
+                // If successfully find user and updated it, return the updated list of favorites
+                res.status(200).json({
+                    "message": 'Favorite location deleted',
+                    "favorites": user.favorites
+                })
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(400).json({
+                error: "Invalid Request"
+            });
+        });
 }
 
 
