@@ -13,7 +13,8 @@ const userSchema = mongoose.Schema({
     favorites: {
         type: [{
             tag: String,
-            parkingBayId: mongoose.Schema.Types.ObjectId
+            lat: Number,
+            lng: Number
         }],
         default: []
     }

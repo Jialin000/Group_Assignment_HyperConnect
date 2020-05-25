@@ -166,6 +166,28 @@ const addFavorites = (req, res, next) => {
         });
 }
 
+
+// Update favorite parking bay by id
+const updateFavoriteById = (req, res, next) => {
+
+
+}
+
+
+
+
+// delete favorites
+const deleteFavoriteById = (req, res, next) => {
+
+}
+
+
+
+
+
+
+
+
 // Function to get the list of favorite parking bays of a user
 const getFavorites = (req, res, next) => {
 
@@ -196,6 +218,7 @@ const getFavorites = (req, res, next) => {
 
 
 
+
 // Function to allow deletion of user, for DEVELOPMENT purpose
 const deleteUserById = (req, res, next) => {
     User.remove({_id: req.params.userId})
@@ -220,6 +243,8 @@ module.exports = {
     userLogOut,
     deleteUserById,
     addFavorites,
+    updateFavoriteById,
+    deleteFavoriteById,
     getFavorites
 }
 

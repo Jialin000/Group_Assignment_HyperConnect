@@ -11,7 +11,7 @@ mongoose.connect(MONGO_URL || "mongodb://localhost/info30005", {
     useCreateIndex: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
-    dbName: "rest-api-db",
+    dbName: "xingyu-testing-api",
 });
 
 const db = mongoose.connection;
