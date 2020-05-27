@@ -138,7 +138,7 @@ export default class SignUpForm extends React.Component {
 
             <Button SubclassName={"btn-success"} onClick={this.onSubmit}>Submit</Button>
             <h5>Already have an account?</h5>
-            <a href={'login'}> Sign In Here</a>
+            <a href={'/#/user/login'}> Sign In Here</a>
           </form>
         </div>
 
