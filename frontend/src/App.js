@@ -24,10 +24,10 @@ export default function App() {
           <Route exact path="/">
             <HomePage />
           </Route>
-          <Route path="/users/loginpage">
+          <Route path="/users/login">
             <SignInPage />
           </Route>
-          <Route path="/users/signuppage">
+          <Route path="/users/signup">
             <SignUpPage />
           </Route>
           <Route path="/parkingBays">
