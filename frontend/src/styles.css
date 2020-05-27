@@ -173,16 +173,6 @@ input {
   position: absolute;
   top: 41px;
   bottom: 0;
-
-  /*background-image: url('/login_bg.jpg');*/
-  /*background-size: 40%;*/
-  /*background-repeat:repeat;*/
-
-  /* 40% 30%*/
-
-  /*background-image: url('/login_bg1.jpg');*/
-  /*background-size: cover;*/
-  /*background-repeat: no-repeat;*/
 }
 
 .login_box {
@@ -226,43 +216,15 @@ input {
 .login_box p {
   color: #ff0000;
 }
-.login_box Button {
-  background-color: #2da2db;
-}
-.userprofile_box {
-  width: 350px;
-  height: 550px;
-  margin: 0 auto;
-  text-align: center;
-  border-radius: 20px;
-  border: 2px solid rgba(0, 0, 0, 0.42);
-  border-top: 0;
-  background: rgb(186, 186, 186);
-  position: absolute;
-  padding: 10px 10px;
-  top: 15%;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
+
 .userprofile {
   width: 350px;
-  height: 150px;
+  height: 510px;
   border-radius: 20px;
-  background-color: white;
-  margin: 2px 1px;
+  background-color: #ffffff;
+  margin: -10px -20px;
 }
-.userprofile_favourite {
-  width: 350px;
-  height: 380px;
-  border-radius: 20px;
-  background-color: white;
-  margin: 3px 1px;
-}
-.Fav {
-  text-align: left;
-  padding: 1px 15px;
-}
+
 .searchbar {
   width : 30%;
   height: 40px;
@@ -300,6 +262,10 @@ input {
     bottom: 10%;
     left: 22%;
   }
+}
+.info {
+  word-break: break-word;
+  width: 200px;
 }
 .btn-search:hover {
   background-color: #050505;
