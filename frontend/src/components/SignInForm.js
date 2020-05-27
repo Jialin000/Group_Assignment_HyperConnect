@@ -126,7 +126,7 @@ export default class SignInForm extends React.Component{
 
           <div>
             <h5>Don't have an account?</h5>
-            <a href={'/users/signup'}> Sign Up Here</a>
+            <a href={'/#/users/signup'}> Sign Up Here</a>
           </div>
         </div>
 
