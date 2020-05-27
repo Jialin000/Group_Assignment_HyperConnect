@@ -256,7 +256,7 @@ const getUserById = (req, res, next) => {
                     "userName": user.userName,
                     "email": user.email,
                     "favorites": user.favorites
-                }));
+                }))
             }
         })
         .catch(err => {
