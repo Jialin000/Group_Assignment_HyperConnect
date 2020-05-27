@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 // const BASE_URL = "https://hyper-connect.herokuapp.com";
 // const BASE_URL = "https://parking-bay.herokuapp.com";
 // const BASE_URL = "http://localhost:8080";
@@ -17,6 +19,7 @@ export default function userLogIn(user) {
       password
     })
   });
+  console.log(res);
   return res;
 }
 
@@ -56,6 +59,86 @@ export function userLogOut() {
       alert("Error");
     }
   })
+}
+
+
+
+export function deleteLocation(objectID) {
+  const endpoint = `/users/favorites/${objectID}`;
+
+  fetch(endpoint,{
+    credentials: 'include',
+    method: "DELET",
+  }).then(res => {
+    if (res.status === 200) {    
+    }else {
+      alert("Error");
+    }
+  })
+}
+
+// get user's information
+export function getUserProfile() {
+  const endpoint = `/users/profile`;
+
+  return fetch(endpoint,{
+    method: "GET",
+    headers: {
+      "credentials": 'include',
+      "Accept": 'application/json'
+    }
+  })
+  .then((res) => {
+    console.log(res);
+    if (res.status == 401){
+      window.location.replace("/#/users/login");
+    } 
+    return res.json();
+  });
+}
+
+
+export function updateUserProfile(user) {
+  const endpoint = `/users/profile`;
+  const { userName, email} = user;
+
+  return fetch(endpoint, {
+    method: "POST",
+    headers: {
+      "credentials": 'include',
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      userName,
+      email,
+    })
+  })
+}
+
+
+export function useUserProfile() {
+  const [loading, setLoading] = useState(true);
+  const [res, setResponse] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    getUserProfile()
+      .then(res => {
+        setResponse(res);
+        setLoading(false);
+      })
+      .catch(e => {
+        console.log(e);
+        setError(e);
+        setLoading(false);
+      });
+  }, []);
+
+  return {
+    loading,
+    res,
+    error
+  };
 }
 
 

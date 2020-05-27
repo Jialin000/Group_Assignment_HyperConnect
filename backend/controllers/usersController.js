@@ -237,6 +237,66 @@ const getFavorites = (req, res, next) => {
         });
 }
 
+// Function to allow users to access their profile
+const getUserById = (req, res, next) => {
+    // Use user information extracted from jwt by middleware to update user infomation
+    User.findOne({_id: req.userData.userId})
+        .exec()
+        .then(user => {
+
+            if (!user) {
+                return res.status(500).json({
+                    message: 'User Not Found'
+                });
+            } else {
+
+                // user exists, returns the list of favorite parking bays
+                res.status(200)
+                res.send(JSON.stringify({
+                    "userName": user.userName,
+                    "email": user.email,
+                    "favorites": user.favorites
+                }));
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
+        });
+}
+
+const updateUser = (req, res) => {
+     // Use user information extracted from jwt by middleware to update favorites
+    User.findOneAndUpdate(
+        {_id: req.userData.userId},
+        {$set: {userName: req.body.userName, email: req.body.email}},
+        {returnOriginal: false}
+        )
+        .exec()
+        .then(user => {
+
+            // If could not find user in database
+            if (!user) {
+                return res.status(500).json({
+                    message: 'User Not Found'
+                });
+            } else {
+
+                // If successfully find user and updated it, return the updated list of favorites
+                res.status(200).json({
+                    "message": 'Update successful!',
+                })
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(400).json({
+                error: "Invalid Request"
+            });
+        });
+}
 
 
 
@@ -244,7 +304,7 @@ const getFavorites = (req, res, next) => {
 const deleteUserById = (req, res, next) => {
     User.remove({_id: req.params.userId})
         .exec()
-        .then(result => {
+        .then(res => {
             res.status(200).json({
                 message: 'User deleted'
             });
@@ -266,6 +326,8 @@ module.exports = {
     addFavorites,
     deleteFavoriteById,
     getFavorites
+    getUserById,
+    updateUser
 }
 
 

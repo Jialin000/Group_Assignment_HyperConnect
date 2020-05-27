@@ -28,6 +28,20 @@ usersRouter.route('/favorites')
     .post(usersController.addFavorites)
     .get(usersController.getFavorites);
 
+// Protected route to get user information,
+usersRouter.route('/profile')
+
+    // Use middleware to verify token before proceeding the request
+    .all(checkAuth)
+    .get(usersController.getUserById);
+
+// Protected route to get user information,
+usersRouter.route('/profile')
+
+    // Use middleware to verify token before proceeding the request
+    .all(checkAuth)
+    .post(usersController.updateUser);
+
 usersRouter.route('/favorites/:id')
 
     // Use middleware to verify token before proceeding the request
