@@ -43,7 +43,7 @@ export default function FavoriteLoactions(props) {
 	function SearchButton(){
 		return(
 			<Button className={"btn"} onClick={() => searchLocation}>
-				Delete
+				Search
 			</Button>
 		);
 	}
