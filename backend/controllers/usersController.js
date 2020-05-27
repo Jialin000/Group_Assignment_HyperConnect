@@ -237,9 +237,9 @@ const getFavorites = (req, res, next) => {
         });
 }
 
-// Function to allow users to access their profile
+// Function to get user's profile and their saved location
 const getUserById = (req, res, next) => {
-    // Use user information extracted from jwt by middleware to update user infomation
+    // Use user information extracted from jwt by middleware to update favorites
     User.findOne({_id: req.userData.userId})
         .exec()
         .then(user => {
@@ -250,13 +250,12 @@ const getUserById = (req, res, next) => {
                 });
             } else {
 
-                // user exists, returns the list of favorite parking bays
-                res.status(200)
-                res.send(JSON.stringify({
+                // user exists, returns the information of user
+                res.status(200).json({
                     "userName": user.userName,
                     "email": user.email,
                     "favorites": user.favorites
-                }))
+                })
             }
         })
         .catch(err => {
