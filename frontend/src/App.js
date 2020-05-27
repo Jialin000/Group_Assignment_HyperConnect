@@ -21,10 +21,10 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
         <Switch>
-          <Route exact path="/HyperParking/">
+          <Route exact path="/">
             <HomePage />
           </Route>
-          <Route path="/HyperParking/users/login">
+          <Route path="/users/login">
             <SignInPage />
           </Route>
           <Route path="/users/signup">
