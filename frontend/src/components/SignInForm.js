@@ -88,6 +88,7 @@ export default class SignInForm extends React.Component{
     }).then(res => {
       if (res.status === 200) {
         this.setState({loginmessage: "Login successful!"});
+        window.location.replace("/");
       }else if(res.status === 401) {
         this.setState({loginmessage: "Wrong password or email"});
       }

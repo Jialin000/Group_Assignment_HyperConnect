@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a95b3f5a-f803-4a33-b492-adeccd95e8d0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/HyperMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/HyperMap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/UserProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/UserProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/HomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/SignInPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/SignInPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/test/controller/user.controller.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/test/integration/test.integration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/SignInForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/SignInForm.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
