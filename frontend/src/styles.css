@@ -247,7 +247,7 @@ input {
   bottom: 50px;
 }
 .map {
-  height: 96%;
+  height: 98%;
   width: 100%;
   position: absolute;
   z-index: 0;
@@ -260,8 +260,16 @@ input {
   border: 3px solid #000000;
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
+  position: absolute;
+  left: 45%;
+  bottom: 2%;
 }
-
+@media screen and (max-width: 800px) {
+  .btn-search {
+    bottom: 10%;
+    left: 22%;
+  }
+}
 .btn-search:hover {
   background-color: #050505;
   color: #ffffff;

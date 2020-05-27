@@ -61,6 +61,8 @@ export function userLogOut() {
   })
 }
 
+
+
 export function deleteLocation(objectID) {
   const endpoint = `/users/favorites/${objectID}`;
 

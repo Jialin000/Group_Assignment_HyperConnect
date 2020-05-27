@@ -33,9 +33,9 @@ export default function SearchPage() {
   return (
     <div className="map">
       <HyperMap bays={bays} />
-      <div className="searchbar">
-        <ParkingBays bays={bays} />
-      </div>
+      {/*<div className="searchbar">*/}
+      {/*  <ParkingBays bays={bays} />*/}
+      {/*</div>*/}
     </div>
   );
 }

@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e607ecc-73db-4147-ad83-77896b491fa9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ParkingBays.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ParkingBays.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SignInForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SignInForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SignUpForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SignUpForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/HomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/SearchPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SearchPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parkingBaysAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/parkingBaysAPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/userAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/userAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/usersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/usersController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/usersRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/usersRouter.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +24,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
@@ -46,6 +42,7 @@
       <option name="presentableId" value="Default" />
       <updated>1589601193368</updated>
       <workItem from="1589601212537" duration="219000" />
+      <workItem from="1590391507069" duration="8113000" />
     </task>
     <servers />
   </component>
@@ -54,5 +51,11 @@
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="3623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1590392979320">
+      <screen x="3000" y="0" width="1920" height="1040" />
+    </state>
+    <state x="3623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1500.960/3000.0.1920.1040@3000.0.1920.1040" timestamp="1590392979320" />
   </component>
 </project>

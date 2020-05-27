@@ -4,6 +4,7 @@ const usersController = require('../controllers/usersController.js');
 const checkAuth = require('../middleware/checkAuth');
 
 
+
 // Route for sign up
 usersRouter.route('/signup')
     .post(usersController.userSignUp)
@@ -24,6 +25,7 @@ usersRouter.route('/favorites')
 
     // Use middleware to verify token before proceeding the request
     .all(checkAuth)
+    .post(usersController.addFavorites)
     .get(usersController.getFavorites);
 
 // Protected route to get user information,
@@ -44,7 +46,7 @@ usersRouter.route('/favorites/:id')
 
     // Use middleware to verify token before proceeding the request
     .all(checkAuth)
-    .post(usersController.addFavorites);
+    .delete(usersController.deleteFavoriteById);
 
 
 
