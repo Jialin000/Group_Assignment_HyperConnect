@@ -3,7 +3,7 @@ import React from "react";
 import SignInForm from "../components/SignInForm";
 import Button from "../components/Button";
 import "../styles.css";
-import {isAuthenticated} from "../userAPI";
+import {isAuthenticated, userLogOut} from "../userAPI";
 import UserProfile from "../components/UserProfile";
 
 export default function HomePage() {
@@ -93,6 +93,7 @@ export default function HomePage() {
         <div className="homepage_right">
           <div className="homepage_right_login">
             <SignInForm />
+            <Button SubclassName={"btn-success"} onClick={userLogOut}>logout</Button>
           </div>
         </div>
       </div>
