@@ -50,12 +50,12 @@ export default function FavoriteLoactions(props) {
 
 	
 	function Location(props) {
-		const {id, tag, location} = props;
+		const {tag, lat, lng} = props;
 		return (
 			<div className="location">
-				<p>{id}</p>
 				<p>{tag}</p>
-				<p>{location}</p>
+				<p>{lat}</p>
+				<p>{lng}</p>
 				{showUpdate ? <DeleteButton/>: <SearchButton/>}
 			</div>
 		);
@@ -73,7 +73,7 @@ export default function FavoriteLoactions(props) {
 
     return (
       <div className="favorite_loactions"> 
-			<FavoriteLoactionsList/>}   
+			<FavoriteLoactionsList/> 
 			<Button className={"btn"} onClick={() => setShowUpdate(!showUpdate)}>
 				{showUpdate ? "OK" : "Edit favorite locations"}
 			</Button>          
