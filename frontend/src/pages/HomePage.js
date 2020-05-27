@@ -49,6 +49,7 @@ export default function HomePage() {
             <div className="homepage_right_login">
               <div className="homepage_right_userprofile">
               <UserProfile />
+              <Button SubclassName={"btn-success"} onClick={userLogOut}>logout</Button>
               </div>
             </div>
           </div>
