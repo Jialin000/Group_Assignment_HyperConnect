@@ -89,7 +89,7 @@ export function getUserProfile() {
   .then((res) => {
     console.log(res);
     if (res.status == 401){
-      window.location.replace("/users/login");
+      window.location.replace("/#/users/login");
     } 
     return res.json();
   });
