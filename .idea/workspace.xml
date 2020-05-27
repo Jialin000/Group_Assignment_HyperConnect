@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a95b3f5a-f803-4a33-b492-adeccd95e8d0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/HyperMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/HyperMap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/UserProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/UserProfile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/HomePage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/SignInPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/SignInPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles.css" afterDir="false" />
@@ -25,7 +27,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
@@ -34,12 +39,13 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5e607ecc-73db-4147-ad83-77896b491fa9" name="Default Changelist" comment="" />
+      <changelist id="a95b3f5a-f803-4a33-b492-adeccd95e8d0" name="Default Changelist" comment="" />
       <created>1589601193368</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1589601193368</updated>
       <workItem from="1589601212537" duration="219000" />
+      <workItem from="1590392663882" duration="11548000" />
     </task>
     <servers />
   </component>

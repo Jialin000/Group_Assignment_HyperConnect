@@ -9,7 +9,12 @@ import "../styles.css"
 export default function SignInPage() {
     if (isAuthenticated('Authorization')){
         return (
-            <UserProfile />
+            <div className="login_bg">
+                <div className="login_box">
+                    <UserProfile />
+                </div>
+            </div>
+
         );
     } else{
         return (
