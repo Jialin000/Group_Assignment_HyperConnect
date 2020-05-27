@@ -208,8 +208,8 @@ const getUserById = (req, res, next) => {
             } else {
 
                 // user exists, returns the list of favorite parking bays
-                res.status(200);
-                return res.send(JSON.stringify({
+                res.status(200)
+                res.send(JSON.stringify({
                     "userName": user.userName,
                     "email": user.email,
                     "favorites": user.favorites
@@ -228,7 +228,7 @@ const updateUser = (req, res) => {
      // Use user information extracted from jwt by middleware to update favorites
     User.findOneAndUpdate(
         {_id: req.userData.userId},
-        {$push: {userName: req.body.userName, email: req.body.email}},
+        {$set: {userName: req.body.userName, email: req.body.email}},
         {returnOriginal: false}
         )
         .exec()

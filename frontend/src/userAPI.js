@@ -61,28 +61,46 @@ export function userLogOut() {
   })
 }
 
+export function deleteLocation(objectID) {
+  const endpoint = `/users/favorites/${objectID}`;
 
+  fetch(endpoint,{
+    credentials: 'include',
+    method: "DELET",
+  }).then(res => {
+    if (res.status === 200) {    
+    }else {
+      alert("Error");
+    }
+  })
+}
+
+// get user's information
 export function getUserProfile() {
   const endpoint = `/users/profile`;
 
-  const res = fetch(endpoint, {
+  return fetch(endpoint,{
     method: "GET",
     headers: {
-      "credentials": 'include'
+      "credentials": 'include',
+      "Accept": 'application/json'
     }
+  })
+  .then((res) => {
+    console.log(res);
+    if (res.status == 401){
+      window.location.replace("/users/login");
+    } 
+    return res.json();
   });
-
-  console.log(res);
-  return res;
 }
-
 
 
 export function updateUserProfile(user) {
   const endpoint = `/users/profile`;
   const { userName, email} = user;
 
-  const res = fetch(endpoint, {
+  return fetch(endpoint, {
     method: "POST",
     headers: {
       "credentials": 'include',
@@ -92,19 +110,19 @@ export function updateUserProfile(user) {
       userName,
       email,
     })
-  });
-  return res.json();
+  })
 }
+
 
 export function useUserProfile() {
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState([]);
+  const [res, setResponse] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     getUserProfile()
-      .then(user => {
-        setUser(user);
+      .then(res => {
+        setResponse(res);
         setLoading(false);
       })
       .catch(e => {
@@ -116,7 +134,7 @@ export function useUserProfile() {
 
   return {
     loading,
-    user,
+    res,
     error
   };
 }

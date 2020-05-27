@@ -2,7 +2,6 @@ import React from "react";
 import SignInForm from "../components/SignInForm"
 
 import { isAuthenticated } from "../userAPI";
-import Button from "../components/Button";
 import "../styles.css"
 
 export default function SignInPage() {

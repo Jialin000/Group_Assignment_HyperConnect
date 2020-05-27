@@ -8,6 +8,7 @@ import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import SearchPage from "./pages/SearchPage";
 import UserPage from "./pages/UserPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 import "./styles.css";
 
@@ -20,10 +21,10 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/HyperParking/">
             <HomePage />
           </Route>
-          <Route path="/users/login">
+          <Route path="/HyperParking/users/login">
             <SignInPage />
           </Route>
           <Route path="/users/signup">
@@ -34,6 +35,9 @@ export default function App() {
           </Route>
           <Route path="/users/profile">
             <UserPage />
+          </Route>
+          <Route>
+            <NotFoundPage />
           </Route>
         </Switch>
         
