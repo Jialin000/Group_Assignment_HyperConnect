@@ -203,12 +203,6 @@ const deleteFavoriteById = (req, res, next) => {
 }
 
 
-
-
-
-
-
-
 // Function to get the list of favorite parking bays of a user
 const getFavorites = (req, res, next) => {
 
@@ -239,6 +233,7 @@ const getFavorites = (req, res, next) => {
 
 // Function to get user's profile and their saved location
 const getUserById = (req, res, next) => {
+
     // Use user information extracted from jwt by middleware to update favorites
     User.findOne({_id: req.userData.userId})
         .exec()
@@ -266,6 +261,8 @@ const getUserById = (req, res, next) => {
         });
 }
 
+
+// Function to update the user's profile
 const updateUser = (req, res) => {
      // Use user information extracted from jwt by middleware to update favorites
     User.findOneAndUpdate(
@@ -324,7 +321,7 @@ module.exports = {
     deleteUserById,
     addFavorites,
     deleteFavoriteById,
-    getFavorites
+    getFavorites,
     getUserById,
     updateUser
 }
