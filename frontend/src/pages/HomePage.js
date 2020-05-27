@@ -33,7 +33,7 @@ export default function HomePage() {
               Click the{" "}
               <Button
                 className={"btn-success"}
-                onClick={(event) => (window.location.href = "/parkingBays")}
+                onClick={(event) => (window.location.href += "/parkingBays")}
               >
                 Button
               </Button>{" "}
