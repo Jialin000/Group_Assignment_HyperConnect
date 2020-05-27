@@ -7,11 +7,13 @@ import { useState, useEffect } from "react";
 // end point to get all parking bays
 export function getBays() {
   const endpoint = `/parkingBays`;
+  fetch(`/update`);
   return fetch(endpoint).then((res) => {
     console.log(res);
     return res.json();
   });
 }
+
 
 // export function findBays(location) {
 //   /*
@@ -25,23 +27,22 @@ export function useParkingBays() {
   const [loading, setLoading] = useState(true);
   const [bays, setBays] = useState([]);
   const [error, setError] = useState(null);
-
-  useEffect(() => {
-    getBays()
-      .then((bays) => {
-        setBays(bays);
-        setLoading(false);
-      })
-      .catch((e) => {
-        console.log(e);
-        setError(e);
-        setLoading(false);
-      });
-  }, []);
-
-  return {
-    loading,
-    bays,
-    error,
-  };
+  setInterval(function(){
+      useEffect(() => {
+        getBays()
+        .then((bays) => {
+          setBays(bays);
+          setLoading(false);
+        })
+        .catch((e) => {
+          console.log(e);
+          setError(e);
+          setLoading(false);
+        });
+      return {
+          loading,
+          bays,
+          error,
+      };
+  }, []);},120000);
 }

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import ParkingBays from "../components/ParkingBays";
 import HyperMap from "../components/HyperMap";
-import { useParkingBays } from "../parkingBaysAPI";
+import { useParkingBays} from "../parkingBaysAPI";
 
 export default function SearchPage() {
   // Fetch all the parking bays information upon loading
-  const { loading, bays, error } = useParkingBays();
+  let { loading, bays, error } = useParkingBays();
   if (loading) {
     return <p>Loading...</p>;
   }

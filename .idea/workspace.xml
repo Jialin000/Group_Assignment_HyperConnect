@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e607ecc-73db-4147-ad83-77896b491fa9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ParkingBays.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ParkingBays.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SignInForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SignInForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SignUpForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SignUpForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/HomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/SearchPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SearchPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parkingBaysAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/parkingBaysAPI.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/userAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/userAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/SearchPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/SearchPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/parkingBaysAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/parkingBaysAPI.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,9 +24,22 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RunManager">
+    <configuration name="parkingBaysAPI.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/frontend/src/parkingBaysAPI.js" working-dir="$PROJECT_DIR$/frontend/src">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.parkingBaysAPI.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -46,13 +52,38 @@
       <option name="presentableId" value="Default" />
       <updated>1589601193368</updated>
       <workItem from="1589601212537" duration="219000" />
+      <workItem from="1590300217149" duration="471000" />
+      <workItem from="1590300855849" duration="29131000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="oldMeFiltersMigrated" value="true" />
+  <component name="WindowStateProjectService">
+    <state x="2085" y="42" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1590300513031">
+      <screen x="1440" y="-113" width="1920" height="1007" />
+    </state>
+    <state x="2085" y="42" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1440.877/1440.-113.1920.1007@1440.-113.1920.1007" timestamp="1590300513031" />
+    <state width="1899" height="299" key="GridCell.Tab.0.bottom" timestamp="1590399167150">
+      <screen x="1440" y="-136" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="299" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.-136.1920.1080@1440.-136.1920.1080" timestamp="1590399167150" />
+    <state width="1419" height="194" key="GridCell.Tab.0.bottom/0.23.1440.877/1440.-113.1920.1007@1440.-113.1920.1007" timestamp="1590300688815" />
+    <state width="1899" height="299" key="GridCell.Tab.0.center" timestamp="1590399167148">
+      <screen x="1440" y="-136" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="299" key="GridCell.Tab.0.center/0.0.1440.900/1440.-136.1920.1080@1440.-136.1920.1080" timestamp="1590399167148" />
+    <state width="1419" height="194" key="GridCell.Tab.0.center/0.23.1440.877/1440.-113.1920.1007@1440.-113.1920.1007" timestamp="1590300688814" />
+    <state width="1899" height="299" key="GridCell.Tab.0.left" timestamp="1590399167147">
+      <screen x="1440" y="-136" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="299" key="GridCell.Tab.0.left/0.0.1440.900/1440.-136.1920.1080@1440.-136.1920.1080" timestamp="1590399167147" />
+    <state width="1419" height="194" key="GridCell.Tab.0.left/0.23.1440.877/1440.-113.1920.1007@1440.-113.1920.1007" timestamp="1590300688813" />
+    <state width="1899" height="299" key="GridCell.Tab.0.right" timestamp="1590399167148">
+      <screen x="1440" y="-136" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="299" key="GridCell.Tab.0.right/0.0.1440.900/1440.-136.1920.1080@1440.-136.1920.1080" timestamp="1590399167148" />
+    <state width="1419" height="194" key="GridCell.Tab.0.right/0.23.1440.877/1440.-113.1920.1007@1440.-113.1920.1007" timestamp="1590300688814" />
   </component>
 </project>
