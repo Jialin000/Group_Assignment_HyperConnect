@@ -318,6 +318,7 @@ input {
   position: absolute;
   left: 45%;
   bottom: 2%;
+  color: black;
 }
 @media screen and (max-width: 800px) {
   .btn-search {
