@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import { usePosition } from "use-position";
 import Button from "../components/Button";
+import mapStyle from "../mapStyle";
 import {
   LoadScript,
   withGoogleMap,
@@ -182,6 +183,7 @@ class HyperMap extends Component {
             lat: parseFloat(this.state.mapPosition.lat),
             lng: parseFloat(this.state.mapPosition.lng),
           }}
+          defaultOptions={{ styles: mapStyle }}
         >
           {console.log(this.props)}
           <button className={"btn-search"} onClick={() => this.getLocation()}>
@@ -217,6 +219,13 @@ class HyperMap extends Component {
               </div>
             </InfoWindow>
           )}
+          {this.state.address && (
+            <div>
+              <p>rencent searched place: </p>
+              <p>{this.state.address}</p>
+              <button>Add to favourite</button>
+            </div>
+          )}
 
           {/* Parkingbays' locations */}
           {this.props.bays.map((bay) => this.handleRenderBays(bay))}
@@ -247,7 +256,7 @@ class HyperMap extends Component {
         <AsyncMap
           googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyCE_by6BiXR1XCws5YiduStyJfvzPrXfuc&libraries=places`}
           loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: "100%" }} />}
+          containerElement={<div style={{ height: "300px" }} />}
           mapElement={<div style={{ height: `100%` }} />}
         />
       </div>
