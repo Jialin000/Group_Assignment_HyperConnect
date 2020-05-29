@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, HashRouter} from "react-router-dom";
 
-import Nav from "./components/Nav";
+import NavBar from "./components/Navbar";
 
 import HomePage from "./pages/HomePage";
 import SignInPage from "./pages/SignInPage";
@@ -9,12 +9,13 @@ import SignUpPage from "./pages/SignUpPage";
 import SearchPage from "./pages/SearchPage";
 
 import "./styles.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function App() {
   return (
     <HashRouter>
       <div className="App">
-        <Nav />
+        <NavBar />
     
         {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
