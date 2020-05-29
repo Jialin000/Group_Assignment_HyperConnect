@@ -1,6 +1,7 @@
 //require to the mongoose and load the pre-defined model
 const mongoose = require("mongoose");
 const fetch = require("node-fetch");
+const Bays = require("../models/parkingBays.js");
 
 // functions to handle different requests for bays related resources
 const receiveRequest = (req, res, next) => {
@@ -8,12 +9,18 @@ const receiveRequest = (req, res, next) => {
   next();
 };
 
-const updateDatabase = (req, res, next) => {
+const updateDatabase = async (req, res, next) => {
   const db = mongoose.connection;
   let url =
     "https://data.melbourne.vic.gov.au/resource/vh2v-4nfs.json?%24limit=5000&%24%24app_token=AdyvI0gKUddcE1r6gTOaarTiX";
   let settings = { method: "Get" };
   let bays = [];
+  // const all_bays = await Bays.find();
+  // for (let i = 0; i < all_bays.length; i++) {
+  //   if (typeof all_bays[i]["Description"] === "undefined") {
+  //     db.collection("parkingBays").deleteOne({ _id: all_bays[i]["_id"] });
+  //   }
+  // }
   fetch(url, settings)
     .then((res) => res.json())
     .then((json) => {
