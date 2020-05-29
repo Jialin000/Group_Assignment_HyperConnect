@@ -6,7 +6,36 @@
 * {
   box-sizing: "border-box";
 }
+.searchbar {
+  position: absolute;
+  z-index: 1;
+  left: 40%;
+  bottom: 10%;
+}
+.map {
+  height: 98%;
+  width: 100%;
+  z-index: 0;
+  position: absolute;
+}
 
+
+.btn-search {
+  font-size: 30px;
+  border-radius: 30%;
+  box-shadow: #0c0707;
+  border: 3px solid #000000;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  position: absolute;
+  bottom: 8%;
+  left: 3%;
+}
+
+.btn-search:hover {
+  background-color: #050505;
+  color: #ffffff;
+}
 html,
 body {
   padding: 0;
