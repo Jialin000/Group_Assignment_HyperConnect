@@ -17,10 +17,6 @@ export default function FavoriteLoactions(props) {
 		alert("click");
 	}
 
-
-	
-
-
 	function SearchButton(){
 		return(
 			<Button className={"btn"} onClick={()=>searchLocation(this)}>
@@ -37,7 +33,7 @@ export default function FavoriteLoactions(props) {
 			if (res.status === 200) {
 			  alert ("deleted"); 
 			  setLocations(loaction_list.filter(location => location._id !== _id)); 
-			    
+
 			}else {
 			  alert("Error");
 			}})	
@@ -45,7 +41,7 @@ export default function FavoriteLoactions(props) {
 
 	// show a sigle location
 	function Location(props) {
-		const {_id, tag, lat, lng} = props;
+		const {_id, tag, address, lat, lng} = props;
 	
 		function DeleteButton(){
 			return(
@@ -57,11 +53,9 @@ export default function FavoriteLoactions(props) {
 
 		return (
 			<div className="location">
-				<p>{_id}</p>
 				<p>{tag}</p>
-				<p>{lat}</p>
-				<p>{lng}</p>
-				{showUpdate ? <DeleteButton/>: <SearchButton/>}
+				<p>{address}</p>
+				{showUpdate ? <DeleteButton/> : <SearchButton/>}
 			</div>
 		);
 	}
