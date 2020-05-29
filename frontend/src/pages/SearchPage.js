@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ParkingBays from "../components/ParkingBays";
 import HyperMap from "../components/HyperMap";
-import { useUserProfile,getUserProfile, isAuthenticated, useUserFavorites} from "../userAPI";
+import { useUserProfile, isAuthenticated, useUserFavorites} from "../userAPI";
 import { useParkingBays } from "../parkingBaysAPI";
 
 import Button from "../components/Button";
@@ -9,16 +9,6 @@ import Button from "../components/Button";
 export default function SearchPage() {
   
   const [centerPoint, setCenterPoint] = useState([]);
-
-  // Fetch all the parking bays information upon loading
-  const { bay_loading, bays, bay_error } = useParkingBays();
-  if (bay_loading) {
-    return <p>Loading...</p>;
-  }
-  if (bay_error){
-    return <p>Something went wrong: {bay_error.message}</p>;
-  }
-
   
   
   // show a sigle saved location
@@ -101,6 +91,22 @@ export default function SearchPage() {
     );
   };
 
+  
+  // a map showing the location of parking bays around the center point
+  function ParkingBaysMap(){
+    // Fetch all the parking bays information upon loading
+    const { loading, bays, error } = useParkingBays();
+    
+    if (loading) {
+      return <p>Loading...</p>;
+    }
+    if (error) {
+        return <p>Something went wrong</p>;
+    }
+    
+    return <HyperMap bays={bays} center={centerPoint}/>;
+  }
+
   // Render contents of page
   return (
     <div>
@@ -108,7 +114,7 @@ export default function SearchPage() {
         <FavoriteLocations/>
       </div>
       <div className="map">
-        {<HyperMap bays={bays} center={centerPoint}/>}
+        <ParkingBaysMap/>
       </div>
     </div>
   );
