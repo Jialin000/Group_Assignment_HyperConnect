@@ -54,27 +54,29 @@ export default function FavoriteLoactions(props) {
 			<div className="location">
 				<p>{tag}</p>
 				<p>{address}</p>
-				{showUpdate ? <DeleteButton/> : <SearchButton/>}
+				{showUpdate ? <DeleteButton/> : null}
 			</div>
 		);
 	}
 
 	// a list a saved locations
 	function FavoriteLoactionsList() {	
-		return(  
-		  	<div className="loaction_list">    
-				{loaction_list.map(location => (<Location key={location._id} {...location} />))} 
-		  	</div> 
+		return( 
+			<div>
+				<div className="loaction_list">    
+					{loaction_list.map(location => (<Location key={location._id} {...location} />))} 
+				</div>
+				<Button className={"btn"} onClick={() => setShowUpdate(!showUpdate)}>
+						{showUpdate ? "OK" : "Edit favorite locations"}
+				</Button> 
+			</div>
 		); 
 	}
 	  
 
     return (
-      <div className="favorite_loactions"> 
-			<FavoriteLoactionsList/> 
-			<Button className={"btn"} onClick={() => setShowUpdate(!showUpdate)}>
-				{showUpdate ? "OK" : "Edit favorite locations"}
-			</Button>          
-      </div>
+		<div className="favorite_loactions"> 
+			{loaction_list.length === 0 ? <p>no saved locations</p> : <FavoriteLoactionsList/> }       
+		</div>
   	);
 }
