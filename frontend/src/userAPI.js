@@ -63,19 +63,17 @@ export function userLogOut() {
 }
 
 
+export function deleteLocation(id) {
+  const endpoint = `/users/favorites/`;
 
-export function deleteLocation(objectID) {
-  const endpoint = `/users/favorites/${objectID}`;
-
-  fetch(endpoint,{
-    credentials: 'include',
+  const res = fetch(endpoint + id, {
+    headers: {
+      "credentials": 'include',
+      "Content-Type": "application/json"
+    },
     method: "DELET",
-  }).then(res => {
-    if (res.status === 200) {    
-    }else {
-      alert("Error");
-    }
-  })
+  });
+  return res;
 }
 
 // get user's saved Locations
