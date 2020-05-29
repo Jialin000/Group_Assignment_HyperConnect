@@ -1,7 +1,7 @@
 import React from "react";
-
 import SignInForm from "../components/SignInForm";
-import ReactDOM from 'react-dom';
+import Button from "../components/Button";
+import {userLogOut} from "../userAPI";
 import "../styles.css";
 import {isAuthenticated, userLogOut} from "../userAPI";
 import UserProfile from "../components/UserProfile";

@@ -49,6 +49,7 @@ export default class SignInForm extends React.Component{
     }
     return true;
   }
+  
   // validate each field
   validateForm = () => {
     const isValidEmail = this.validateEmail(this.state.email) 
@@ -70,6 +71,7 @@ export default class SignInForm extends React.Component{
     }
     this.setState({[nam]: val});
   }
+
   // validate the form before submitting
   onSubmit = (event) => {
     event.preventDefault();
@@ -124,8 +126,8 @@ export default class SignInForm extends React.Component{
 
 
           <div>
-            <h2>Don't have an account?</h2>
-            <u><a href={'/users/signup'}> Sign Up Here</a></u>
+            <h5>Don't have an account?</h5>
+            <a href={'/#/users/signup'}> Sign Up Here</a>
           </div>
         </div>
 

@@ -137,10 +137,9 @@ export default class SignUpForm extends React.Component {
             <label htmlFor="password">Password:</label><br/>
             <input type="password" id="password"  name="password" onChange={this.handleChange} placeholder={"Enter password here"}/>
             <p>{this.state.errormessage.password}</p>
-
-            <button className="btn" onClick={this.onSubmit}>Submit</button>
-            <h2>Already have an account?</h2>
-            <u><a href={'login'}> Sign In Here</a></u>
+            <Button SubclassName={"btn-success"} onClick={this.onSubmit}>Submit</Button>
+            <h5>Already have an account?</h5>
+            <a href={'/#/users/login'}> Sign In Here</a>
           </form>
         </div>
     );
