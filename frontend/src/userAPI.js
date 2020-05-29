@@ -56,6 +56,7 @@ export function userLogOut() {
     if (res.status === 200) {
       alert("logout!");
       window.location.replace("/#/");
+      window.location.reload();
 
     }else {
       alert("Error");
