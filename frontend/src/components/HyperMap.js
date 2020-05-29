@@ -25,6 +25,7 @@ class HyperMap extends Component {
     selectedPark: null,
     CurrentLocation: null,
     currentFavourite: null,
+    errorMessage: {},
   };
 
   /**
@@ -96,7 +97,10 @@ class HyperMap extends Component {
    * When the user types an address in the search box
    */
   onPlaceSelected = (place) => {
-    console.log("plc", place);
+    if (!place.formatted_address) {
+      this.setState({ errorMessage: "invaild input, plrase try again!" });
+      console.log("Dsds");
+    }
     const address = place.formatted_address,
       addressArray = place.address_components,
       city = this.getCity(addressArray),
