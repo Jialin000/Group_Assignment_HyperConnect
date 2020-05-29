@@ -56,9 +56,17 @@ export default function UserProfile(props) {
         <div className="UpdateProfileForm">
             <form>
                 <label htmlFor="username">Username:</label>
-                <input type="text" name="username"  value={username_value} onChange={event => {setUserName(event.target.value)}}/><br/><br/>
+                <input type="text" name="username"  
+                    value={username_value} 
+                    onChange={event => {setUserName(event.target.value)
+                }}/>
+                <br/><br/>
                 <label htmlFor="email">Email:</label>
-                <input type="text" name="email" value={email_value} onChange={event => {setEmail(event.target.value)}}/><br/><br/>
+                <input type="text" name="email" 
+                    value={email_value} 
+                    onChange={event => {setEmail(event.target.value)
+                }}/>
+                <br/><br/>
                 <Button className={"btn-warning"} onClick={onSubmit}>
                     Save
                 </Button>
