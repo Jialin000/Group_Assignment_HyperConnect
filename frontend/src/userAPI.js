@@ -71,7 +71,7 @@ export function deleteLocation(id) {
       "credentials": 'include',
       "Content-Type": "application/json"
     },
-    method: "DELET",
+    method: "DELETE",
   });
   return res;
 }
