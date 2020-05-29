@@ -50,6 +50,7 @@ export function userLogOut() {
   const endpoint = `/users/logout`;
 
   fetch(endpoint,{
+    method: "POST",
     credentials: 'include',
   }).then(res => {
     if (res.status === 200) {
