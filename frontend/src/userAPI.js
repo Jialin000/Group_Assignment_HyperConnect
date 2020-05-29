@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 // const BASE_URL = "https://parking-bay.herokuapp.com";
 // const BASE_URL = "http://localhost:8080";
 
+
 export default function userLogIn(user) {
   const endpoint = `/users/login`;
   const {email, password} = user; 
@@ -53,7 +54,7 @@ export function userLogOut() {
   }).then(res => {
     if (res.status === 200) {
       alert("logout!");
-      window.location.replace("/users/login");
+      window.location.replace("/#/users/login");
 
     }else {
       alert("Error");
@@ -77,24 +78,36 @@ export function deleteLocation(objectID) {
   })
 }
 
-// get user's information
-export function getUserProfile() {
-  const endpoint = `/users/profile`;
+// get user's saved Locations
+export async function getUserFavorites() {
+  const endpoint = `/users/favorites`;
 
-  return fetch(endpoint,{
+  const res = await fetch(endpoint, {
     method: "GET",
     headers: {
       "credentials": 'include',
       "Accept": 'application/json'
     }
-  })
-  .then((res) => {
-    console.log(res);
-    if (res.status === 401){
-      window.location.replace("/#/users/login");
-    } 
-    return res.json();
   });
+  return res.json();
+}
+
+// get user's information
+export async function getUserProfile() {
+  const endpoint = `/users/profile`;
+
+  const res = await fetch(endpoint, {
+    method: "GET",
+    headers: {
+      "credentials": 'include',
+      "Accept": 'application/json'
+    }
+  });
+  console.log(res);
+  if (res.status === 401) {
+    window.location.replace("/#/users/login");
+  }
+  return res.json();
 }
 
 
@@ -126,6 +139,32 @@ export function useUserProfile() {
       .then(res => {
         setResponse(res);
         setLoading(false);
+      })
+      .catch(e => {
+        console.log(e);
+        setError(e);
+        setLoading(false);
+      });
+  }, []);
+
+  return {
+    loading,
+    res,
+    error
+  };
+}
+
+
+export function useUserFavorites() {
+  const [loading, setLoading] = useState(true);
+  const [res, setResponse] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    getUserFavorites()
+      .then(res => {
+        setLoading(false);
+        setResponse(res);
       })
       .catch(e => {
         console.log(e);
