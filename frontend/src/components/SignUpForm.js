@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../components/Button";
+import { Button } from 'antd';
 import {userSignUp} from "../userAPI";
 
 export default class SignUpForm extends React.Component {
@@ -120,8 +120,10 @@ export default class SignUpForm extends React.Component {
 
   render() {
     return (
+
         <div className={"SignUpForm"}>
-          <h2>Sign Up</h2>
+          <h1><b>Sign Up </b></h1>
+          <div className="logo"></div>
           <p>{this.state.signupmessage}</p>
           <form>
             <label htmlFor="username">Username:</label><br/>
@@ -135,13 +137,11 @@ export default class SignUpForm extends React.Component {
             <label htmlFor="password">Password:</label><br/>
             <input type="password" id="password"  name="password" onChange={this.handleChange} placeholder={"Enter password here"}/>
             <p>{this.state.errormessage.password}</p>
-
             <Button SubclassName={"btn-success"} onClick={this.onSubmit}>Submit</Button>
             <h5>Already have an account?</h5>
             <a href={'/#/users/login'}> Sign In Here</a>
           </form>
         </div>
-
     );
   }
 }
