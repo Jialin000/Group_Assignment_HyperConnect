@@ -214,7 +214,7 @@ class HyperMap extends Component {
                 this.setSelectedPark(null);
               }}
             >
-              <div>
+              <div className="info">
                 <h2>Bay #{this.state.selectedPark.bay_id}</h2>
                 <p>st_marker_id: {this.state.selectedPark.st_marker_id}</p>
                 <p>latitude: {this.state.selectedPark.lat}</p>
