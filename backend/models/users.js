@@ -13,6 +13,7 @@ const userSchema = mongoose.Schema({
     favorites: {
         type: [{
             tag: String,
+            address: String,
             lat: Number,
             lng: Number
         }],
