@@ -2,6 +2,7 @@ import React from "react";
 
 import SignInForm from "../components/SignInForm";
 import Button from "../components/Button";
+import {userLogOut} from "../userAPI";
 import "../styles.css";
 
 export default function HomePage() {
