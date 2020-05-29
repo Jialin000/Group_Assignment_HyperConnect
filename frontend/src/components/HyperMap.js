@@ -24,6 +24,7 @@ class HyperMap extends Component {
     },
     selectedPark: null,
     CurrentLocation: null,
+    currentFavourite: null,
   };
 
   /**
@@ -174,6 +175,12 @@ class HyperMap extends Component {
     console.log(err);
   };
 
+  handleSubmit(e) {
+    console.log(this.state.address);
+    console.log(this.state.mapPosition);
+    console.log(document.getElementById("input_id").value);
+  }
+
   render() {
     const AsyncMap = withScriptjs(
       withGoogleMap((props) => (
@@ -219,11 +226,22 @@ class HyperMap extends Component {
               </div>
             </InfoWindow>
           )}
+
+          {/* Add to favourite factionality */}
           {this.state.address && (
             <div>
-              <p>rencent searched place: </p>
-              <p>{this.state.address}</p>
-              <button>Add to favourite</button>
+              <p>rencent searched place: {this.state.address}</p>
+              <input
+                name="searchTxt"
+                type="text"
+                maxlength="512"
+                id="input_id"
+                class="searchField"
+                placeholder={"enter label"}
+              />
+              <button onClick={(e) => this.handleSubmit(e)}>
+                Add favourite
+              </button>
             </div>
           )}
 
