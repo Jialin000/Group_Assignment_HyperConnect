@@ -138,7 +138,7 @@ const addFavorites = (req, res, next) => {
     // Use user information extracted from jwt by middleware to update favorites
     User.findOneAndUpdate(
         {_id: req.userData.userId},
-        {$push: {favorites: {tag: req.body.tag, parkingBayId: req.params.id}}},
+        {$push: {favorites: {tag: req.body.tag, address: req.body.address, lat: req.body.lat, lng: req.body.lng}}},
         {returnOriginal: false}
         )
         .exec()
@@ -152,7 +152,7 @@ const addFavorites = (req, res, next) => {
             } else {
 
                 // If successfully find user and updated it, return the updated list of favorites
-                res.status(200).json({
+                res.status(201).json({
                     "message": 'Parking bay added to favorites',
                     "favorites": user.favorites
                 })
@@ -165,6 +165,43 @@ const addFavorites = (req, res, next) => {
             });
         });
 }
+
+
+
+
+// delete favorites
+const deleteFavoriteById = (req, res, next) => {
+    // Use user information extracted from jwt by middleware to update favorites
+    User.findOneAndUpdate(
+        {_id: req.userData.userId},
+        {$pull: {favorites: {_id: req.params.id}}},
+        {returnOriginal: false}
+    )
+        .exec()
+        .then(user => {
+
+            // If could not find user in database
+            if (!user) {
+                return res.status(500).json({
+                    message: 'User Not Found'
+                });
+            } else {
+
+                // If successfully find user and updated it, return the updated list of favorites
+                res.status(200).json({
+                    "message": 'Favorite location deleted',
+                    "favorites": user.favorites
+                })
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(400).json({
+                error: "Invalid Request"
+            });
+        });
+}
+
 
 // Function to get the list of favorite parking bays of a user
 const getFavorites = (req, res, next) => {
@@ -194,13 +231,76 @@ const getFavorites = (req, res, next) => {
         });
 }
 
+// Function to get user's profile and their saved location
+const getUserById = (req, res, next) => {
+
+    // Use user information extracted from jwt by middleware to update favorites
+    User.findOne({_id: req.userData.userId})
+        .exec()
+        .then(user => {
+
+            if (!user) {
+                return res.status(500).json({
+                    message: 'User Not Found'
+                });
+            } else {
+
+                // user exists, returns the information of user
+                res.status(200).json({
+                    "userName": user.userName,
+                    "email": user.email,
+                    "favorites": user.favorites
+                })
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
+        });
+}
+
+
+// Function to update the user's profile
+const updateUser = (req, res) => {
+     // Use user information extracted from jwt by middleware to update favorites
+    User.findOneAndUpdate(
+        {_id: req.userData.userId},
+        {$set: {userName: req.body.userName, email: req.body.email}},
+        {returnOriginal: false}
+        )
+        .exec()
+        .then(user => {
+
+            // If could not find user in database
+            if (!user) {
+                return res.status(500).json({
+                    message: 'User Not Found'
+                });
+            } else {
+
+                // If successfully find user and updated it, return the updated list of favorites
+                res.status(200).json({
+                    "message": 'Update successful!',
+                })
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(400).json({
+                error: "Invalid Request"
+            });
+        });
+}
+
 
 
 // Function to allow deletion of user, for DEVELOPMENT purpose
 const deleteUserById = (req, res, next) => {
     User.remove({_id: req.params.userId})
         .exec()
-        .then(result => {
+        .then(res => {
             res.status(200).json({
                 message: 'User deleted'
             });
@@ -220,7 +320,10 @@ module.exports = {
     userLogOut,
     deleteUserById,
     addFavorites,
-    getFavorites
+    deleteFavoriteById,
+    getFavorites,
+    getUserById,
+    updateUser
 }
 
 
