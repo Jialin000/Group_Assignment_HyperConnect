@@ -138,7 +138,7 @@ const addFavorites = (req, res, next) => {
     // Use user information extracted from jwt by middleware to update favorites
     User.findOneAndUpdate(
         {_id: req.userData.userId},
-        {$push: {favorites: {tag: req.body.tag, lat: req.body.lat, lng: req.body.lng}}},
+        {$push: {favorites: {tag: req.body.tag, address: req.body.address, lat: req.body.lat, lng: req.body.lng}}},
         {returnOriginal: false}
         )
         .exec()
