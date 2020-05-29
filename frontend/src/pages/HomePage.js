@@ -48,7 +48,6 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-    <Button onClick={userLogOut}>Logout</Button>
     </body>
   );
 }
