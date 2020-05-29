@@ -21,13 +21,22 @@
   left: 40%;
   bottom: 10%;
 }
+.searchbar input {
+  color: black;
+}
 .map {
   height: 98%;
   width: 100%;
   z-index: 0;
   position: absolute;
 }
-
+.favourite_box {
+  position: absolute;
+  z-index: 2;
+  /*width: 300px;*/
+  top: 15%;
+  right: 5%;
+}
 
 .btn-search {
   font-size: 30px;
@@ -44,6 +53,11 @@
 .btn-search:hover {
   background-color: #050505;
   color: #ffffff;
+}
+.location_list {
+  z-index: 4;
+  position: absolute;
+
 }
 html,
 body {
@@ -201,6 +215,11 @@ input {
 .homepage_right_login p {
   color: #ff0000;
 }
+.homepage_right_userprofile {
+  position: absolute;
+  right: 40%;
+  background-color: transparent;
+}
 
 .homepage_bottom {
   float: bottom;
@@ -260,6 +279,7 @@ input {
     display: none;
   }
 }
+
 .login_box input {
   width: 350px;
   padding: 12px 20px;
@@ -305,40 +325,34 @@ input {
   color: black;
   font-size: 20px;
 }
-.userprofile {
-  width: 350px;
-  height: 510px;
-  border-radius: 20px;
-  margin: -10px 0px;
-}
 
-.userprofile_demo {
+.login_description {
   width: 30%;
   position: absolute;
   text-align: center;
   padding: 5px;
-  top: 20%;
+  top: 35%;
   left: 6%;
   border-radius: 20%;
   border: 2px solid rgba(205, 205, 205, 0.3);
   border-top: 0;
   border-bottom: 0;
 }
-.userprofile_demo button{
+.login_description button{
   color: #ffffff;
   font-size: 15px;
   background-color: transparent;
 }
 
-.userprofile_demo h2{
+.login_description h2{
   color: white;
 }
 @media screen and (max-width: 800px) {
-  .userprofile_demo {
+  .login_description {
     display: none;
   }
 }
-.userprofile_demo h1 {
+.login_description h1 {
   color: rgba(255, 255, 255, 0.49);
   font-family: 'Josefin Sans', 'Roboto', sans-serif;
 }
@@ -396,9 +410,79 @@ input {
     left: 22%;
   }
 }
-.info {
-  word-break: break-word;
-  width: 200px;
+.profilepage {
+  width: 100%;
+  height: 100%;
+  top: 41px;
+  position: absolute;
+  background-image: url("/profilebg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-filter: blur(15px);
+  -moz-filter: blur(15px);
+  -o-filter: blur(15px);
+  -ms-filter: blur(15px);
+  filter: blur(20px);
+}
+
+.ProfileForm {
+  width: 380px;
+  left: 40%;
+  top: 10%;
+  position: absolute;
+  background-color: rgba(92, 92, 92, 0.64);
+  border-radius: 20px;
+  border: 2px solid rgba(205, 205, 205, 0.42);
+  border-top: 0;
+  padding: 50px 50px;
+}
+.ProfileForm h3 {
+  color: black;
+  font-family: 'Josefin Sans', 'Roboto', sans-serif;
+  font-size: 18px;
+  margin: 0;
+}
+.ProfileForm p {
+  color: black;
+  font-family: 'Josefin Sans', 'Roboto', sans-serif;
+  font-size: 15px;
+  margin: 0;
+}
+.ProfileForm button {
+  color: black;
+  margin: -2px;
+}
+
+@media screen and (max-width: 800px) {
+  .ProfileForm {
+    left: 25%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .ProfileForm {
+    left: 0;
+    top: 39px;
+  }
+}
+.UpdateProfileForm label {
+  color: black;
+  font-family: 'Josefin Sans', 'Roboto', sans-serif;
+  font-size: 15px;
+}
+.UpdateProfileForm button {
+  color: black;
+}
+@media screen and (max-width: 800px) {
+  .UpdateProfileForm input {
+    width: 250px;
+    padding: 12px 20px;
+    margin: 5px 0;
+    border-radius: 4px;
+    background-color: transparent;
+    border: 2px solid rgba(253, 253, 253, 0.3);
+    box-shadow: inset 0 0 4px rgba(139, 139, 139, 0.2), 0 0 4px rgba(193, 193, 193, 0.2);
+    color: white;
+  }
 }
 .btn-search:hover {
   background-color: #050505;
@@ -1076,16 +1160,16 @@ div.author .info {
 }
 
 .moon__crater2 {
-  bottom: 50px;
-  right: 340px;
+  bottom: 600px;
+  right: 420px;
   width: 40px;
   height: 80px;
   transform: rotate(55deg);
 }
 
 .moon__crater3 {
-  bottom: 180px;
-  right: 60px;
+  bottom: 80px;
+  right: 120px;
   width: 65px;
   height: 120px;
   transform: rotate(250deg);

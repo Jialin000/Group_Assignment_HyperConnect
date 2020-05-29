@@ -4,8 +4,7 @@ import HyperMap from "../components/HyperMap";
 import { useUserProfile, isAuthenticated, useUserFavorites} from "../userAPI";
 import { useParkingBays } from "../parkingBaysAPI";
 
-import Button from "../components/Button";
-
+import  {Layout,Button}  from 'antd';
 export default function SearchPage() {
   
   const [centerPoint, setCenterPoint] = useState([]);
@@ -110,7 +109,7 @@ export default function SearchPage() {
   // Render contents of page
   return (
     <div>
-      <div className="homepage_left_description">
+      <div className="favourite_box">
         <FavoriteLocations/>
       </div>
       <div className="map">

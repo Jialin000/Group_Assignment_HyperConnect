@@ -3,8 +3,10 @@ import SignInForm from "../components/SignInForm";
 // import Button from "../components/Button";
 import "../styles.css";
 import {isAuthenticated, userLogOut} from "../userAPI";
-import UserProfile from "../components/UserProfile";
-import { Layout, Button } from 'antd';
+import ProfileForm from "../components/UserProfile";
+import  {Layout, Button}  from 'antd';
+import UserPage from "./UserPage";
+
 
 export default function HomePage() {
   if (isAuthenticated('Authorization')){
@@ -54,11 +56,11 @@ export default function HomePage() {
             </div>
           </div>
           <div className="homepage_right">
-            <div className="homepage_right_login">
+            {/*<div className="homepage_right_login">*/}
               <div className="homepage_right_userprofile">
-                <UserProfile />
+                <UserPage />
               </div>
-            </div>
+            {/*</div>*/}
           </div>
         </div>
 

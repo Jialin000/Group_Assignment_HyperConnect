@@ -20,14 +20,17 @@ export default function UserPage() {
     // Display user information and saved locations
     return (
         <div>
-            <div>
+            {/*<div className="profilepage"></div>*/}
+
+            <div className="ProfileForm">
                 <h1>User Profile</h1>
-                <UserProfile userName={userName} email={email}/>  
+                <div className="logo"></div>
+
+                <UserProfile userName={userName} email={email}/>
+                <h1>Favorite Locations</h1>
+                {favorites.length == 0 ? <p>no saved locations</p> : <FavoriteLoactions locations={favorites}/>}
             </div>    
-            <div>
-                <h1>Favorite Loactions</h1>
-                {favorites.length == 0 ? <p>no saved locations</p> : <FavoriteLoactions locations={favorites}/>}              
-            </div>
+
         </div>
     );
 }

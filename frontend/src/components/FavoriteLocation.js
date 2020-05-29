@@ -1,7 +1,7 @@
 import React from "react";
 import { deleteLocation } from "../userAPI";
 import { useState, useEffect } from "react";
-import Button from "../components/Button";
+import  {Layout,Button}  from 'antd';
 
 export default function FavoriteLoactions(props) {
 	const {locations} = props;
@@ -19,7 +19,7 @@ export default function FavoriteLoactions(props) {
 
 	function SearchButton(){
 		return(
-			<Button className={"btn"} onClick={()=>searchLocation(this)}>
+			<Button className="btn" onClick={()=>searchLocation(this)}>
 				Search
 			</Button>
 		);
@@ -62,7 +62,7 @@ export default function FavoriteLoactions(props) {
 	// a list a saved locations
 	function FavoriteLoactionsList() {	
 		return(  
-		  	<div className="loaction_list">    
+		  	<div className="location_list">
 				{loaction_list.map(location => (<Location key={location._id} {...location} />))} 
 		  	</div> 
 		); 
@@ -70,7 +70,7 @@ export default function FavoriteLoactions(props) {
 	  
 
     return (
-      <div className="favorite_loactions"> 
+      <div className="favorite_locations">
 			<FavoriteLoactionsList/> 
 			<Button className={"btn"} onClick={() => setShowUpdate(!showUpdate)}>
 				{showUpdate ? "OK" : "Edit favorite locations"}

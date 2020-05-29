@@ -12,11 +12,10 @@ export default function SignInPage() {
 
              <SignInForm />
           </div>
-          <div className="userprofile_demo">
+          <div className="login_description">
               <h1>After logging in,
                   <br/>you can save the locations as your favourites for later using.
               </h1>
-              <UserProfile/>
           </div>
       </div>
 

@@ -260,6 +260,7 @@ class HyperMap extends Component {
               left: "1%",
               top: "7%",
               border: "2px solid #000000",
+              color: "black",
             }}
             onPlaceSelected={this.onPlaceSelected}
             types={["address"]}
@@ -274,7 +275,7 @@ class HyperMap extends Component {
         <AsyncMap
           googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyCE_by6BiXR1XCws5YiduStyJfvzPrXfuc&libraries=places`}
           loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: "300px" }} />}
+          containerElement={<div style={{ height: "50%" }} />}
           mapElement={<div style={{ height: `100%` }} />}
         />
       </div>
