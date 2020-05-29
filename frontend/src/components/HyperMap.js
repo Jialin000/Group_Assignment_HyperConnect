@@ -22,10 +22,12 @@ class HyperMap extends Component {
       lat: -37.8136,
       lng: 144.9631,
     },
+    defaultZoom: 15,
     selectedPark: null,
     CurrentLocation: null,
     currentFavourite: null,
-    errorMessage: {},
+    errorMessage: null,
+    LabelErrorMessage: null,
   };
 
   /**
@@ -99,26 +101,28 @@ class HyperMap extends Component {
   onPlaceSelected = (place) => {
     if (!place.formatted_address) {
       this.setState({ errorMessage: "invaild input, plrase try again!" });
-      console.log("Dsds");
+    } else {
+      this.setState({ errorMessage: "" });
+      const address = place.formatted_address,
+        addressArray = place.address_components,
+        city = this.getCity(addressArray),
+        area = this.getArea(addressArray),
+        state = this.getState(addressArray),
+        latValue = place.geometry.location.lat(),
+        lngValue = place.geometry.location.lng();
+      // Set these values in the state.
+      this.setState({
+        address: address ? address : "",
+        area: area ? area : "",
+        city: city ? city : "",
+        state: state ? state : "",
+        mapPosition: {
+          lat: latValue,
+          lng: lngValue,
+        },
+        defaultZoom: 18,
+      });
     }
-    const address = place.formatted_address,
-      addressArray = place.address_components,
-      city = this.getCity(addressArray),
-      area = this.getArea(addressArray),
-      state = this.getState(addressArray),
-      latValue = place.geometry.location.lat(),
-      lngValue = place.geometry.location.lng();
-    // Set these values in the state.
-    this.setState({
-      address: address ? address : "",
-      area: area ? area : "",
-      city: city ? city : "",
-      state: state ? state : "",
-      mapPosition: {
-        lat: latValue,
-        lng: lngValue,
-      },
-    });
   };
 
   /**
@@ -172,6 +176,7 @@ class HyperMap extends Component {
         lat: parseFloat(position.coords.latitude),
         lng: parseFloat(position.coords.longitude),
       },
+      defaultZoom: 18,
     });
   };
 
@@ -182,14 +187,21 @@ class HyperMap extends Component {
   handleSubmit(e) {
     console.log(this.state.address);
     console.log(this.state.mapPosition);
+    let a = document.getElementById("input_id").value;
     console.log(document.getElementById("input_id").value);
+    console.log(a === "");
+    if (a === "") {
+      this.setState({ LabelErrorMessage: "invaild label, plrase try again!" });
+    } else {
+      this.setState({ LabelErrorMessage: "" });
+    }
   }
 
   render() {
     const AsyncMap = withScriptjs(
       withGoogleMap((props) => (
         <GoogleMap
-          defaultZoom={15}
+          defaultZoom={this.state.defaultZoom}
           defaultCenter={{
             lat: parseFloat(this.state.mapPosition.lat),
             lng: parseFloat(this.state.mapPosition.lng),
@@ -248,6 +260,7 @@ class HyperMap extends Component {
               </button>
             </div>
           )}
+          <p>{this.state.LabelErrorMessage}</p>
 
           {/* Parkingbays' locations */}
           {this.props.bays.map((bay) => this.handleRenderBays(bay))}
@@ -269,6 +282,7 @@ class HyperMap extends Component {
             types={["address"]}
             componentRestrictions={{ country: "au" }}
           />
+          <p>{this.state.errorMessage}</p>
         </GoogleMap>
       ))
     );
