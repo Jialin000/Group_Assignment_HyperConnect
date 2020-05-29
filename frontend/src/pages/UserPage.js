@@ -26,7 +26,7 @@ export default function UserPage() {
             </div>    
             <div>
                 <h1>Favorite Loactions</h1>
-                {favorites.length == 0 ? <p>no saved locations</p> : <FavoriteLoactions locations={favorites}/>}              
+                <FavoriteLoactions locations={favorites}/>             
             </div>
         </div>
     );
