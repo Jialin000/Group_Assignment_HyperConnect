@@ -26,9 +26,11 @@ export default function UserProfile(props) {
             if (res.status == 200){
                 alert("Change has been saved!");
                 setShowUpdate(!showUpdate);
+
             }else if(res.status == 401){
                 alert("Please log in");
                 window.location.replace("/users/login");
+
             }else{
                 alert("Error updating, please try again");
             }
@@ -48,7 +50,7 @@ export default function UserProfile(props) {
         );
     }
 
-
+    // the form allow users to update their information
     function UpdateProfileForm() {
         return (
         <div className="UpdateProfileForm">
