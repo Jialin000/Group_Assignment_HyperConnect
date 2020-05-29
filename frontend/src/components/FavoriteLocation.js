@@ -9,22 +9,7 @@ export default function FavoriteLoactions(props) {
 	const [loaction_list, setLocations] = useState(locations);
   	const [showUpdate, setShowUpdate] = useState(false);
 
-	// function to remove the svaed location
-	function deleteFavoriteLocation(_id){
-		// make a copy of old array
-		// remove the location from the new array
-		//var new_array = loaction_list;
-    	//var index = new_array.indexOf();
-
-		deleteLocation(_id);
-
-    	/*if (index > -1) {
-			new_array.splice(index, 1);
-			setLocations(new_array);
-		} else{
-			alert("Error deleting");
-		}*/
-	}
+	
 
 	// funtion to seacrh the parking bays around the saved locations
 	// redirect to the searching page
@@ -33,13 +18,7 @@ export default function FavoriteLoactions(props) {
 	}
 
 
-	function DeleteButton(_id){
-		return(
-			<Button className={"btn"} onClick={(_id) => deleteFavoriteLocation}>
-				Delete
-			</Button>
-		);
-	}
+	
 
 
 	function SearchButton(){
@@ -50,16 +29,39 @@ export default function FavoriteLoactions(props) {
 		);
 	}
 
+
+	// function to remove the svaed location
+	function removeLocation(_id){
+		deleteLocation(_id)
+			.then(res => {
+			if (res.status === 200) {
+			  alert ("deleted"); 
+			  setLocations(loaction_list.filter(location => location._id !== _id)); 
+			    
+			}else {
+			  alert("Error");
+			}})	
+	}
+
 	// show a sigle location
 	function Location(props) {
 		const {_id, tag, lat, lng} = props;
+	
+		function DeleteButton(){
+			return(
+				<Button className={"btn"} onClick={() => removeLocation(_id)}>
+					Delete
+				</Button>
+			);
+		}
+
 		return (
 			<div className="location">
 				<p>{_id}</p>
 				<p>{tag}</p>
 				<p>{lat}</p>
 				<p>{lng}</p>
-				{showUpdate ? <DeleteButton {..._id}/>: <SearchButton/>}
+				{showUpdate ? <DeleteButton/>: <SearchButton/>}
 			</div>
 		);
 	}
