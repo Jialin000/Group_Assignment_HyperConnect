@@ -31,11 +31,10 @@ export default function FavoriteLoactions(props) {
 		deleteLocation(_id)
 			.then(res => {
 			if (res.status === 200) {
-			  alert ("deleted"); 
 			  setLocations(loaction_list.filter(location => location._id !== _id)); 
 
 			}else {
-			  alert("Error");
+			  alert("Unable to delete");
 			}})	
 	}
 
