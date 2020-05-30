@@ -1,6 +1,8 @@
 import React, { Component, useState, useEffect } from "react";
+import { addLocation} from "../userAPI"
 import { usePosition } from "use-position";
 import Button from "../components/Button";
+import mapStyle from "../mapStyle";
 import {
   LoadScript,
   withGoogleMap,
@@ -23,6 +25,7 @@ class HyperMap extends Component {
     },
     selectedPark: null,
     CurrentLocation: null,
+    currentFavourite: null,
   };
 
   /**
@@ -119,6 +122,8 @@ class HyperMap extends Component {
    * change the selectedbay to the one that have been chosen
    */
   setSelectedPark = (bay) => {
+    // this.state.selectedPark = bay;
+    // console.log(this.state.selectedPark)
     this.setState({ selectedPark: bay });
   };
 
@@ -171,6 +176,31 @@ class HyperMap extends Component {
     console.log(err);
   };
 
+  handleSubmit(e) {
+    console.log(this.state.address);
+    console.log(this.state.mapPosition);
+    console.log(document.getElementById("input_id").value);
+
+    // add the location to my favorite location
+    addLocation ({
+      tag: document.getElementById("input_id").value,
+      address: this.state.address,
+      lat: this.state.mapPosition.lat,
+      lng: this.state.mapPosition.lng
+      
+    }).then(res => {
+      if (res.status === 200) {
+        alert("Added to favorites");
+      }else if(res.status === 401) {
+        alert("You need to log in first");
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert('Unable to add, please try again');
+    });
+  }
+
   render() {
     const AsyncMap = withScriptjs(
       withGoogleMap((props) => (
@@ -180,6 +210,7 @@ class HyperMap extends Component {
             lat: parseFloat(this.state.mapPosition.lat),
             lng: parseFloat(this.state.mapPosition.lng),
           }}
+          defaultOptions={{ styles: mapStyle }}
         >
           {console.log(this.props)}
           <button className={"btn-search"} onClick={() => this.getLocation()}>
@@ -203,13 +234,35 @@ class HyperMap extends Component {
                 this.setSelectedPark(null);
               }}
             >
-              <div>
+              <div className="info">
                 <h2>Bay #{this.state.selectedPark.bay_id}</h2>
                 <p>st_marker_id: {this.state.selectedPark.st_marker_id}</p>
                 <p>latitude: {this.state.selectedPark.lat}</p>
                 <p>latitude: {this.state.selectedPark.lon}</p>
+                <p>
+                  Restriction Information: {this.state.selectedPark.Description}
+                </p>
+                )
               </div>
             </InfoWindow>
+          )}
+
+          {/* Add to favourite factionality */}
+          {this.state.address && (
+            <div>
+              <p>rencent searched place: {this.state.address}</p>
+              <input
+                name="searchTxt"
+                type="text"
+                maxlength="512"
+                id="input_id"
+                class="searchField"
+                placeholder={"enter label"}
+              />
+              <button onClick={(e) => this.handleSubmit(e)}>
+                Add favourite
+              </button>
+            </div>
           )}
 
           {/* Parkingbays' locations */}
@@ -223,10 +276,11 @@ class HyperMap extends Component {
               paddingLeft: "16px",
               marginTop: "2px",
               marginBottom: "500px",
-              position:"absolute",
+              position: "absolute",
               left: "1%",
               top: "7%",
               border: "2px solid #000000",
+              color: "black",
             }}
             onPlaceSelected={this.onPlaceSelected}
             types={["address"]}
@@ -241,7 +295,7 @@ class HyperMap extends Component {
         <AsyncMap
           googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyCE_by6BiXR1XCws5YiduStyJfvzPrXfuc&libraries=places`}
           loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: "100%" }} />}
+          containerElement={<div style={{ height: "50%" }} />}
           mapElement={<div style={{ height: `100%` }} />}
         />
       </div>

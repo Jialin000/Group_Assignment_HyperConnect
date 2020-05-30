@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5e607ecc-73db-4147-ad83-77896b491fa9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/userAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/userAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/HomePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +36,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5e607ecc-73db-4147-ad83-77896b491fa9" name="Default Changelist" comment="" />
+      <changelist id="a95b3f5a-f803-4a33-b492-adeccd95e8d0" name="Default Changelist" comment="" />
       <created>1589601193368</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />

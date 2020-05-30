@@ -1,7 +1,7 @@
 import React from "react";
 import { deleteLocation } from "../userAPI";
 import { useState, useEffect } from "react";
-import Button from "../components/Button";
+import  {Layout,Button}  from 'antd';
 
 export default function FavoriteLoactions(props) {
 	const {locations} = props;
@@ -59,8 +59,9 @@ export default function FavoriteLoactions(props) {
 	  
 
     return (
-		<div className="favorite_loactions"> 
-			{loaction_list.length === 0 ? <p>no saved locations</p> : <FavoriteLoactionsList/> }       
-		</div>
+
+      <div className="favorite_loactions"> 
+        {loaction_list.length === 0 ? <p>no saved locations</p> : <FavoriteLoactionsList/> }       
+      </div>
   	);
 }
