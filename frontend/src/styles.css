@@ -107,8 +107,8 @@ input {
 .homepage_left {
   float: left;
   width: 50%;
-  height: 70%;
   left: 50%;
+
 }
 
 @media screen and (max-width: 800px) {
@@ -119,34 +119,34 @@ input {
     left: 50%;
   }
 }
-
-.homepage_left_description {
-  width: 330px;
-  height: 280px;
+.homepage_left h1 {
+  color: #a2f1e6;
+  margin: 5px;
+}
+.homepage_left h2,
+.homepage_left h3,
+.homepage_left h4
+{
+  color: #ffffff;
+  margin: 0;
+}
+.homepage_left_description_upper {
+  width: 350px;
+  text-align: center;
   /*150 140*/
   margin: 0 auto;
+}
+.homepage_left_description {
+  width: 350px;
+  text-align: center;
+  /*150 140*/
+  margin: 40px auto;
   border-radius: 20px;
   border: 2px solid rgba(205, 205, 205, 0.42);
   border-top: 0;
-  padding: 50px 50px;
+  padding: 40px 50px;
   /*background: rgba(9, 6, 6, 0.5);*/
   /*top: 10%;*/
-}
-.homepage_left_description h2 {
-  color: #000000;
-}
-.homepage_left_description h3 {
-  color: #ffffff;
-}
-
-.homepage_left h1 {
-  color: #a2f1e6;
-}
-.homepage_left h2 {
-  color: #ffffff;
-}
-.homepage_left h3 {
-  color: #323232;
 }
 
 .homepage_right {
@@ -206,11 +206,12 @@ input {
 .homepage_right_login button {
   font-size: 17px;
   color: black;
+
 }
 .homepage_right_login label {
-  margin-top: 5%;
+  margin: -10px;
   color: #ffffff;
-  font-size: 15px;
+  font-size: 14px;
 }
 .homepage_right_login p {
   color: #ff0000;
@@ -386,11 +387,17 @@ input {
   bottom: 50px;
 }
 .map {
+  top: 20px;
   height: 98%;
   width: 100%;
   position: absolute;
   z-index: 0;
   overflow: hidden;
+}
+@media screen and (max-width: 800px) {
+  .map {
+    top: 32px;
+  }
 }
 .btn-search {
   font-size: 30px;

@@ -25,19 +25,19 @@ export default function HomePage() {
         <div className="homepage_upper">
           <header><h1 className="advice__title">Hyper Parking </h1></header>
           <div className="homepage_left">
-            <div>
+            <div className="homepage_left_description_upper">
               <h1><b>
                 Do you know that? <br />
               </b></h1>
-              <h2>
+              <h3>
                 There are more than
-                <h1><b><i>4300</i></b></h1>
+                <br/><h1><b><i>4300</i></b></h1>
                 on-street parkings in Melbourne!{" "}
-              </h2>
-              <br />
+              </h3>
             </div>
             <div className="homepage_left_description">
-              <h2>
+
+              <h4>
                 Tired of wasting time
                 <br/><br/>
                 looking for a parking bay?
@@ -47,12 +47,12 @@ export default function HomePage() {
                 Click the
                 <Button
                     className="btn"
-                    onCdivck={(event) => (window.location.href = "/parkingBays")}
+                    onClick={(event) => (window.location.href = "/#/parkingBays")}
                 >
                   Button
                 </Button>
                 to start! <br />
-              </h2>
+              </h4>
             </div>
           </div>
           <div className="homepage_right">
@@ -138,21 +138,21 @@ export default function HomePage() {
           <div>
             <br/><br/>
             <div className="homepage_upper">
-              <header><h1 className="advice__title">Hyper Parking </h1></header>
+              <header><h1 className="advice__title"><br/>Hyper Parking </h1></header>
               <div className="homepage_left">
-                <div>
+                <div className="homepage_left_description_upper">
                   <h1><b>
                     Do you know that? <br />
                   </b></h1>
-                  <h2>
+                  <h3>
                     There are more than
-                    <h1><b><i>4300</i></b></h1>
+                    <br/><h1><b><i>4300</i></b></h1>
                     on-street parkings in Melbourne!{" "}
-                  </h2>
-                  <br />
+                  </h3>
                 </div>
                 <div className="homepage_left_description">
-                  <h2>
+
+                  <h4>
                     Tired of wasting time
                     <br/><br/>
                   looking for a parking bay?
@@ -162,12 +162,12 @@ export default function HomePage() {
                     Click the
                     <Button
                         className="btn"
-                        onCdivck={(event) => (window.location.href = "/parkingBays")}
+                        onClick={(event) => (window.location.href = "/#/parkingBays")}
                     >
                       Button
                     </Button>
                     to start! <br />
-                  </h2>
+                  </h4>
                 </div>
               </div>
               <div className="homepage_right">
