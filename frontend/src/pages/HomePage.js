@@ -59,6 +59,7 @@ export default function HomePage() {
             {/*<div className="homepage_right_login">*/}
               <div className="homepage_right_userprofile">
                 <UserPage />
+
               </div>
             {/*</div>*/}
           </div>
@@ -171,9 +172,9 @@ export default function HomePage() {
               </div>
               <div className="homepage_right">
                 <div className="homepage_right_login">
-                  <div className="homepage_right_userprofile">
+
                     <SignInForm />
-                  </div>
+
                 </div>
               </div>
             </div>
