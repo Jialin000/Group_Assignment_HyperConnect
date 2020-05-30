@@ -62,7 +62,7 @@ export default function FavoriteLoactions(props) {
 	// a list a saved locations
 	function FavoriteLoactionsList() {	
 		return(  
-		  	<div className="location_list">
+		  	<div >
 				{loaction_list.map(location => (<Location key={location._id} {...location} />))} 
 		  	</div> 
 		); 
@@ -70,9 +70,9 @@ export default function FavoriteLoactions(props) {
 	  
 
     return (
-      <div className="favorite_locations">
+      <div>
 			<FavoriteLoactionsList/> 
-			<Button className={"btn"} onClick={() => setShowUpdate(!showUpdate)}>
+			<Button className="btn" onClick={() => setShowUpdate(!showUpdate)}>
 				{showUpdate ? "OK" : "Edit favorite locations"}
 			</Button>          
       </div>

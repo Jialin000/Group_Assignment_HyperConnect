@@ -43,12 +43,15 @@ export default function SearchPage() {
     const {locations} = props;
     if (locations.length == 0){
       return(
-        <p>no saved locations</p>
+          <div className="location_list-no">
+            <h4>no saved locations</h4>
+          </div>
+
       );
       
     }else{
       return(
-        <div className="loaction_list">
+        <div>
         {locations.map(location => (<Location key={location._id} {...location} />))} 
         </div> 
       );
@@ -83,8 +86,8 @@ export default function SearchPage() {
     const {userName, email, favorites} = res;
 
     return(
-      <div>
-        <p>Saved locations: </p>
+      <div className="location_list">
+        <h4>Saved locations: </h4>
         <FavoriteLocationList locations={favorites}/>
       </div>
     );
@@ -109,7 +112,7 @@ export default function SearchPage() {
   // Render contents of page
   return (
     <div>
-      <div className="favourite_box">
+      <div>
         <FavoriteLocations/>
       </div>
       <div className="map">

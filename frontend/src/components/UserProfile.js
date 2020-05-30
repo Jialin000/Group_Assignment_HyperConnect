@@ -46,9 +46,9 @@ export default function UserProfile(props) {
                 <p>{username_value}<br/></p>
                 <h3>Email: <br/></h3>
                 <p>{email_value}</p><br/>
-                <button className="btn" onClick={()=>setShowUpdate(!showUpdate)}>
+                <Button className="btn" onClick={()=>setShowUpdate(!showUpdate)}>
                     Edit my profile
-                </button>
+                </Button>
             </div>
         );
     }

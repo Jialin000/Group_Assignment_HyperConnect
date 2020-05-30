@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import { usePosition } from "use-position";
-import Button from "../components/Button";
+import {Layout,Button} from "antd";
 import mapStyle from "../mapStyle";
 import {
   LoadScript,
@@ -240,7 +240,7 @@ class HyperMap extends Component {
                 class="searchField"
                 placeholder={"Enter a tag here"}
               />
-              <Button className="res_btn" onClick={(e) => this.handleSubmit(e)}>
+              <Button className="btn" onClick={(e) => this.handleSubmit(e)}>
                 Add to favourite
               </Button>
             </div>
