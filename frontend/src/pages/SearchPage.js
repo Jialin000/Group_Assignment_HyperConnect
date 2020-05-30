@@ -7,14 +7,30 @@ import { useParkingBays } from "../parkingBaysAPI";
 import  {Layout,Button}  from 'antd';
 export default function SearchPage() {
   
+  // Render contents of page
+  return (
+    <div>
+      <div className="map">
+        <ParkingBaysMap/>
+      </div>
+    </div>
+  );
+}
+
+// a map showing the location of parking bays around the center point
+function ParkingBaysMap(){
+  // the center of the map
   const [centerPoint, setCenterPoint] = useState([]);
-  
-  
+  const [centerLocation, setCenterLocation] = useState(null);
+
+  // Fetch all the parking bays information upon loading
+  const { loading, bays, error } = useParkingBays();
+
   // show a sigle saved location
   // the center point of map will be changed 
   // by clicking the button
-	function Location(props) {
-    const {tag, lat, lng} = props;
+  function Location(props) {
+    const {tag, address, lat, lng} = props;
 
     function changeCenter(lat, lng){
       const position = {
@@ -23,25 +39,26 @@ export default function SearchPage() {
       };
       // change the center position
       setCenterPoint(position);
+      setCenterLocation(address);
     }
 
-		return (
-			<div className="locationButton">
+    return (
+      <div className="locationButton">
         <Button 
           className={"btn"} 
           onClick={()=>changeCenter(lat, lng)
         }>
           {tag}
-			  </Button>	
-			</div>
-		);
+        </Button>	
+      </div>
+    );
   }
 
   // a list of favorite locations 
   // user can seacrh the bays around the saved locations
   function FavoriteLocationList(props){
     const {locations} = props;
-    if (locations.length == 0){
+    if (locations.length === 0){
       return(
         <p>no saved locations</p>
       );
@@ -55,20 +72,11 @@ export default function SearchPage() {
     }
   }
 
-  
-  
-  
+
   function FavoriteLocations() {
+
     // fetch the locations saved by the user
-    //tes1t@gmail.com
     const { loading, res, error } = useUserProfile();
-    
-    if (loading) {
-      return <p>Loading...</p>;
-    }
-    if (error) {
-        return <p>Unable to get saved location</p>;
-    }
 
     // if the user has not logged in
     // remind user to login to see their saved locations
@@ -84,36 +92,23 @@ export default function SearchPage() {
 
     return(
       <div>
-        <p>Saved locations: </p>
-        <FavoriteLocationList locations={favorites}/>
+        <p>Use saved locations: </p>
+        {loading ? <p>Loading...</p> : null}
+        {error ? <p>Unable to get saved locations</p> : null}
+        {favorites ? <FavoriteLocationList locations={favorites}/> : null}
       </div>
     );
   };
 
-  
-  // a map showing the location of parking bays around the center point
-  function ParkingBaysMap(){
-    // Fetch all the parking bays information upon loading
-    const { loading, bays, error } = useParkingBays();
-    
-    if (loading) {
-      return <p>Loading...</p>;
-    }
-    if (error) {
-        return <p>Something went wrong</p>;
-    }
-    
-    return <HyperMap bays={bays} center={centerPoint}/>;
-  }
-
-  // Render contents of page
+  // render the map
   return (
     <div>
-      <div className="favourite_box">
-        <FavoriteLocations/>
-      </div>
-      <div className="map">
-        <ParkingBaysMap/>
+      <FavoriteLocations/>
+      <div>
+        {centerLocation === null ? null : <p>show results around: {centerLocation}</p>}
+        {loading ? <p>Loading...</p> : null}
+        {error ? <p>Something went wrong</p> : null}
+        {bays ? <HyperMap bays={bays} center={centerPoint}/> : null}
       </div>
     </div>
   );
