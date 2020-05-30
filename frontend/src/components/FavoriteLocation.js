@@ -9,22 +9,6 @@ export default function FavoriteLoactions(props) {
 	const [loaction_list, setLocations] = useState(locations);
   	const [showUpdate, setShowUpdate] = useState(false);
 
-	
-
-	// funtion to seacrh the parking bays around the saved locations
-	// redirect to the searching page
-	function searchLocation(){
-		alert("click");
-	}
-
-	function SearchButton(){
-		return(
-			<Button className="btn" onClick={()=>searchLocation(this)}>
-				Search
-			</Button>
-		);
-	}
-
 
 	// function to remove the svaed location
 	function removeLocation(_id){
@@ -54,27 +38,30 @@ export default function FavoriteLoactions(props) {
 			<div className="location">
 				<p>{tag}</p>
 				<p>{address}</p>
-				{showUpdate ? <DeleteButton/> : <SearchButton/>}
+				{showUpdate ? <DeleteButton/> : null}
 			</div>
 		);
 	}
 
 	// a list a saved locations
 	function FavoriteLoactionsList() {	
-		return(  
-		  	<div className="location_list">
-				{loaction_list.map(location => (<Location key={location._id} {...location} />))} 
-		  	</div> 
+		return( 
+			<div>
+				<div className="loaction_list">    
+					{loaction_list.map(location => (<Location key={location._id} {...location} />))} 
+				</div>
+				<Button className={"btn"} onClick={() => setShowUpdate(!showUpdate)}>
+						{showUpdate ? "OK" : "Edit favorite locations"}
+				</Button> 
+			</div>
 		); 
 	}
 	  
 
     return (
-      <div className="favorite_locations">
-			<FavoriteLoactionsList/> 
-			<Button className={"btn"} onClick={() => setShowUpdate(!showUpdate)}>
-				{showUpdate ? "OK" : "Edit favorite locations"}
-			</Button>          
+
+      <div className="favorite_loactions"> 
+        {loaction_list.length === 0 ? <p>no saved locations</p> : <FavoriteLoactionsList/> }       
       </div>
   	);
 }
