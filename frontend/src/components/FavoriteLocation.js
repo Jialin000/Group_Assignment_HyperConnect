@@ -9,22 +9,6 @@ export default function FavoriteLoactions(props) {
 	const [loaction_list, setLocations] = useState(locations);
   	const [showUpdate, setShowUpdate] = useState(false);
 
-	
-
-	// funtion to seacrh the parking bays around the saved locations
-	// redirect to the searching page
-	function searchLocation(){
-		alert("click");
-	}
-
-	function SearchButton(){
-		return(
-			<Button className={"btn"} onClick={()=>searchLocation(this)}>
-				Search
-			</Button>
-		);
-	}
-
 
 	// function to remove the svaed location
 	function removeLocation(_id){
