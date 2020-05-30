@@ -25,6 +25,7 @@ function ParkingBaysMap(){
 
   // Fetch all the parking bays information upon loading
   const { loading, bays, error } = useParkingBays();
+  
 
   // show a sigle saved location
   // the center point of map will be changed 
@@ -108,7 +109,7 @@ function ParkingBaysMap(){
         {centerLocation === null ? null : <p>show results around: {centerLocation}</p>}
         {loading ? <p>Loading...</p> : null}
         {error ? <p>Something went wrong</p> : null}
-        {bays ? <HyperMap bays={bays} center={centerPoint}/> : null}
+        {!error && !loading ? <HyperMap bays={bays} center={centerPoint}/> : null}
       </div>
     </div>
   );
