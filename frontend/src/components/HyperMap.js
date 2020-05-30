@@ -177,10 +177,10 @@ class HyperMap extends Component {
   };
 
   handleSubmit(e) {
-    console.log(this.state.address);
+    /*console.log(this.state.address);
     console.log(this.state.mapPosition);
     console.log(document.getElementById("input_id").value);
-
+    */
     // add the location to my favorite location
     addLocation ({
       tag: document.getElementById("input_id").value,
