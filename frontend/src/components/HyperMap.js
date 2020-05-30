@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
+import { addLocation} from "../userAPI"
 import { usePosition } from "use-position";
 import Button from "../components/Button";
 import mapStyle from "../mapStyle";
@@ -179,6 +180,25 @@ class HyperMap extends Component {
     console.log(this.state.address);
     console.log(this.state.mapPosition);
     console.log(document.getElementById("input_id").value);
+
+    // add the location to my favorite location
+    addLocation ({
+      tag: document.getElementById("input_id").value,
+      address: this.state.address,
+      lat: this.state.mapPosition.lat,
+      lng: this.state.mapPosition.lng
+      
+    }).then(res => {
+      if (res.status === 200) {
+        alert("Added to favorites");
+      }else if(res.status === 401) {
+        alert("You need to log in first");
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert('Unable to add, please try again');
+    });
   }
 
   render() {
