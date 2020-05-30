@@ -229,19 +229,20 @@ class HyperMap extends Component {
 
           {/* Add to favourite factionality */}
           {this.state.address && (
-            <div>
-              <p>rencent searched place: {this.state.address}</p>
+            <div className="searchbar_res">
+              <h5>Recent searched place: <br/></h5>
+              <h5>{this.state.address}</h5>
               <input
                 name="searchTxt"
                 type="text"
                 maxlength="512"
                 id="input_id"
                 class="searchField"
-                placeholder={"enter label"}
+                placeholder={"Enter a tag here"}
               />
-              <button onClick={(e) => this.handleSubmit(e)}>
-                Add favourite
-              </button>
+              <Button className="res_btn" onClick={(e) => this.handleSubmit(e)}>
+                Add to favourite
+              </Button>
             </div>
           )}
 
@@ -275,7 +276,7 @@ class HyperMap extends Component {
         <AsyncMap
           googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyCE_by6BiXR1XCws5YiduStyJfvzPrXfuc&libraries=places`}
           loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: "50%" }} />}
+          containerElement={<div style={{ height: "100%" }} />}
           mapElement={<div style={{ height: `100%` }} />}
         />
       </div>

@@ -15,50 +15,7 @@
   background: linear-gradient(to top, rgba(0, 8, 52, 0.44), rgba(94, 94, 95, 0.53));
 }
 
-.searchbar {
-  position: absolute;
-  z-index: 1;
-  left: 40%;
-  bottom: 10%;
-}
-.searchbar input {
-  color: black;
-}
-.map {
-  height: 98%;
-  width: 100%;
-  z-index: 0;
-  position: absolute;
-}
-.favourite_box {
-  position: absolute;
-  z-index: 2;
-  /*width: 300px;*/
-  top: 15%;
-  right: 5%;
-}
 
-.btn-search {
-  font-size: 30px;
-  border-radius: 30%;
-  box-shadow: #0c0707;
-  border: 3px solid #000000;
-  -webkit-transition-duration: 0.4s;
-  transition-duration: 0.4s;
-  position: absolute;
-  bottom: 8%;
-  left: 3%;
-}
-
-.btn-search:hover {
-  background-color: #050505;
-  color: #ffffff;
-}
-.location_list {
-  z-index: 4;
-  position: absolute;
-
-}
 html,
 body {
   font-size: 12px;
@@ -399,6 +356,7 @@ input {
     top: 32px;
   }
 }
+
 .btn-search {
   font-size: 30px;
   border-radius: 30%;
@@ -411,11 +369,46 @@ input {
   bottom: 2%;
   color: black;
 }
+
 @media screen and (max-width: 800px) {
   .btn-search {
     bottom: 10%;
     left: 22%;
   }
+}
+.btn-search:hover {
+  background-color: #050505;
+  color: #ffffff;
+}
+
+.searchbar_res {
+  left: 10px;
+  top: 110px;
+  background-color: rgba(50, 50, 50, 0.9);
+  z-index: 1;
+  position: absolute;
+}
+.searchbar_res h4,
+.searchbar_res h5{
+  color: white;
+}
+.searchbar_res input {
+  color: black;
+}
+.res_btn {
+  color: white;
+  margin-left: 10px;
+}
+.favourite_box {
+  position: absolute;
+  z-index: 2;
+  /*width: 300px;*/
+  top: 15%;
+  right: 5%;
+}
+.location_list {
+  z-index: 4;
+  position: absolute;
 }
 .profilepage {
   width: 100%;
@@ -491,10 +484,7 @@ input {
     color: white;
   }
 }
-.btn-search:hover {
-  background-color: #050505;
-  color: #ffffff;
-}
+
 
 nav {
   background-color: #268bc6;
