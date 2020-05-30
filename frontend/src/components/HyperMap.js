@@ -28,6 +28,10 @@ class HyperMap extends Component {
     currentFavourite: null,
     errorMessage: null,
     LabelErrorMessage: null,
+    favoritesCenter: {
+      lat: null,
+      lng: null,
+    },
   };
 
   /**
@@ -100,7 +104,7 @@ class HyperMap extends Component {
    */
   onPlaceSelected = (place) => {
     if (!place.formatted_address) {
-      this.setState({ errorMessage: "invaild input, plrase try again!" });
+      this.setState({ errorMessage: "invaild input, please try again!" });
     } else {
       this.setState({ errorMessage: "" });
       const address = place.formatted_address,
@@ -185,17 +189,29 @@ class HyperMap extends Component {
   };
 
   handleSubmit(e) {
-    console.log(this.state.address);
-    console.log(this.state.mapPosition);
     let a = document.getElementById("input_id").value;
-    console.log(document.getElementById("input_id").value);
-    console.log(a === "");
     if (a === "") {
-      this.setState({ LabelErrorMessage: "invaild label, plrase try again!" });
+      this.setState({ LabelErrorMessage: "invaild label, please try again!" });
     } else {
       this.setState({ LabelErrorMessage: "" });
     }
   }
+
+  handleFaviousCenter = () => {
+    if (
+      !Array.isArray(this.props.center) &&
+      this.state.favoritesCenter !== this.props.center
+    ) {
+      this.setState({
+        favoritesCenter: this.props.center,
+        mapPosition: {
+          lat: parseFloat(this.props.center.lat),
+          lng: parseFloat(this.props.center.lng),
+        },
+        defaultZoom: 18,
+      });
+    }
+  };
 
   render() {
     const AsyncMap = withScriptjs(
@@ -208,7 +224,7 @@ class HyperMap extends Component {
           }}
           defaultOptions={{ styles: mapStyle }}
         >
-          {console.log(this.props)}
+          {this.handleFaviousCenter()}
           <button className={"btn-search"} onClick={() => this.getLocation()}>
             Search Around
           </button>
