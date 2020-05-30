@@ -65,6 +65,26 @@ export function userLogOut() {
 }
 
 
+export function addLocation(location){
+  const endpoint = `/users/favorites/`;
+  const { tag, address, lat, lng} = location;
+
+  const res = fetch(endpoint, {
+    method: "POST",
+    headers: {
+      "credentials": 'include',
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      tag, 
+      address, 
+      lat, 
+      lng
+    })
+  });
+  return res;
+}
+
 export function deleteLocation(id) {
   const endpoint = `/users/favorites/`;
 
