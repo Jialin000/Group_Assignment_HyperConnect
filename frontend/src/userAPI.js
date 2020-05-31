@@ -109,6 +109,7 @@ export async function getUserFavorites() {
       "Accept": 'application/json'
     }
   });
+  
   return res.json();
 }
 
@@ -130,7 +131,7 @@ export async function getUserProfile() {
   return res.json();
 }
 
-
+// update user information
 export function updateUserProfile(user) {
   const endpoint = `/users/profile`;
   const { userName, email} = user;
@@ -165,7 +166,7 @@ export function useUserProfile() {
         setError(e);
         setLoading(false);
       });
-  }, []);
+  },[]);
 
   return {
     loading,
@@ -175,6 +176,7 @@ export function useUserProfile() {
 }
 
 
+// get user's saved locations
 export function useUserFavorites() {
   const [loading, setLoading] = useState(true);
   const [res, setResponse] = useState([]);
@@ -183,20 +185,20 @@ export function useUserFavorites() {
   useEffect(() => {
     getUserFavorites()
       .then(res => {
-        setLoading(false);
         setResponse(res);
+        setLoading(false);
       })
       .catch(e => {
         console.log(e);
         setError(e);
         setLoading(false);
       });
-  }, []);
+  });
 
   return {
     loading,
     res,
-    error
+    error,
   };
 }
 
