@@ -20,12 +20,18 @@ usersRouter.route('/logout')
     .post(usersController.userLogOut);
 
 
-// Protected route to get favorite parkingBays,
+// Protected route to add favorite parkingBays
 usersRouter.route('/favorites')
 
     // Use middleware to verify token before proceeding the request
     .all(checkAuth)
-    .post(usersController.addFavorites)
+    .post(usersController.addFavorites);
+
+// Protected route to get favorite parkingBays
+usersRouter.route('/favorites')
+
+    // Use middleware to verify token before proceeding the request
+    .all(checkAuth)
     .get(usersController.getFavorites);
 
 // Protected route to get user information,
