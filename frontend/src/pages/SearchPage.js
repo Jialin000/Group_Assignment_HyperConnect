@@ -45,14 +45,17 @@ function ParkingBaysMap(){
 
     return (
       <div className="locationButton">
-        <strong>{tag} </strong>
-        {address}	
-        <Button 
-          className={"btn"} 
-          onClick={()=>changeCenter(lat, lng)
-        }>
-          Search
+        <strong>
+            <Button
+            className={"btn"}
+            onClick={()=>changeCenter(lat, lng)
+            }>
+            {tag}
         </Button>
+        </strong>
+          <br/>
+        {address}	
+
         
       </div>
     );
@@ -99,10 +102,10 @@ function ParkingBaysMap(){
 
     return(
 
-      <div>
-        <p>Use saved locations: </p>
-        {loading ? <p>Loading...</p> : null}
-        {error ? <p>Unable to get saved locations</p> : null}
+      <div >
+        <h4>Use saved locations: </h4>
+        {loading ? <h4>Loading...</h4> : null}
+        {error ? <h4>Unable to get saved locations</h4> : null}
         {!loading && !error ? <FavoriteLocationList locations={favorites}/> : null}
 
 
@@ -113,9 +116,11 @@ function ParkingBaysMap(){
   // render the map
   return (
 
-    <div>
-      <FavoriteLocations/>
-      <div>
+    <div className="map_box">
+        <div className="location_list">
+            <FavoriteLocations/>
+        </div>
+      <div className="map_error">
         {centerLocation === null ? null : <p>show results around: {centerLocation}</p>}
         {loading ? <p>Loading...</p> : null}
         {error ? <p>Something went wrong</p> : null}
@@ -126,7 +131,7 @@ function ParkingBaysMap(){
         <FavoriteLocations/>
       </div>
       <div className="map">
-        <ParkingBaysMap/>  betabeta*/} 
+        <ParkingBaysMap/>  */}
 
       </div>
     </div>

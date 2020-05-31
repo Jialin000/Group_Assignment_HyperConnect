@@ -11,6 +11,7 @@ import FavoriteLoactions from "../components/FavoriteLocation";
 import HideFavorite from "../components/Toggle";
 
 export default function HomePage() {
+
   const { loading, res, error } = useUserProfile();
 
 
@@ -73,15 +74,14 @@ export default function HomePage() {
             </div>
           </div>
           <div className="homepage_right">
-            {/*<div className="homepage_right_login">*/}
-              <div className="homepage_right_userprofile">
 
+              <div className="homepage_right_userprofile">
                 <UserProfile userName={userName} email={email} />
                 <h1>Favorite Locations</h1>
                 {favorites.length == 0 ? <p>no saved locations</p> : <FavoriteLoactions locations={favorites}/>}
-                {/*<UserPage/>*/}
+
               </div>
-            {/*</div>*/}
+
           </div>
         </div>
 

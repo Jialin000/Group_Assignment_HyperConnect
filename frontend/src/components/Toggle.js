@@ -1,7 +1,7 @@
 import React from 'react';
 import FavoriteLocations from "../pages/SearchPage";
 import FavoriteLoactions from "./FavoriteLocation";
-
+import FavoriteLoactionsList from "./FavoriteLocation";
 class HideFavorite extends React.Component{
 
     constructor(){
@@ -18,7 +18,7 @@ class HideFavorite extends React.Component{
                         {
                             this.state.show? <div>
 
-                                <FavoriteLocations/>
+                                <FavoriteLoactions/>
 
 
                                     111

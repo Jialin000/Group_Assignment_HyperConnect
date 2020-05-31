@@ -193,7 +193,10 @@ input {
 .homepage_right_userprofile p {
   font-size: 15px;
   margin: 0;
-  color: white;
+  color: #c2c2c2;
+}
+.homepage_right_userprofile h4 {
+  color: #ffffff;
 }
 .homepage_bottom {
   float: bottom;
@@ -344,8 +347,16 @@ input {
   -ms-filter: blur(15px);
   filter: blur(15px);
 }
+.qq {
+  width: 50px;
+  height: 50px;
+  z-index: 1;
+}
 .map_box p {
   color: black;
+}
+.map_error p {
+  color: red;
 }
 .searchbar {
   width : 30%;
@@ -426,6 +437,7 @@ input {
 
 .location_list {
   height: 350px;
+  width: 200px;
   right: 1%;
   top: 170px;
   background-color: rgba(50, 50, 50, 0.9);
@@ -441,6 +453,10 @@ input {
     top: 440px;
     bottom: 50px;
   }
+}
+.location_list button {
+  margin-bottom:-5px ;
+  margin-top: 20px;
 }
 .location_list h4 {
   color: white;
@@ -464,8 +480,16 @@ input {
   filter: blur(20px);
 }
 .userprofile_favorite {
-  height: 450px;
+  height: 380px;
   overflow: auto;
+}
+.userprofile_favorite h4 {
+  color: white;
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+.userprofile_favorite button {
+  margin: 50px;
 }
 .userprofile_form {
   width: 100%;

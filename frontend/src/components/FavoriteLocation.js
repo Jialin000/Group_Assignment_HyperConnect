@@ -36,8 +36,8 @@ export default function FavoriteLoactions(props) {
 
 		return (
 			<div className="location">
-				<p>{tag}</p>
-				<p>{address}</p>
+				<h4>{tag}</h4>
+				<p>{address}</p><br/>
 				{showUpdate ? <DeleteButton/> : null}
 			</div>
 		);
@@ -48,10 +48,10 @@ export default function FavoriteLoactions(props) {
 
 		return( 
 			<div>
-				<div className="loaction_list">    
+				<div >
 					{loaction_list.map(location => (<Location key={location._id} {...location} />))} 
-				</div>
-				<Button className={"btn"} onClick={() => setShowUpdate(!showUpdate)}>
+				</div><br/>
+				<Button className="btn" onClick={() => setShowUpdate(!showUpdate)}>
 						{showUpdate ? "OK" : "Edit favorite locations"}
 				</Button> 
 			</div>
@@ -63,7 +63,7 @@ export default function FavoriteLoactions(props) {
     return (
 
 
-      <div className="favorite_loactions"> 
+      <div className="favorite_locations">
         {loaction_list.length === 0 ? <p>no saved locations</p> : <FavoriteLoactionsList/> }       
 
       </div>
