@@ -8,7 +8,7 @@ import  {Layout, Button}  from 'antd';
 import UserPage from "./UserPage";
 import UserProfile from "../components/UserProfile";
 import FavoriteLoactions from "../components/FavoriteLocation";
-
+import HideFavorite from "../components/Toggle";
 
 export default function HomePage() {
   const { loading, res, error } = useUserProfile();
@@ -41,7 +41,10 @@ export default function HomePage() {
           <div className="homepage_left">
             <div className="homepage_left_description_upper">
               <h1><b>
-                Do you know that? <br />
+                Do you know that?
+
+                {/*<HideFavorite/>*/}
+
               </b></h1>
               <h3>
                 There are more than
@@ -72,9 +75,11 @@ export default function HomePage() {
           <div className="homepage_right">
             {/*<div className="homepage_right_login">*/}
               <div className="homepage_right_userprofile">
+
                 <UserProfile userName={userName} email={email} />
                 <h1>Favorite Locations</h1>
                 {favorites.length == 0 ? <p>no saved locations</p> : <FavoriteLoactions locations={favorites}/>}
+                {/*<UserPage/>*/}
               </div>
             {/*</div>*/}
           </div>

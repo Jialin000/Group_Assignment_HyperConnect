@@ -344,7 +344,9 @@ input {
   -ms-filter: blur(15px);
   filter: blur(15px);
 }
-
+.map_box p {
+  color: black;
+}
 .searchbar {
   width : 30%;
   height: 40px;
@@ -439,7 +441,6 @@ input {
     top: 440px;
     bottom: 50px;
   }
-
 }
 .location_list h4 {
   color: white;

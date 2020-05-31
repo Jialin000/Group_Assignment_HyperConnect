@@ -111,7 +111,7 @@ export default function SearchPage() {
 
   // Render contents of page
   return (
-    <div>
+    <div className="map_box">
       <div>
         <FavoriteLocations/>
       </div>
