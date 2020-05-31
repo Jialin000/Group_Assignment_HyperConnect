@@ -1,5 +1,6 @@
 import React from "react";
 import userLogIn from "../userAPI";
+import  {Layout, Button}  from 'antd';
 
 
 export default class SignInForm extends React.Component{
@@ -120,7 +121,7 @@ export default class SignInForm extends React.Component{
             <input type="password" id="password"  name="password" onChange={this.handleChange} placeholder={"Enter password here"}/>
             <p>{this.state.errormessage.password}</p>
 
-            <button className="btn" onClick={this.onSubmit}>Submit</button>
+            <Button className="btn" onClick={this.onSubmit}>Submit</Button>
 
           </form>
 

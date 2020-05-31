@@ -45,6 +45,7 @@ export default function FavoriteLoactions(props) {
 
 	// a list a saved locations
 	function FavoriteLoactionsList() {	
+
 		return( 
 			<div>
 				<div className="loaction_list">    
@@ -54,14 +55,17 @@ export default function FavoriteLoactions(props) {
 						{showUpdate ? "OK" : "Edit favorite locations"}
 				</Button> 
 			</div>
+
 		); 
 	}
 	  
 
     return (
 
+
       <div className="favorite_loactions"> 
         {loaction_list.length === 0 ? <p>no saved locations</p> : <FavoriteLoactionsList/> }       
+
       </div>
   	);
 }

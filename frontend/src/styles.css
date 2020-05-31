@@ -1,5 +1,8 @@
 @import '~antd/dist/antd.css';
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
+
+
+
 .App {
   font-family: sans-serif;
   text-align: center;
@@ -15,50 +18,7 @@
   background: linear-gradient(to top, rgba(0, 8, 52, 0.44), rgba(94, 94, 95, 0.53));
 }
 
-.searchbar {
-  position: absolute;
-  z-index: 1;
-  left: 40%;
-  bottom: 10%;
-}
-.searchbar input {
-  color: black;
-}
-.map {
-  height: 98%;
-  width: 100%;
-  z-index: 0;
-  position: absolute;
-}
-.favourite_box {
-  position: absolute;
-  z-index: 2;
-  /*width: 300px;*/
-  top: 15%;
-  right: 5%;
-}
 
-.btn-search {
-  font-size: 30px;
-  border-radius: 30%;
-  box-shadow: #0c0707;
-  border: 3px solid #000000;
-  -webkit-transition-duration: 0.4s;
-  transition-duration: 0.4s;
-  position: absolute;
-  bottom: 8%;
-  left: 3%;
-}
-
-.btn-search:hover {
-  background-color: #050505;
-  color: #ffffff;
-}
-.location_list {
-  z-index: 4;
-  position: absolute;
-
-}
 html,
 body {
   font-size: 12px;
@@ -107,8 +67,8 @@ input {
 .homepage_left {
   float: left;
   width: 50%;
-  height: 70%;
   left: 50%;
+
 }
 
 @media screen and (max-width: 800px) {
@@ -119,34 +79,34 @@ input {
     left: 50%;
   }
 }
-
-.homepage_left_description {
-  width: 330px;
-  height: 280px;
+.homepage_left h1 {
+  color: #a2f1e6;
+  margin: 5px;
+}
+.homepage_left h2,
+.homepage_left h3,
+.homepage_left h4
+{
+  color: #ffffff;
+  margin: 0;
+}
+.homepage_left_description_upper {
+  width: 350px;
+  text-align: center;
   /*150 140*/
   margin: 0 auto;
+}
+.homepage_left_description {
+  width: 350px;
+  text-align: center;
+  /*150 140*/
+  margin: 40px auto;
   border-radius: 20px;
   border: 2px solid rgba(205, 205, 205, 0.42);
   border-top: 0;
-  padding: 50px 50px;
+  padding: 40px 50px;
   /*background: rgba(9, 6, 6, 0.5);*/
   /*top: 10%;*/
-}
-.homepage_left_description h2 {
-  color: #000000;
-}
-.homepage_left_description h3 {
-  color: #ffffff;
-}
-
-.homepage_left h1 {
-  color: #a2f1e6;
-}
-.homepage_left h2 {
-  color: #ffffff;
-}
-.homepage_left h3 {
-  color: #323232;
 }
 
 .homepage_right {
@@ -206,21 +166,35 @@ input {
 .homepage_right_login button {
   font-size: 17px;
   color: black;
+
 }
 .homepage_right_login label {
-  margin-top: 5%;
+  margin: -10px;
   color: #ffffff;
-  font-size: 15px;
+  font-size: 14px;
 }
 .homepage_right_login p {
   color: #ff0000;
 }
 .homepage_right_userprofile {
-  position: absolute;
-  right: 40%;
-  background-color: transparent;
+  width: 350px;
+  height: 460px;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 20px;
+  border: 2px solid rgba(205, 205, 205, 0.4);
+  border-top: 0;
+  overflow: auto;
 }
-
+.homepage_right_userprofile h1,
+.homepage_right_userprofile h3 {
+  color: #a2f1e6;
+}
+.homepage_right_userprofile p {
+  font-size: 15px;
+  margin: 0;
+  color: white;
+}
 .homepage_bottom {
   float: bottom;
   height: 40%;
@@ -370,7 +344,9 @@ input {
   -ms-filter: blur(15px);
   filter: blur(15px);
 }
-
+.map_box p {
+  color: black;
+}
 .searchbar {
   width : 30%;
   height: 40px;
@@ -386,12 +362,19 @@ input {
   bottom: 50px;
 }
 .map {
+  top: 20px;
   height: 98%;
   width: 100%;
   position: absolute;
   z-index: 0;
   overflow: hidden;
 }
+@media screen and (max-width: 800px) {
+  .map {
+    top: 32px;
+  }
+}
+
 .btn-search {
   font-size: 30px;
   border-radius: 30%;
@@ -404,11 +387,67 @@ input {
   bottom: 2%;
   color: black;
 }
+
 @media screen and (max-width: 800px) {
   .btn-search {
     bottom: 10%;
     left: 22%;
   }
+}
+.btn-search:hover {
+  background-color: #050505;
+  color: #ffffff;
+}
+
+.searchbar_res {
+  left: 10px;
+  top: 110px;
+  background-color: rgba(50, 50, 50, 0.9);
+  z-index: 10;
+  position: absolute;
+}
+.searchbar_res h4,
+.searchbar_res h5{
+  color: white;
+}
+.searchbar_res input {
+  color: black;
+}
+.res_btn {
+  color: white;
+  margin-left: 10px;
+}
+.favourite_box {
+  position: absolute;
+  z-index: 2;
+  /*width: 300px;*/
+  background-color: white;
+}
+
+.location_list {
+  height: 350px;
+  right: 1%;
+  top: 170px;
+  background-color: rgba(50, 50, 50, 0.9);
+  z-index: 1;
+  position: absolute;
+  padding-bottom: 35px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow: auto;
+}
+@media screen and (max-width: 800px) {
+  .location_list {
+    top: 440px;
+    bottom: 50px;
+  }
+}
+.location_list h4 {
+  color: white;
+}
+.location_list-no {
+  left: 10px;
+  top: 130px;
 }
 .profilepage {
   width: 100%;
@@ -424,33 +463,43 @@ input {
   -ms-filter: blur(15px);
   filter: blur(20px);
 }
-
+.userprofile_favorite {
+  height: 450px;
+  overflow: auto;
+}
+.userprofile_form {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(2, 2, 2, 0.64);
+}
 .ProfileForm {
   width: 380px;
   left: 40%;
   top: 10%;
   position: absolute;
-  background-color: rgba(92, 92, 92, 0.64);
+  background-color: rgba(0, 0, 0, 0.78);
   border-radius: 20px;
   border: 2px solid rgba(205, 205, 205, 0.42);
   border-top: 0;
   padding: 50px 50px;
 }
+.ProfileForm h1{
+  color: white;
+}
 .ProfileForm h3 {
-  color: black;
+  color: #6c6c6c;
   font-family: 'Josefin Sans', 'Roboto', sans-serif;
-  font-size: 18px;
   margin: 0;
 }
 .ProfileForm p {
-  color: black;
+  color: #ffffff;
   font-family: 'Josefin Sans', 'Roboto', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   margin: 0;
 }
 .ProfileForm button {
   color: black;
-  margin: -2px;
+  margin: -5px;
 }
 
 @media screen and (max-width: 800px) {
@@ -484,9 +533,8 @@ input {
     color: white;
   }
 }
-.btn-search:hover {
-  background-color: #050505;
-  color: #ffffff;
+.UpdateProfileForm label{
+  color: white;
 }
 
 nav {
@@ -1093,9 +1141,6 @@ div.author .info {
   bottom: 8px;
 }
 
-.btn:hover {
-  box-shadow: 1px 1px 25px 10px rgba(146, 183, 248, 0.4);
-}
 
 .btn:before {
   content: "";

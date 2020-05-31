@@ -2,14 +2,31 @@ import React from "react";
 import SignInForm from "../components/SignInForm";
 // import Button from "../components/Button";
 import "../styles.css";
-import {isAuthenticated, userLogOut} from "../userAPI";
+import {isAuthenticated, userLogOut, useUserProfile} from "../userAPI";
 import ProfileForm from "../components/UserProfile";
 import  {Layout, Button}  from 'antd';
 import UserPage from "./UserPage";
-
+import UserProfile from "../components/UserProfile";
+import FavoriteLoactions from "../components/FavoriteLocation";
+import HideFavorite from "../components/Toggle";
 
 export default function HomePage() {
+  const { loading, res, error } = useUserProfile();
+
+
+
+
   if (isAuthenticated('Authorization')){
+
+    if (loading) {
+      return <p>Loading...</p>;
+    }
+    if (error) {
+      return <p>Something went wrong: {error.message}</p>;
+    }
+
+    const {userName, email, favorites} = res;
+
     return(
   <div className="homepage_container">
     <body>
@@ -17,27 +34,27 @@ export default function HomePage() {
 
     <div className="main">
 
-
-
-
       <div>
         <br/><br/>
         <div className="homepage_upper">
           <header><h1 className="advice__title">Hyper Parking </h1></header>
           <div className="homepage_left">
-            <div>
+            <div className="homepage_left_description_upper">
               <h1><b>
-                Do you know that? <br />
+                Do you know that?
+
+                {/*<HideFavorite/>*/}
+
               </b></h1>
-              <h2>
+              <h3>
                 There are more than
-                <h1><b><i>4300</i></b></h1>
+                <br/><h1><b><i>4300</i></b></h1>
                 on-street parkings in Melbourne!{" "}
-              </h2>
-              <br />
+              </h3>
             </div>
             <div className="homepage_left_description">
-              <h2>
+
+              <h4>
                 Tired of wasting time
                 <br/><br/>
                 looking for a parking bay?
@@ -47,18 +64,22 @@ export default function HomePage() {
                 Click the
                 <Button
                     className="btn"
-                    onCdivck={(event) => (window.location.href = "/parkingBays")}
+                    onClick={(event) => (window.location.href = "/#/parkingBays")}
                 >
                   Button
                 </Button>
                 to start! <br />
-              </h2>
+              </h4>
             </div>
           </div>
           <div className="homepage_right">
             {/*<div className="homepage_right_login">*/}
               <div className="homepage_right_userprofile">
-                <UserPage />
+
+                <UserProfile userName={userName} email={email} />
+                <h1>Favorite Locations</h1>
+                {favorites.length == 0 ? <p>no saved locations</p> : <FavoriteLoactions locations={favorites}/>}
+                {/*<UserPage/>*/}
               </div>
             {/*</div>*/}
           </div>
@@ -137,21 +158,21 @@ export default function HomePage() {
           <div>
             <br/><br/>
             <div className="homepage_upper">
-              <header><h1 className="advice__title">Hyper Parking </h1></header>
+              <header><h1 className="advice__title"><br/>Hyper Parking </h1></header>
               <div className="homepage_left">
-                <div>
+                <div className="homepage_left_description_upper">
                   <h1><b>
                     Do you know that? <br />
                   </b></h1>
-                  <h2>
+                  <h3>
                     There are more than
-                    <h1><b><i>4300</i></b></h1>
+                    <br/><h1><b><i>4300</i></b></h1>
                     on-street parkings in Melbourne!{" "}
-                  </h2>
-                  <br />
+                  </h3>
                 </div>
                 <div className="homepage_left_description">
-                  <h2>
+
+                  <h4>
                     Tired of wasting time
                     <br/><br/>
                   looking for a parking bay?
@@ -161,19 +182,19 @@ export default function HomePage() {
                     Click the
                     <Button
                         className="btn"
-                        onCdivck={(event) => (window.location.href = "/parkingBays")}
+                        onClick={(event) => (window.location.href = "/#/parkingBays")}
                     >
                       Button
                     </Button>
                     to start! <br />
-                  </h2>
+                  </h4>
                 </div>
               </div>
               <div className="homepage_right">
                 <div className="homepage_right_login">
-                  <div className="homepage_right_userprofile">
+
                     <SignInForm />
-                  </div>
+
                 </div>
               </div>
             </div>

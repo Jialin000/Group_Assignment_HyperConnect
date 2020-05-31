@@ -64,12 +64,15 @@ function ParkingBaysMap(){
     const {locations} = props;
     if (locations.length === 0){
       return(
-        <p>no saved locations</p>
+          <div className="location_list-no">
+            <h4>no saved locations</h4>
+          </div>
+
       );
       
     }else{
       return(
-        <div className="loaction_list">
+        <div>
         {locations.map(location => (<Location key={location._id} {...location} />))} 
         </div> 
       );
@@ -95,17 +98,21 @@ function ParkingBaysMap(){
     const {favorites} = res;
 
     return(
+
       <div>
         <p>Use saved locations: </p>
         {loading ? <p>Loading...</p> : null}
         {error ? <p>Unable to get saved locations</p> : null}
         {!loading && !error ? <FavoriteLocationList locations={favorites}/> : null}
+
+
       </div>
     );
   };
 
   // render the map
   return (
+
     <div>
       <FavoriteLocations/>
       <div>
@@ -113,6 +120,14 @@ function ParkingBaysMap(){
         {loading ? <p>Loading...</p> : null}
         {error ? <p>Something went wrong</p> : null}
         {!error && !loading ? <HyperMap bays={bays} center={centerPoint}/> : null}
+
+    {/* <div className="map_box">
+      <div>
+        <FavoriteLocations/>
+      </div>
+      <div className="map">
+        <ParkingBaysMap/>  betabeta*/} 
+
       </div>
     </div>
   );
