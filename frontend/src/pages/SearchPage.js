@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ParkingBays from "../components/ParkingBays";
 import HyperMap from "../components/HyperMap";
 import { useUserProfile, isAuthenticated, useUserFavorites} from "../userAPI";
@@ -45,12 +45,15 @@ function ParkingBaysMap(){
 
     return (
       <div className="locationButton">
+        <strong>{tag} </strong>
+        {address}	
         <Button 
           className={"btn"} 
           onClick={()=>changeCenter(lat, lng)
         }>
-          {tag}
-        </Button>	
+          Search
+        </Button>
+        
       </div>
     );
   }
@@ -75,9 +78,9 @@ function ParkingBaysMap(){
 
 
   function FavoriteLocations() {
-
     // fetch the locations saved by the user
-    const { loading, res, error } = useUserProfile();
+    const { loading, res, error } = useUserFavorites();
+    const [refresh, setRefresh] = useState(false);
 
     // if the user has not logged in
     // remind user to login to see their saved locations
@@ -89,14 +92,14 @@ function ParkingBaysMap(){
       );
     }
     
-    const {userName, email, favorites} = res;
+    const {favorites} = res;
 
     return(
       <div>
         <p>Use saved locations: </p>
         {loading ? <p>Loading...</p> : null}
         {error ? <p>Unable to get saved locations</p> : null}
-        {favorites ? <FavoriteLocationList locations={favorites}/> : null}
+        {!loading && !error ? <FavoriteLocationList locations={favorites}/> : null}
       </div>
     );
   };
