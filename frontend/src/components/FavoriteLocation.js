@@ -1,27 +1,13 @@
 import React from "react";
 import { deleteLocation } from "../userAPI";
 import { useState, useEffect } from "react";
-import Button from "../components/Button";
+import { Layout, Button } from "antd";
 
 export default function FavoriteLoactions(props) {
   const { locations } = props;
 
   const [loaction_list, setLocations] = useState(locations);
   const [showUpdate, setShowUpdate] = useState(false);
-
-  // funtion to seacrh the parking bays around the saved locations
-  // redirect to the searching page
-  function searchLocation() {
-    alert("click");
-  }
-
-  function SearchButton() {
-    return (
-      <Button className={"btn"} onClick={() => searchLocation(this)}>
-        Search
-      </Button>
-    );
-  }
 
   // function to remove the svaed location
   function removeLocation(_id) {
@@ -38,19 +24,11 @@ export default function FavoriteLoactions(props) {
   function Location(props) {
     const { _id, tag, address, lat, lng } = props;
 
-    function DeleteButton() {
-      return (
-        <Button className={"btn"} onClick={() => removeLocation(_id)}>
-          Delete
-        </Button>
-      );
-    }
-
     return (
       <div className="location">
         <p>{tag}</p>
         <p>{address}</p>
-        {showUpdate ? <DeleteButton /> : <SearchButton />}
+        {showUpdate ? <DeleteButton /> : null}
       </div>
     );
   }
@@ -58,10 +36,28 @@ export default function FavoriteLoactions(props) {
   // a list a saved locations
   function FavoriteLoactionsList() {
     return (
-      <div className="loaction_list">
-        {loaction_list.map((location) => (
-          <Location key={location._id} {...location} />
-        ))}
+      <div>
+        <div className="loaction_list">
+          {loaction_list.map((location) => (
+            <Location key={location._id} {...location} />
+          ))}
+        </div>
+        <Button className={"btn"} onClick={() => setShowUpdate(!showUpdate)}>
+          {showUpdate ? "OK" : "Edit favorite locations"}
+        </Button>
+      </div>
+    );
+  }
+
+  // a list a saved locations
+  function FavoriteLoactionsList() {
+    return (
+      <div className="favorite_loactions">
+        {loaction_list.length === 0 ? (
+          <p>no saved locations</p>
+        ) : (
+          <FavoriteLoactionsList />
+        )}
       </div>
     );
   }

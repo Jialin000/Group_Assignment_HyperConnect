@@ -1,7 +1,7 @@
 import React from "react";
 import { updateUserProfile } from "../userAPI";
 import { useState, useEffect } from "react";
-import Button from "../components/Button";
+import  {Layout, Button}  from 'antd';
 
 
 export default function UserProfile(props) {
@@ -40,12 +40,15 @@ export default function UserProfile(props) {
 
     function ProfileForm() {        
         return (
-            <div className="ProfileForm">
-                <p>Username: {username_value}</p><br/>
-                <p>Email: {email_value}</p><br/>
-                <Button className={"btn"} onClick={()=>setShowUpdate(!showUpdate)}>
+            <div >
+
+                <h3>Username: <br/></h3>
+                <p>{username_value}<br/></p>
+                <h3>Email: <br/></h3>
+                <p>{email_value}</p><br/>
+                <button className="btn" onClick={()=>setShowUpdate(!showUpdate)}>
                     Edit my profile
-                </Button>
+                </button>
             </div>
         );
     }
@@ -55,22 +58,22 @@ export default function UserProfile(props) {
         return (
         <div className="UpdateProfileForm">
             <form>
-                <label htmlFor="username">Username:</label>
+                <label htmlFor="username">Username: </label><br/>
                 <input type="text" name="username"  
                     value={username_value} 
                     onChange={event => {setUserName(event.target.value)
                 }}/>
                 <br/><br/>
-                <label htmlFor="email">Email:</label>
+                <label htmlFor="email">Email: </label><br/>
                 <input type="text" name="email" 
                     value={email_value} 
                     onChange={event => {setEmail(event.target.value)
                 }}/>
                 <br/><br/>
-                <Button className={"btn-warning"} onClick={onSubmit}>
+                <Button className="btn" onClick={onSubmit}>
                     Save
-                </Button>
-                <Button className={"btn"} onClick={cancelSubmit}>
+                </Button><br/><br/>
+                <Button className="btn" onClick={cancelSubmit}>
                     Cancel
                 </Button>
             </form>

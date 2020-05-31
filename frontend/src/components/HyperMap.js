@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
+import { addLocation } from "../userAPI";
 import { usePosition } from "use-position";
 import Button from "../components/Button";
 import mapStyle from "../mapStyle";
@@ -192,10 +193,33 @@ class HyperMap extends Component {
     let a = document.getElementById("input_id").value;
     if (a === "") {
       this.setState({ LabelErrorMessage: "invaild label, please try again!" });
+      return;
     } else {
       this.setState({ LabelErrorMessage: "" });
+      addLocation({
+        tag: document.getElementById("input_id").value,
+        address: this.state.address,
+        lat: this.state.mapPosition.lat,
+        lng: this.state.mapPosition.lng,
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            alert("Added to favorites");
+          } else if (res.status === 401) {
+            alert("You need to log in first");
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+          alert("Unable to add, please try again");
+        });
     }
   }
+  /*console.log(this.state.address);
+    console.log(this.state.mapPosition);
+    console.log(document.getElementById("input_id").value);
+    */
+  // add the location to my favorite location
 
   handleFaviousCenter = () => {
     if (
@@ -246,7 +270,7 @@ class HyperMap extends Component {
                 this.setSelectedPark(null);
               }}
             >
-              <div>
+              <div className="info">
                 <h2>Bay #{this.state.selectedPark.bay_id}</h2>
                 <p>st_marker_id: {this.state.selectedPark.st_marker_id}</p>
                 <p>latitude: {this.state.selectedPark.lat}</p>
@@ -293,6 +317,7 @@ class HyperMap extends Component {
               left: "1%",
               top: "7%",
               border: "2px solid #000000",
+              color: "black",
             }}
             onPlaceSelected={this.onPlaceSelected}
             types={["address"]}
@@ -308,7 +333,7 @@ class HyperMap extends Component {
         <AsyncMap
           googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyCE_by6BiXR1XCws5YiduStyJfvzPrXfuc&libraries=places`}
           loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: "300px" }} />}
+          containerElement={<div style={{ height: "50%" }} />}
           mapElement={<div style={{ height: `100%` }} />}
         />
       </div>

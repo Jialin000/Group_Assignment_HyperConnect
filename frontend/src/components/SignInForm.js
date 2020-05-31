@@ -1,6 +1,4 @@
 import React from "react";
-
-import Button from "../components/Button";
 import userLogIn from "../userAPI";
 
 
@@ -90,6 +88,7 @@ export default class SignInForm extends React.Component{
     }).then(res => {
       if (res.status === 200) {
         this.setState({loginmessage: "Login successful!"});
+        window.location.replace("/");
       }else if(res.status === 401) {
         this.setState({loginmessage: "Wrong password or email"});
       }
@@ -107,8 +106,10 @@ export default class SignInForm extends React.Component{
 
   render() {
     return (
+
         <div className={"SignInForm"}>
-          <h2>Log in</h2><br/>
+          <h1><b>Log In</b></h1>
+          <div className="logo"></div>
           <p>{this.state.loginmessage}</p>
           <form>
             <label htmlFor="email">Email:</label><br/><br/>
@@ -119,13 +120,13 @@ export default class SignInForm extends React.Component{
             <input type="password" id="password"  name="password" onChange={this.handleChange} placeholder={"Enter password here"}/>
             <p>{this.state.errormessage.password}</p>
 
-            <Button SubclassName={"btn-success"} onClick={this.onSubmit}>Submit</Button>
+            <button className="btn" onClick={this.onSubmit}>Submit</button>
 
           </form>
 
 
           <div>
-            <h5>Don't have an account?</h5>
+            <h2>Don't have an account?</h2>
             <a href={'/#/users/signup'}> Sign Up Here</a>
           </div>
         </div>
@@ -133,3 +134,4 @@ export default class SignInForm extends React.Component{
     );
   }
 }
+

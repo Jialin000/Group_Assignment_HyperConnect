@@ -8,10 +8,11 @@ import { useState, useEffect } from "react";
 export function getBays() {
   const endpoint = `/parkingBays`;
   // fetch(`/update`);
-  return fetch(endpoint).then((res) => {
-    console.log(res);
-    return res.json();
-  });
+  return fetch(endpoint)
+    .then((res) => {
+      console.log(res);
+        return res.json();
+      });
 }
 
 // export function findBays(location) {
