@@ -398,6 +398,7 @@ input {
 
 .btn-search {
   font-size: 30px;
+  font-family: 'Josefin Sans', 'Roboto', sans-serif;
   border-radius: 30%;
   box-shadow: #0c0707;
   border: 3px solid #000000;
@@ -417,9 +418,11 @@ input {
 }
 @media screen and (max-width: 600px) {
   .btn-search {
-    bottom: 10%;
-    left: 50%;
-    width: 130px;
+    bottom: 15%;
+    left: 54%;
+    width: 100px;
+    font-size: 17px;
+    border-radius: 50%;
   }
 }
 .btn-search:hover {
