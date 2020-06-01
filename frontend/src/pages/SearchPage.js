@@ -93,7 +93,7 @@ function ParkingBaysMap(){
     if (!isAuthenticated("Authorization")){
       return (
         <div>
-          <a href={'/#/users/login'}> Log in to see my saved locations</a>
+          <u><a href={'/#/users/login'}> Log in to see my saved locations <br/> Click me to log in</a></u>
         </div>
       );
     }

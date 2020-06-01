@@ -130,6 +130,22 @@ export async function getUserProfile() {
   }
   return res.json();
 }
+// get user's information from homepage
+export async function getUserProfileHomePage() {
+  const endpoint = `/users/profile`;
+
+  const res = await fetch(endpoint, {
+    method: "GET",
+    headers: {
+      "credentials": 'include',
+      "Accept": 'application/json'
+    }
+  });
+  console.log(res);
+  if (res.status === 401) {
+  }
+  return res.json();
+}
 
 // update user information
 export function updateUserProfile(user) {
@@ -166,6 +182,31 @@ export function useUserProfile() {
         setError(e);
         setLoading(false);
       });
+  },[]);
+
+  return {
+    loading,
+    res,
+    error
+  };
+}
+
+export function useUserProfileHomePage() {
+  const [loading, setLoading] = useState(true);
+  const [res, setResponse] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    getUserProfileHomePage()
+        .then(res => {
+          setResponse(res);
+          setLoading(false);
+        })
+        .catch(e => {
+          console.log(e);
+          setError(e);
+          setLoading(false);
+        });
   },[]);
 
   return {

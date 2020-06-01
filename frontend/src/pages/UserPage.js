@@ -20,12 +20,7 @@ export default function UserPage() {
     // Display user information and saved locations
     return (
         <div>
-
-
-
-
-                <div className="profilepage"></div>
-
+            <div className="profilepage"></div>
             <div className="ProfileForm">
                 <div className="userprofile_form"></div>
                 <div>

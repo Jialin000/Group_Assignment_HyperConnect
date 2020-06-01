@@ -2,17 +2,15 @@ import React from "react";
 import SignInForm from "../components/SignInForm";
 // import Button from "../components/Button";
 import "../styles.css";
-import {isAuthenticated, userLogOut, useUserProfile} from "../userAPI";
-import ProfileForm from "../components/UserProfile";
+import {isAuthenticated, userLogOut, useUserProfileHomePage} from "../userAPI";
 import  {Layout, Button}  from 'antd';
-import UserPage from "./UserPage";
-import UserProfile from "../components/UserProfile";
 import FavoriteLoactions from "../components/FavoriteLocation";
 import HideFavorite from "../components/Toggle";
+import ProfileFormHomePage from "../components/UserProfile"
 
 export default function HomePage() {
 
-  const { loading, res, error } = useUserProfile();
+  const { loading, res, error } = useUserProfileHomePage();
 
 
 
@@ -76,7 +74,9 @@ export default function HomePage() {
           <div className="homepage_right">
 
               <div className="homepage_right_userprofile">
-                <UserProfile userName={userName} email={email} />
+                  <div>
+                <ProfileFormHomePage userName={userName} email={email} />
+                  </div>
                 <h1>Favorite Locations</h1>
                 {favorites.length == 0 ? <p>no saved locations</p> : <FavoriteLoactions locations={favorites}/>}
 
