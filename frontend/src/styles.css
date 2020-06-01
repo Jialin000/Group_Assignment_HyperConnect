@@ -390,9 +390,9 @@ input {
   z-index: 0;
   overflow: hidden;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 600px) {
   .map {
-    top: 32px;
+    top: 35px;
   }
 }
 
@@ -412,7 +412,14 @@ input {
 @media screen and (max-width: 800px) {
   .btn-search {
     bottom: 10%;
-    left: 22%;
+    left: 42%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .btn-search {
+    bottom: 10%;
+    left: 50%;
+    width: 130px;
   }
 }
 .btn-search:hover {
@@ -460,10 +467,23 @@ input {
 }
 @media screen and (max-width: 800px) {
   .location_list {
-    top: 440px;
-    bottom: 50px;
+    top: 67%;
+    bottom: 0%;
+    /*height: 245px;*/
+    left: 0;
+    width: 185px;
   }
 }
+@media screen and (max-width: 600px) {
+  .location_list {
+
+    top: 67%;
+    height: 245px;
+    left: 0;
+    width: 185px;
+  }
+}
+
 .location_list button {
   margin-bottom:-5px ;
   margin-top: 20px;
