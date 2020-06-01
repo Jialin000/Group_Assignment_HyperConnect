@@ -105,7 +105,7 @@ class HyperMap extends Component {
    */
   onPlaceSelected = (place) => {
     if (!place.formatted_address) {
-      this.setState({ errorMessage: "invaild input, please try again!" });
+      this.setState({ errorMessage: "invalid input, please try again!" });
     } else {
       this.setState({ errorMessage: "" });
       const address = place.formatted_address,
@@ -192,8 +192,8 @@ class HyperMap extends Component {
   handleSubmit(e) {
     let a = document.getElementById("input_id").value;
     if (a === "") {
-      this.setState({ LabelErrorMessage: "invaild label, please try again!" });
-      return;
+      this.setState({ LabelErrorMessage: "invalid label, please try again!" })
+    return;
     } else {
       this.setState({ LabelErrorMessage: "" });
       addLocation({
@@ -301,8 +301,9 @@ class HyperMap extends Component {
               </Button>
             </div>
           )}
+            <div className="map_error">
           <p>{this.state.LabelErrorMessage}</p>
-
+            </div>
           {/* Parkingbays' locations */}
           {this.props.bays.map((bay) => this.handleRenderBays(bay))}
 
@@ -324,7 +325,9 @@ class HyperMap extends Component {
             types={["address"]}
             componentRestrictions={{ country: "au" }}
           />
+          <div className="map_error">
           <p>{this.state.errorMessage}</p>
+          </div>
         </GoogleMap>
       ))
     );

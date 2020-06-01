@@ -120,18 +120,13 @@ function ParkingBaysMap(){
         <div className="location_list">
             <FavoriteLocations/>
         </div>
-      <div className="map_error">
+      <div >
         {centerLocation === null ? null : <p>show results around: {centerLocation}</p>}
+        <div >
         {loading ? <p>Loading...</p> : null}
         {error ? <p>Something went wrong</p> : null}
+        </div>
         {!error && !loading ? <HyperMap bays={bays} center={centerPoint}/> : null}
-
-    {/* <div className="map_box">
-      <div>
-        <FavoriteLocations/>
-      </div>
-      <div className="map">
-        <ParkingBaysMap/>  */}
 
       </div>
     </div>
