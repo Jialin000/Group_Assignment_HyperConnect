@@ -92,8 +92,11 @@ function ParkingBaysMap(){
     // remind user to login to see their saved locations
     if (!isAuthenticated("Authorization")){
       return (
-        <div>
-          <u><a href={'/#/users/login'}> Log in to see my saved locations <br/> Click me to log in</a></u>
+        <div className="fav_nologin">
+         <h3><u>  Log in to see my saved locations <br/></u></h3>
+          <Button className="btn"
+                  onClick={(event) => (window.location.href = "/#/users/login")}>
+              Click me to log in</Button>
         </div>
       );
     }

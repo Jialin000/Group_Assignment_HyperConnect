@@ -54,4 +54,24 @@ describe('integration test', function() {
                 });
         });
     })
+        // test user sign up using a exist email
+    describe('userSignUp', function() {
+        it('user already exist ', function (done) {
+
+            chai.request(url)
+                .post('/users/signup')
+                .send({'email': '1@q.com' , 'password': '1'})
+                .end(function (err, res) {
+                    if (err) {
+                        throw err;
+                    }
+                    res.should.have.status(409);
+                    // console.log(res.body);
+                    done();
+                });
+        });
+
+    })
+
 })
+

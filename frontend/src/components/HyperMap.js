@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
+import HideFavorite from "../components/Toggle"
 import { addLocation } from "../userAPI";
 import { usePosition } from "use-position";
 import {Layout,Button} from "antd";
@@ -276,8 +277,9 @@ class HyperMap extends Component {
                 <p>latitude: {this.state.selectedPark.lat}</p>
                 <p>latitude: {this.state.selectedPark.lon}</p>
                 <p>
-                  Restriction Information: {this.state.selectedPark.Description}
+                  Restriction Information: <br/> {this.state.selectedPark.Description}
                 </p>
+                <HideFavorite/>
                 )
               </div>
             </InfoWindow>

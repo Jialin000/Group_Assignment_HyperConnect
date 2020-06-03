@@ -633,10 +633,26 @@ div.author {
   border-bottom: 1px #f2f2f2 solid;
 }
 
-div.author .info {
+div.author  {
   padding: 10px;
 }
 
+.info {
+  width: 300px;
+  word-wrap: break-word;
+}
+.info_help {
+  color: black;
+  background-color: #eaeaea;
+}
+.fav_nologin {
+  font-family: 'Josefin Sans', 'Roboto', sans-serif;
+  text-align: center;
+}
+.fav_nologin h3{
+  color: white;
+  font-size: 20px;
+}
 .author-expand {
   display: none;
   background-color: #2da2db;
