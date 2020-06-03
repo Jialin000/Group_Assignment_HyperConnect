@@ -407,7 +407,7 @@ input {
   position: absolute;
   left: 45%;
   bottom: 2%;
-  color: black;
+  color: #111111;
 }
 
 @media screen and (max-width: 800px) {
@@ -1210,7 +1210,11 @@ div.author  {
     transform: rotateY(45deg) translateX(-50%);
   }
 }
-
+@media screen and (max-width: 450px) {
+  .crane__list {
+    display: none;
+  }
+}
 .btn {
   text-decoration: none;
   border: 1px solid rgb(146, 183, 248);
@@ -1259,6 +1263,7 @@ div.author  {
   transform: translate(-25%, -25%);
 
 }
+
 @media screen and (max-width: 800px) {
   .moon {
   display: none;
