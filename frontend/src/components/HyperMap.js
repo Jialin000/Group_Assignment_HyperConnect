@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import HideFavorite from "../components/Toggle"
 import { addLocation } from "../API/userAPI";
-import { usePosition } from "use-position";
 import {Button} from "antd";
 import mapStyle from "../views/mapStyle";
 import {
-  LoadScript,
   withGoogleMap,
   GoogleMap,
   withScriptjs,

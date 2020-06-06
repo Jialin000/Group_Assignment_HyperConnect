@@ -20,40 +20,6 @@ export function getBays() {
   });
 }
 
-// export function findBays(location) {
-//   const {lat, lon} = location;
-//   const endpoint = BASE_URL + `/find?lat=${lat}lon=${lon}`;
-//   return fetch(endpoint).then((res) => {
-//     console.log(res);
-//     return res.json();
-//   });
-// }
-
-// export function findNear(location) {
-//   const [loading, setLoading] = useState(true);
-//   const [bays, setBays] = useState([]);
-//   const [error, setError] = useState(null);
-
-//   useEffect(() => {
-//     findBays(location)
-//       .then((bays) => {
-//         setBays(bays);
-//         setLoading(false);
-//       })
-//       .catch((e) => {
-//         console.log(e);
-//         setError(e);
-//         setLoading(false);
-//       });
-//   }, []);
-
-//   return {
-//     loading,
-//     bays,
-//     error,
-//   };
-// }
-
 export function useParkingBays() {
   const [loading, setLoading] = useState(true);
   const [bays, setBays] = useState([]);
