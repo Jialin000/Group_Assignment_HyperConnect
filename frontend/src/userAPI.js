@@ -150,7 +150,7 @@ export async function getUserProfileHomePage() {
 // update user information
 export function updateUserProfile(user) {
   const endpoint = `/users/profile`;
-  const { userName, email} = user;
+  const { userName} = user;
 
   return fetch(endpoint, {
     method: "POST",
@@ -160,7 +160,6 @@ export function updateUserProfile(user) {
     },
     body: JSON.stringify({
       userName,
-      email,
     })
   })
 }
