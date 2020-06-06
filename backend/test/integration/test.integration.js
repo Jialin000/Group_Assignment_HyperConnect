@@ -39,7 +39,7 @@ describe('integration test', function() {
                     done();
                 });
         });
-        it('login in successfully ', function (done) {
+        it('log in successfully ', function (done) {
 
             chai.request(url)
                 .post('/users/login')
