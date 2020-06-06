@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 // end point to get all parking bays
 export function getBays() {
   const endpoint = `/parkingBays`;
-  // fetch(`/update`);
+  fetch(`/update`);
   return fetch(endpoint).then((res) => {
     console.log(res);
     return res.json();
