@@ -29,8 +29,8 @@ function ParkingBaysMap(){
   
   function refreshFavoriteLocation(){
     serRfreshFavorite(!refreshFavorite);
-
   }
+
   // show a sigle saved location
   // the center point of map will be changed 
   // by clicking the button
@@ -72,8 +72,7 @@ function ParkingBaysMap(){
           <div className="location_list-no">
             <h4>no saved locations</h4>
           </div>
-
-      );
+    );
       
     }else{
       return(
@@ -107,7 +106,7 @@ function ParkingBaysMap(){
 
     return(
 
-      <div >
+      <div>
         <h4>Use saved locations: </h4>
         {loading ? <h4>Loading...</h4> : null}
         {error ? <h4>Unable to get saved locations</h4> : null}
