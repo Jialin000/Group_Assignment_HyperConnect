@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
-import ParkingBays from "../components/ParkingBays";
+import React, { useState } from "react";
 import HyperMap from "../components/HyperMap";
-import { isAuthenticated, useUserFavorites} from "../userAPI";
-import { useParkingBays } from "../parkingBaysAPI";
+import { isAuthenticated, useUserFavorites} from "../API/userAPI";
+import { useParkingBays } from "../API/parkingBaysAPI";
 
-import  {Layout,Button}  from 'antd';
+import  {Button}  from 'antd';
 export default function SearchPage() {
   
   // Render contents of page

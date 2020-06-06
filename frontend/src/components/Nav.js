@@ -1,8 +1,6 @@
 import { Nav, NavDropdown, Navbar } from "react-bootstrap";
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { userLogOut } from "../userAPI";
-import {isAuthenticated} from "../userAPI";
+import {isAuthenticated, userLogOut} from "../API/userAPI";
 
 const loggedIn = () => {
     return (

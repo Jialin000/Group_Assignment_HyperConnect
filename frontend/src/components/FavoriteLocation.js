@@ -1,7 +1,7 @@
 import React from "react";
-import { deleteLocation } from "../userAPI";
-import { useState, useEffect } from "react";
-import { Layout, Button } from "antd";
+import { deleteLocation } from "../API/userAPI";
+import { useState } from "react";
+import { Button } from "antd";
 
 export default function FavoriteLoactions(props) {
 	const {locations} = props;

@@ -1,9 +1,9 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component } from "react";
 import HideFavorite from "../components/Toggle"
-import { addLocation } from "../userAPI";
+import { addLocation } from "../API/userAPI";
 import { usePosition } from "use-position";
-import {Layout,Button} from "antd";
-import mapStyle from "../mapStyle";
+import {Button} from "antd";
+import mapStyle from "../views/mapStyle";
 import {
   LoadScript,
   withGoogleMap,
@@ -207,7 +207,7 @@ class HyperMap extends Component {
           if (res.status === 201) {
             alert("Added to favorites");
             this.props.addLocation();
-            
+
           } else if (res.status === 401) {
             alert("You need to log in first");
           }

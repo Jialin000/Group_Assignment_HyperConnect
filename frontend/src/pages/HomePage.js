@@ -1,11 +1,9 @@
 import React from "react";
 import SignInForm from "../components/SignInForm";
-// import Button from "../components/Button";
-import "../styles.css";
-import {isAuthenticated, userLogOut, useUserProfileHomePage} from "../userAPI";
-import  {Layout, Button}  from 'antd';
+import "../views/styles.css";
+import {isAuthenticated, useUserProfileHomePage} from "../API/userAPI";
+import  {Button}  from 'antd';
 import FavoriteLoactions from "../components/FavoriteLocation";
-import HideFavorite from "../components/Toggle";
 import ProfileFormHomePage from "../components/UserProfile"
 
 export default function HomePage() {

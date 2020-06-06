@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from 'antd';
-import {userSignUp} from "../userAPI";
+import {userSignUp} from "../API/userAPI";
 
 export default class SignUpForm extends React.Component {
 

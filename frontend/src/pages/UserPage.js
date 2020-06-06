@@ -1,7 +1,8 @@
 import React from "react";
-import {useUserProfile, isAuthenticated} from "../userAPI";
+import {useUserProfile} from "../API/userAPI";
 import UserProfile from "../components/UserProfile";
 import FavoriteLoactions from "../components/FavoriteLocation";
+import "../views/styles.css";
 
 export default function UserPage() {
 
