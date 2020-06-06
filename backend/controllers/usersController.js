@@ -245,7 +245,7 @@ const updateUser = (req, res) => {
   // Use user information extracted from jwt by middleware to update favorites
   User.findOneAndUpdate(
     { _id: req.userData.userId },
-    { $set: { userName: req.body.userName, email: req.body.email } },
+    { $set: { userName: req.body.userName } },
     { returnOriginal: false }
   )
     .exec()

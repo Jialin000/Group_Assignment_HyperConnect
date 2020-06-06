@@ -20,7 +20,7 @@ export default function userLogIn(user) {
       password
     })
   });
-  console.log(res);
+  
   return res;
 }
 
@@ -141,16 +141,14 @@ export async function getUserProfileHomePage() {
       "Accept": 'application/json'
     }
   });
-  console.log(res);
-  if (res.status === 401) {
-  }
+  
   return res.json();
 }
 
 // update user information
 export function updateUserProfile(user) {
   const endpoint = `/users/profile`;
-  const { userName} = user;
+  const {userName} = user;
 
   return fetch(endpoint, {
     method: "POST",
@@ -159,7 +157,7 @@ export function updateUserProfile(user) {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      userName,
+      userName:userName,
     })
   })
 }

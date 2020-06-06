@@ -24,7 +24,7 @@ export default function FavoriteLoactions(props) {
 
 	// show a sigle location
 	function Location(props) {
-		const {_id, tag, address, lat, lng} = props;
+		const {_id, tag, address} = props;
 	
 		function DeleteButton(){
 			return(
