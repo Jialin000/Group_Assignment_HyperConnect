@@ -20,7 +20,7 @@ export default function userLogIn(user) {
       password
     })
   });
-  console.log(res);
+  
   return res;
 }
 
@@ -141,9 +141,7 @@ export async function getUserProfileHomePage() {
       "Accept": 'application/json'
     }
   });
-  console.log(res);
-  if (res.status === 401) {
-  }
+  
   return res.json();
 }
 

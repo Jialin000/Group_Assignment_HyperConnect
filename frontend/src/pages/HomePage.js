@@ -25,7 +25,7 @@ export default function HomePage() {
     const {userName, email, favorites} = res;
 
     return(
-  <div className="homepage_container">
+      <div className="homepage_container">
     <body>
 
 
@@ -76,7 +76,7 @@ export default function HomePage() {
                 <ProfileFormHomePage userName={userName} email={email} />
                   </div>
                 <h1>Favorite Locations</h1>
-                {favorites.length == 0 ? <p>no saved locations</p> : <FavoriteLoactions locations={favorites}/>}
+                {favorites.length === 0 ? <p>no saved locations</p> : <FavoriteLoactions locations={favorites}/>}
 
               </div>
 

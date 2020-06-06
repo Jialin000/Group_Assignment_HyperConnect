@@ -23,11 +23,11 @@ export default function UserProfile(props) {
         updateUserProfile({
             userName: username_value,
         }).then(res => {
-            if (res.status == 200){
+            if (res.status === 200){
                 alert("Change has been saved!");
                 setShowUpdate(!showUpdate);
 
-            }else if(res.status == 401){
+            }else if(res.status === 401){
                 alert("Please log in");
                 window.location.replace("/users/login");
 
