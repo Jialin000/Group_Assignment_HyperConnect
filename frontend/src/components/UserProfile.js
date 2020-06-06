@@ -8,20 +8,20 @@ export default function UserProfile(props) {
     const { userName, email } = props;
     
     const [username_value, setUserName] = useState(userName);
-    const [email_value, setEmail] = useState(email);
     const [showUpdate, setShowUpdate] = useState(false);
 
     function cancelSubmit(){
         setUserName(userName);
-        setEmail(email);
         setShowUpdate(!showUpdate);
     }
 
     
     function onSubmit() {
+        if(!username_value){
+            return;
+        }
         updateUserProfile({
             userName: username_value,
-            email: email_value
         }).then(res => {
             if (res.status == 200){
                 alert("Change has been saved!");
@@ -45,7 +45,7 @@ export default function UserProfile(props) {
                 <h3>Username: <br/></h3>
                 <p>{username_value}<br/></p>
                 <h3>Email: <br/></h3>
-                <p>{email_value}</p><br/>
+                <p>{email}</p><br/>
                 <Button className="btn" onClick={()=>setShowUpdate(!showUpdate)}>
                     Edit my profile
                 </Button>
@@ -63,12 +63,10 @@ export default function UserProfile(props) {
                     value={username_value} 
                     onChange={event => {setUserName(event.target.value)
                 }}/>
+                {!username_value ? <p>*Username can not be empty</p>: null}
                 <br/><br/>
-                <label htmlFor="email">Email: </label><br/>
-                <input type="text" name="email" 
-                    value={email_value} 
-                    onChange={event => {setEmail(event.target.value)
-                }}/>
+                <h3>Email: <br/></h3>
+                <p>{email}</p>
                 <br/><br/>
                 <Button className="btn" onClick={onSubmit}>
                     Save
