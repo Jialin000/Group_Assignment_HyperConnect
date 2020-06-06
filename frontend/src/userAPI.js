@@ -234,7 +234,7 @@ export function useUserFavorites() {
         setError(e);
         setLoading(false);
       });
-  });
+  },[]);
 
   return {
     loading,
