@@ -204,8 +204,10 @@ class HyperMap extends Component {
         lng: this.state.mapPosition.lng,
       })
         .then((res) => {
-          if (res.status === 200) {
+          if (res.status === 201) {
             alert("Added to favorites");
+            this.props.addLocation();
+            
           } else if (res.status === 401) {
             alert("You need to log in first");
           }
