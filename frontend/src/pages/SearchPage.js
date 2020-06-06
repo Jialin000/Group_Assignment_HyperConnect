@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ParkingBays from "../components/ParkingBays";
 import HyperMap from "../components/HyperMap";
-import { useUserProfile, isAuthenticated, useUserFavorites} from "../userAPI";
+import { isAuthenticated, useUserFavorites} from "../userAPI";
 import { useParkingBays } from "../parkingBaysAPI";
 
 import  {Layout,Button}  from 'antd';
@@ -22,11 +22,15 @@ function ParkingBaysMap(){
   // the center of the map
   const [centerPoint, setCenterPoint] = useState([]);
   const [centerLocation, setCenterLocation] = useState(null);
+  const [refreshFavorite, serRfreshFavorite] = useState(false);
 
   // Fetch all the parking bays information upon loading
   const { loading, bays, error } = useParkingBays();
   
+  function refreshFavoriteLocation(){
+    serRfreshFavorite(!refreshFavorite);
 
+  }
   // show a sigle saved location
   // the center point of map will be changed 
   // by clicking the button
@@ -54,9 +58,7 @@ function ParkingBaysMap(){
         </Button>
         </strong>
           <br/>
-        {address}	
-
-        
+        {address}	  
       </div>
     );
   }
@@ -86,7 +88,7 @@ function ParkingBaysMap(){
   function FavoriteLocations() {
     // fetch the locations saved by the user
     const { loading, res, error } = useUserFavorites();
-    const [refresh, setRefresh] = useState(false);
+    //const [refresh, setRefresh] = useState(false);
 
     // if the user has not logged in
     // remind user to login to see their saved locations
@@ -110,8 +112,6 @@ function ParkingBaysMap(){
         {loading ? <h4>Loading...</h4> : null}
         {error ? <h4>Unable to get saved locations</h4> : null}
         {!loading && !error ? <FavoriteLocationList locations={favorites}/> : null}
-
-
       </div>
     );
   };
@@ -129,7 +129,7 @@ function ParkingBaysMap(){
         {loading ? <p>Loading...</p> : null}
         {error ? <p>Something went wrong</p> : null}
         </div>
-        {!error && !loading ? <HyperMap bays={bays} center={centerPoint}/> : null}
+        {!error && !loading ? <HyperMap  addLocation={()=>refreshFavoriteLocation()} bays={bays} center={centerPoint}/> : null}
 
       </div>
     </div>
