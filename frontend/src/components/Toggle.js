@@ -1,7 +1,5 @@
 import React from 'react';
-import FavoriteLocations from "../pages/SearchPage";
-import FavoriteLoactions from "./FavoriteLocation";
-import FavoriteLoactionsList from "./FavoriteLocation";
+
 class HideFavorite extends React.Component{
 
     constructor(){
