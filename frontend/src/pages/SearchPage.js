@@ -8,11 +8,11 @@ export default function SearchPage() {
   // Render contents of page
   return (
     <div>
-      <div className="database">
-        <UpdateFunction />
-      </div>
       <div className="map">
         <ParkingBaysMap />
+      </div>
+      <div className="database">
+        <UpdateFunction />
       </div>
     </div>
   );
@@ -24,7 +24,7 @@ function UpdateFunction() {
     const interval = setInterval(() => {
       setCounter((counter) => counter + 1);
       updateDatabse();
-    }, 1000 * 10);
+    }, 1000 * 60 * 60);
 
     return () => {
       clearInterval(interval);
