@@ -30,7 +30,7 @@ const updateDatabase = (req, res, next) => {
         };
         if (db.collection("parkingBays").find({ bay_id: bay["bay_id"] })) {
           db.collection("parkingBays").updateOne(
-            { bay_id: bay["bay_id"] },
+            { bay_id: parseInt(bay["bay_id"]) },
             {
               $set: {
                 status: bay["status"],
