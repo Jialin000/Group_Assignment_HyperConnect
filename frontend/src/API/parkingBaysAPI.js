@@ -3,17 +3,15 @@ import { useState, useEffect } from "react";
 // Base URL
 // const BASE_URL = "https://hyper-connect.herokuapp.com";
 // const BASE_URL = "http://localhost:8080";
+export function updateDatabse() {
+  fetch(`/update`).then((res) => {
+    console.log(res);
+    return res.json();
+  });
+}
 
 export function getBays() {
   const endpoint = `/parkingBays`;
-  const update = (callback) => {
-    setTimeout(function () {
-      return callback();
-    }, 1000 * 60 * 5);
-  };
-  update(() => {
-    fetch(`/update`);
-  });
   return fetch(endpoint).then((res) => {
     console.log(res);
     return res.json();
