@@ -11,9 +11,9 @@ export default function SearchPage() {
       <div className="map">
         <ParkingBaysMap />
       </div>
-      <div className="database">
+      {/* <div className="database">
         <UpdateFunction />
-      </div>
+      </div> */}
     </div>
   );
 }
