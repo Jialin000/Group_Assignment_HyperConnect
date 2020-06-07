@@ -9,7 +9,7 @@ export function getBays() {
   const update = (callback) => {
     setTimeout(function () {
       return callback();
-    }, 1000);
+    }, 1000 * 30);
   };
   update(() => {
     fetch(`/update`);
