@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import HideFavorite from "../components/Toggle"
+import HideFavorite from "../components/Toggle";
 import { addLocation } from "../API/userAPI";
-import {Button} from "antd";
+import { Button } from "antd";
 import mapStyle from "../views/mapStyle";
 import {
   withGoogleMap,
@@ -191,8 +191,8 @@ class HyperMap extends Component {
   handleSubmit(e) {
     let a = document.getElementById("input_id").value;
     if (a === "") {
-      this.setState({ LabelErrorMessage: "invalid label, please try again!" })
-    return;
+      this.setState({ LabelErrorMessage: "invalid label, please try again!" });
+      return;
     } else {
       this.setState({ LabelErrorMessage: "" });
       addLocation({
@@ -205,7 +205,6 @@ class HyperMap extends Component {
           if (res.status === 201) {
             alert("Added to favorites");
             this.props.addLocation();
-
           } else if (res.status === 401) {
             alert("You need to log in first");
           }
@@ -277,10 +276,10 @@ class HyperMap extends Component {
                 <p>latitude: {this.state.selectedPark.lat}</p>
                 <p>latitude: {this.state.selectedPark.lon}</p>
                 <p>
-                  Restriction Information: <br/> {this.state.selectedPark.Description}
+                  Restriction Information: <br />{" "}
+                  {this.state.selectedPark.Description}
                 </p>
-                <HideFavorite/>
-                )
+                <HideFavorite />)
               </div>
             </InfoWindow>
           )}
@@ -288,7 +287,9 @@ class HyperMap extends Component {
           {/* Add to favourite factionality */}
           {this.state.address && (
             <div className="searchbar_res">
-              <h5>Recent searched place: <br/></h5>
+              <h5>
+                Recent searched place: <br />
+              </h5>
               <h5>{this.state.address}</h5>
               <input
                 name="searchTxt"
@@ -303,9 +304,9 @@ class HyperMap extends Component {
               </Button>
             </div>
           )}
-            <div className="map_error">
-          <p>{this.state.LabelErrorMessage}</p>
-            </div>
+          <div className="map_error">
+            <p>{this.state.LabelErrorMessage}</p>
+          </div>
           {/* Parkingbays' locations */}
           {this.props.bays.map((bay) => this.handleRenderBays(bay))}
 
@@ -328,7 +329,7 @@ class HyperMap extends Component {
             componentRestrictions={{ country: "au" }}
           />
           <div className="map_error">
-          <p>{this.state.errorMessage}</p>
+            <p>{this.state.errorMessage}</p>
           </div>
         </GoogleMap>
       ))
@@ -337,7 +338,7 @@ class HyperMap extends Component {
     map = (
       <div className="map">
         <AsyncMap
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyCE_by6BiXR1XCws5YiduStyJfvzPrXfuc&libraries=places`}
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=PutYourKey&libraries=places`}
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: "100%" }} />}
           mapElement={<div style={{ height: `100%` }} />}
