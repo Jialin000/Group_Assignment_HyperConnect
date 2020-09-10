@@ -338,7 +338,7 @@ class HyperMap extends Component {
     map = (
       <div className="map">
         <AsyncMap
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=PutYourKey!&libraries=places`}
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyAj8krPwUXSw_dGquzFSeDUHuJt_jqfWM0&libraries=places`}
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: "100%" }} />}
           mapElement={<div style={{ height: `100%` }} />}
